@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=H1, initial-scale=1.0">
     <title>Primeira insersao</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
+            <!-- Logo -->
           <a class="navbar-brand" href="#">
             <img src="img/97a3d57014392bf11f8f3d1abf06268a.jpg" alt="Logo">
           </a>
+          <!-- Botão que expande a navegação (três traçinhos) -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <!--Navegação entre telas-->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!--Tela sobre nós (parte da tela dentro do website)-->
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active text-primary" aria-current="page" href="#">Sobre nós</a>
               </li>
+              <!--Tela sobre planos (parte da tela dentro do website)-->
               <li class="nav-item">
-                <a class="nav-link" href="#">Sobre</a>
+                <a class="nav-link text-primary" href="#">Planos</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
@@ -29,6 +35,18 @@
             </form>
           </div>
         </div>
-      </nav>
+    </nav>
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
+        <div class="d-flex flex-column justify-content-around">
+            <p class="h1"> Trusty Gate </p>
+            <p> Com o Truty Gate você traz mais segurança para sua instituição, cadastre-se agora! </p>
+        </div>
+        <div class="d-flex flex-row justify-content-around">
+            <button type="button" class="btn btn-light">Entrar</button>
+            <button type="button" class="btn btn-light">Cadastrar</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
