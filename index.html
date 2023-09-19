@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=H1, initial-scale=1.0">
     <title>Primeira insersao</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg mb-1" id="_Nav">
         <div class="container-fluid">
             <!-- Logo -->
           <a class="navbar-brand" href="#">
-            <img src="img/97a3d57014392bf11f8f3d1abf06268a.jpg" alt="Logo">
+            <img src="img/Logo.jpg" alt="Logo">
           </a>
           <!-- Botão que expande a navegação (três traçinhos) -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,28 +23,35 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <!--Tela sobre nós (parte da tela dentro do website)-->
               <li class="nav-item">
-                <a class="nav-link active text-primary" aria-current="page" href="#">Sobre nós</a>
+                <a class="nav-link text-white" id="_NavTxt" href="#">Sobre nós</a>
               </li>
               <!--Tela sobre planos (parte da tela dentro do website)-->
               <li class="nav-item">
-                <a class="nav-link text-primary" href="#">Planos</a>
+                <a class="nav-link text-white" id="_NavTxt" href="#">Planos</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <ul class="navbar-nav mb-2">
+              <!--Tela de Login -->
+              <li class="nav-item">
+                <a class="nav-link text-white" id="_NavTxt" href="#">Login</a>
+              </li>
+              <!--Tela Cadastramento-->
+              <li class="nav-item">
+                <a class="nav-link text-white" id="_NavTxt" href="#">Cadastrar</a>
+              </li>
+            </ul>
           </div>
         </div>
     </nav>
-    <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
-        <div class="d-flex flex-column justify-content-around">
-            <p class="h1"> Trusty Gate </p>
-            <p> Com o Truty Gate você traz mais segurança para sua instituição, cadastre-se agora! </p>
+    <!-- Contéudo 01 -->
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-center pt-3" id="_C01">
+        <div class="d-flex flex-column justify-content-around align-items-center mb-3">
+            <p id="_Name" class="h1 text-white fw-bold mb-5"> Trusty Gate </p>
+            <p id="_TxtDesc" class="text-white fw-medium"> Com o Truty Gate você traz mais segurança para sua instituição, cadastre-se agora! </p>
         </div>
-        <div class="d-flex flex-row justify-content-around">
-            <button type="button" class="btn btn-light">Entrar</button>
-            <button type="button" class="btn btn-light">Cadastrar</button>
+        <div class="container-xl d-flex flex-row justify-content-around">
+            <button type="button" id="_Btn" class="btn btn-light text-primary fw-bold">Entrar</button>
+            <button type="button" id="_Btn" class="btn btn-light text-primary fw-bold">Cadastrar</button>
         </div>
     </div>
 

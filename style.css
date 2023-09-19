@@ -1,0 +1,39 @@
+/*importando fontes*/
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Alice&family=Arimo&family=Cardo&family=League+Spartan:wght@100&family=Montserrat:wght@100&family=Nunito:wght@600&family=Open+Sans:wght@300&family=Racing+Sans+One&display=swap');
+/*Começando códigos de estilização*/
+
+/*Estilizando barra de navegação*/
+#_Nav {
+    background-color: #050547;
+}
+
+/*Estilizando fonte da barra de navegação*/
+#_NavTxt{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+/*Estilizando a primeira imagem de fundo da tela principal*/
+#_C01{
+    background-image: url("img/Fundo.png");
+    height: 500px;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+}
+
+#_TxtDesc{
+    font-family: 'Alice', serif;
+    text-align: center;
+    font-size: larger;
+}
+
+/*Estilizando botão tela principal*/
+#_Btn{
+    width: 300px;
+    border-radius: 30px;
+}
+
+
+#_Name{
+    font-family: 'Alegreya', serif;
+}
