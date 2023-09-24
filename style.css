@@ -1,7 +1,7 @@
 /*importando fontes*/
 @import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Alice&family=Arimo&family=Cardo&family=League+Spartan:wght@100&family=Montserrat:wght@100&family=Nunito:wght@600&family=Open+Sans:wght@300&family=Racing+Sans+One&display=swap');
-/*Começando códigos de estilização*/
 
+/*Começando códigos de estilização*/
 
 /*Estilizando barra de navegação*/
 #_Nav {
@@ -43,7 +43,7 @@
 /*Estilizando a segunda parte da tela principal*/
 #_Fund02{
     background-image: url("img/Fundo2.png");
-    height: 800px;
+    height: 130%;
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;   
 }
@@ -70,6 +70,7 @@
 /*Estilizando texto que fala sobre a empreza*/
 #_Sobre{
     font-family: 'Alice', serif;
+    width: 60%;
 }
 
 /*Estilizando o titulo da parte planos*/
@@ -148,4 +149,23 @@
 /*Estilizando os textos de cada contato*/
 #_Contato{
     font-family: 'Cardo', serif;
+}
+
+/*Estilizando a tela de login*/
+#_fundLC{
+    background-image: url("img/Fundo-LC.png");
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+}
+
+/*Estilizando tamanho do fundo*/
+#_LC-F{
+    width: 100vw; 
+    height: 100vh;
+}
+
+/*Estilizando o campo DOM*/
+#_Campo-LC{
+    background-color: rgb(0, 1, 71, 0.5);
+    width: 400px;
 }
