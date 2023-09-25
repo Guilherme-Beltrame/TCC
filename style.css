@@ -167,5 +167,23 @@
 /*Estilizando o campo DOM*/
 #_Campo-LC{
     background-color: rgb(0, 1, 71, 0.5);
-    width: 400px;
+    width: 80%;
+}
+
+/*Estilizando o famanho do form*/
+.form-floating{
+    width: 70%;
+}
+
+/*Estilizando textos de login*/
+#_TxtLoCa, .btn{
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+}
+#_preplano, #Lite, #Business, #Premium, #Custom{
+    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+}
+#_TxtFor{
+    font-family: 'Nunito', sans-serif;
 }

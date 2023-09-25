@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=H1, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trusty Gate</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -12,24 +12,63 @@
 
 <body id="_fundLC">
     <div class="container-fluid d-flex flex-row justify-content-center align-items-center" id="_LC-F">
-        <div class="container-md  text-center d-flex flex-column justify-content-center flex-wrap grid gap-2 p-5" id="_Campo-LC">
+        <div class="needs-validation was-validated container-md text-center d-flex flex-column justify-content-center flex-wrap grid gap-2 p-5"
+            id="_Campo-LC">
             <div class="d-flex flex-row justify-content-around flex-wrap grid gap-2 ">
-                <p><a href="" class="link-underline-success text-white fw-bold">Login</a></p>
-                <p><a href="Cad.html" class="link-offset-2 link-underline link-underline-opacity-0 text-white fw-bold">Cadastro</a></p>
+                <p><a href="" id="_TxtLoCa" class="link-underline-success text-white fw-bold">Login</a></p>
+                <p><a href="Cad.html" id="_TxtLoCa" class="link-offset-2 link-underline link-underline-opacity-0 text-white fw-bold">Cadastro</a>
+                </p>
             </div>
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">E-mail:</label>
+                    <input type="email" class="form-control" id="-email" placeholder="name@example.com" required>
+                    <label id="_TxtFor" for="-email">E-mail:</label>
                 </div>
-                <div class="form-floating ">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Senha:</label>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="-Senha" placeholder="Password" required>
+                    <label id="_TxtFor" for="-Senha">Senha:</label>
                 </div>
-                <p><a class="link-offset-2 link-underline link-underline-opacity-0 text-success fw-medium" href="#">Esqueceu a senha?</a></p>
+                <p><a class="link-offset-2 link-underline link-underline-opacity-0 text-success fw-medium" id="_TxtLoCa" href="">Esqueceu a senha?</a></p>
             </div>
             <div>
-                <button type="button" id="_Btn" class="btn btn-success"><a class="link-offset-2 link-underline link-underline-opacity-0 text-white fw-medium" href="L-C/Login.html">Entrar</a></button>
+                <button type="button" id="_Btn" class="btn btn-success" onclick="valida()" data-bs-toggle="modal"
+                    data-bs-target="#Esse">Entrar</button>
+                <div class="modal fade " id="NVai" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="Close">
+                    <div class="modal-dialog modal-dialog-centered text-center">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 fw-bold text-uppercase text-black mx-auto"
+                                    id="exampleModalLabel">Ocorreu um erro!</h1>
+                            </div>
+                            <div class="modal-body fw-bold text-uppercase text-black mx-auto">
+                                Você não inseriu os valores corretos!
+                            </div>
+                            <div class="modal-footer mx-auto">
+                                <button type="button" class="btn btn-success fw-bold text-uppercase text-black"><a
+                                        class="text-light link-offset-2 link-underline link-underline-opacity-0"
+                                        href="Login.html">Tentar Novamente</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="Vai" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="Close">
+                    <div class="modal-dialog modal-dialog-centered text-center">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 fw-bold text-uppercase text-black mx-auto"
+                                    id="exampleModalLabel">Parabéns</h1>
+                            </div>
+                            <div class="modal-body fw-bold text-uppercase text-black mx-auto">
+                                Seu cadastro foi concluído com sucesso!
+                            </div>
+                            <div class="modal-footer mx-auto">
+                                <button type="button" class="btn btn-success fw-bold text-uppercase text-black"><a
+                                        class="text-light link-offset-2 link-underline link-underline-opacity-0"
+                                        href="../index.html">Entrar</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -37,6 +76,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+    <script src="Login.js"></script>
 </body>
 
 </html>
