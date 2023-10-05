@@ -1,0 +1,17 @@
+#_Card-fund-BTN {
+    background-color: #010D42;
+}
+
+#_Btn-Card {
+    --bs-btn-padding-y: .50rem;
+    --bs-btn-padding-x: .9rem;
+    --bs-btn-font-size: .95rem;
+    color: #175A89;
+
+}
+
+#_Text-titulo {
+    font-family: 'Racing Sans One';
+    font-size: 35px;
+    
+}
