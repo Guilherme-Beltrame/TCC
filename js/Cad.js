@@ -1,3 +1,4 @@
+console.log("Entrou Cad");
 function valida() {
     let CEP = document.getElementById("-CEP").value;
     let N = document.getElementById("-Num").value;
