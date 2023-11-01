@@ -20,3 +20,13 @@ function valida() {
         btn.click();
     }
 }
+
+function Cadastrar(){
+    const Email = document.getElementById("-email").value;
+    const Semha = document.getElementById("-Senha").value;
+    firebase.auth().createUserWithEmailAndPassword(Email, Semha).then(()=>{
+        window.location.href = "Tela-Principal.html";
+    }).catch(error => {
+        alert("não foi", error);
+    })
+}

@@ -1,13 +1,13 @@
-<!DOCTYPE html>
 <html lang="PT-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trusty Gate</title>
+    <title>Trusty Gate - Login</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body id="_fundLC">
@@ -29,8 +29,10 @@
                     <input type="password" class="form-control" id="-senha" placeholder="Password" required>
                     <label id="_TxtFor" for="-senha">Senha:</label>
                 </div>
-                <p><a class="link-offset-2 link-underline link-underline-opacity-0 text-success fw-medium" id="_TxtLoCa"
-                        href="">Esqueceu a senha?</a></p>
+                <p class="text-white">Caso esqueça sua senha, digite o e-mail no campo email e <a
+                        class="link-offset-2 link-underline link-underline-opacity-0 text-success fw-medium"
+                        style="cursor: pointer;" id="_TxtLoCa" onclick="RecuSenha()">clique aqui.</a></p>
+
             </div>
             <div>
                 <button type="button" id="_Btn" class="btn btn-success" onclick="Entrar()" data-bs-toggle="modal"
@@ -66,7 +68,7 @@
                             <div class="modal-footer mx-auto">
                                 <button type="button" class="btn btn-success fw-bold text-uppercase text-black"><a
                                         class="text-light link-offset-2 link-underline link-underline-opacity-0"
-                                        href="../Sistema/Tela-Principal.html">Entrar</a></button>
+                                        href="Tela-Principal.html">Entrar</a></button>
                             </div>
                         </div>
                     </div>
@@ -83,6 +85,26 @@
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
     <script src="js/conection.js"></script>
     <script src="js/Login.js"></script>
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
 </body>
 
 </html>

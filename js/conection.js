@@ -1,13 +1,13 @@
 console.log("Entrou CN");
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDH0yxSGglSmx9mkOpi4rtfNQ_buZWIiQo",
-  authDomain: "trustygate.firebaseapp.com",
-  projectId: "trustygate",
-  storageBucket: "trustygate.appspot.com",
-  messagingSenderId: "196362793357",
-  appId: "1:196362793357:web:14a41731412ce238044dc4",
-  measurementId: "G-R5XLVBR5K9"
+  apiKey: "AIzaSyDTg1WvVGL3JYLVDSNVHoEWsBHTI9pg9zk",
+  authDomain: "trustygate-4a4e4.firebaseapp.com",
+  projectId: "trustygate-4a4e4",
+  storageBucket: "trustygate-4a4e4.appspot.com",
+  messagingSenderId: "1095311351419",
+  appId: "1:1095311351419:web:2eabbc3ab5dcb715dd0cde",
+  measurementId: "G-RT9M3DSBG2"
 };
 
 // Initialize Firebase
