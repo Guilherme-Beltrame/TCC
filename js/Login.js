@@ -1,6 +1,12 @@
 const NVai = document.getElementById("NVai");
 const Vai = document.getElementById("Vai");
 
+firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+        window.location.href = "Tela-Principal.html"
+    }
+
+})
 
 
 function Entrar() {

@@ -52,15 +52,15 @@
   <!-- Entrar cadastrar -->
   <div class="container-fluid d-flex flex-column align-items-around justify-content-center pt-3" id="_Fund01">
     <div class="d-flex flex-column justify-content-around align-items-center mb-3">
-      <p id="_Name" class="h1 text-white fw-bold mb-5"> Trusty Gate </p>
+      <p id="_Name" class="text-white fw-bold " style="font-size: 60px;"> Trusty Gate </p>
       <p id="_TxtDesc" class="text-white fw-medium"> Com o Truty Gate você traz mais segurança para sua instituição,
         cadastre-se agora! </p>
     </div>
-    <div class="container-xl d-flex flex-row justify-content-around flex-wrap grid gap-3 ">
-      <button type="button" id="_Btn" class="btn btn-light text-primary fw-bold"><a
-          class="link-offset-2 link-underline link-underline-opacity-0" href="Login.html">Entrar</a></button>
-      <button type="button" id="_Btn" class="btn btn-light text-primary fw-bold"><a
-          class="link-offset-2 link-underline link-underline-opacity-0" href="Cad.html">Cadastrar</a></button>
+    <div class="d-flex flex-row justify-content-around flex-wrap ">
+      <button type="button" id="_Btn" class="btn btn-light text-primary fw-bold" onclick="PageLogin()"><a
+          class="link-offset-2 link-underline link-underline-opacity-0">Entrar</a></button>
+      <button type="button" id="_Btn" class="btn btn-light text-primary fw-bold" onclick="PageCad()"><a
+          class="link-offset-2 link-underline link-underline-opacity-0">Cadastrar</a></button>
     </div>
   </div>
 
@@ -154,6 +154,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
   <script src="js/conection.js"></script>
+  <script src="js/initial.js"></script>
 </body>
 
 </html>
