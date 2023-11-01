@@ -1,0 +1,159 @@
+
+<html lang="PT-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trusty Gate</title>  
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="CSS/style.css">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg mb-1" id="_Nav">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="img/Logo.png" style="width: 48px;" alt="Logo">
+      </a>
+      <!-- Botão que expande a navegação (três traçinhos) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--Navegação entre telas-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!--Tela sobre nós (parte da tela dentro do website)-->
+          <li class="nav-item">
+            <a class="nav-link text-white" id="_NavTxt" href="#_TextSobre">Sobre nós</a>
+          </li>
+          <!--Tela sobre planos (parte da tela dentro do website)-->
+          <li class="nav-item">
+            <a class="nav-link text-white" id="_NavTxt" href="#_TextPlan">Planos</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav mb-2">
+          <!--Tela de Login -->
+          <li class="nav-item">
+            <a class="nav-link text-white" id="_NavTxt" href="Login.html">Login</a>
+          </li>
+          <!--Tela Cadastramento-->
+          <li class="nav-item">
+            <a class="nav-link text-white" id="_NavTxt" href="Cad.html">Cadastrar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Entrar cadastrar -->
+  <div class="container-fluid d-flex flex-column align-items-around justify-content-center pt-3" id="_Fund01">
+    <div class="d-flex flex-column justify-content-around align-items-center mb-3">
+      <p id="_Name" class="h1 text-white fw-bold mb-5"> Trusty Gate </p>
+      <p id="_TxtDesc" class="text-white fw-medium"> Com o Truty Gate você traz mais segurança para sua instituição,
+        cadastre-se agora! </p>
+    </div>
+    <div class="container-xl d-flex flex-row justify-content-around flex-wrap grid gap-3 ">
+      <button type="button" id="_Btn" class="btn btn-light text-primary fw-bold"><a
+          class="link-offset-2 link-underline link-underline-opacity-0" href="Login.html">Entrar</a></button>
+      <button type="button" id="_Btn" class="btn btn-light text-primary fw-bold"><a
+          class="link-offset-2 link-underline link-underline-opacity-0" href="Cad.html">Cadastrar</a></button>
+    </div>
+  </div>
+
+  <!--conteudo-->
+  <div class="container-fluid d-flex flex-column justify-content-betwen align-items-center">
+    <!--Sobre nós-->
+    <div
+      class="container-xl bg-white text-center d-flex flex-column grid gap-2 justify-content-around align-items-center p-4">
+      <p id="_TextSobre" class="fs-1 fw-bold mt-5">Sobre nós</p>
+      <p id="_Sobre" class="fs-5 fw-medium">Com o Truty Gate você traz mais segurança para sua instituição, cadastre-se
+        agora! </p>
+      <p id="_Sobre" class="fs-5 fw-medium mb-5">A Trusty Gate tem o intuito aprimorar a segurança das escolas,
+        notificando a
+        entrada e saída dos integrantes da
+        instituição atraves do site, sendo possível monitorar a frequência do estudante e garantindo aos responsáveis
+        que seus filhos estejam protegidos. Além de proporcionar segurança, a Trusty Gate trará uma questão importante
+        relacionada ao histórico de frequências, atrasos, saídas antecipadas etc.</p>
+    </div>
+    <!--Planos-->
+    <div class="container-fluid text-center mb-5" style="background-color: #090952;">
+      <p id="_TextPlan" class="fs-1 fw-medium">Planos:</p>
+      <div class="d-flex flex-row justify-content-around flex-wrap grid gap-1">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title fs-3">Lite</h5>
+            <p class="card-text">Leitor QR, instalação e 100 crachás bronze, por 10.986,25.</p>
+            <a href="Login.html" class="btn btn-success fw-bold fs-5">Assinar</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title fs-3">Business</h5>
+            <p class="card-text">Leitor QR code, intalação, 100 crachás platium e manutenção anual básica, por
+              11.486,25.</p>
+            <a href="Login.html" class="btn btn-success fw-bold fs-5">Assinar</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title fs-3">Premium</h5>
+            <p class="card-text">Leitor QR code, instalação, 100 crachás gold e manutenção anual gate, por 11.686,25.
+            </p>
+            <a href="Login.html" class="btn btn-success fw-bold fs-5">Assinar</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title fs-3">Custom</h5>
+            <p class="card-text">Escolha de tipo de crachá (bronze, platium ou gold), quantidade de crachás e quantidade
+              de manutenções desejadas (o leitor de QR code e a instalação já estão inclusas).</p>
+            <a href="Login.html" class="btn btn-success fw-bold fs-5">Assinar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Rodapé-->
+  <div class="container-fluid d-flex flex-row justify-content-around align-items-center grid gap-2 py-5"
+    style="background-color: #000147;">
+    <div class="d-flex flex-column align-items-center grid gap-1">
+      <img src="img/Logo.png" style="width: 150px;" alt="Logo da empresa">
+      <p class="fw-medium fs-4 text-white">@2023</p>
+    </div>
+    <div class="d-flex flex-column align-items-center grid gap-1">
+      <p class="fs-3 fw-bold text-success">Sobre a Trusty Gate</p>
+      <p id="_DescRoda" class="fs-5 fw-medium text-white" style="width: 500px;"> A Trusty Gate tem como seu objetivo
+        geral um sistema de controle de acesso que serve para auxiliar os alunos e funcionários no ambiente escolar, com
+        cartões para entrada e saída, verificando a presença do aluno e do funcionário na instituição.</p>
+    </div>
+    <div class="d-flex flex-column align-items-center py-2 grid gap-2">
+      <div class="d-flex flex-row align-items-center py-2 grid gap-2">
+        <img class="_ImgRoda" src="img/whatsapp.png" alt="whatsapp contato">
+        <p id="_Contato" class="fs-4 fw-medium text-white">55 (11)92323-2303</p>
+      </div>
+      <div class="d-flex flex-row align-items-center py-2 grid gap-2">
+        <img class="_ImgRoda" src="img/email.png" alt="E-mail contato">
+        <p id="_Contato" class="fs-4 fw-medium text-white">TrustyGate09@gmail.com.br</p>
+      </div>
+      <div class="d-flex flex-row align-items-center py-2 grid gap-2">
+        <img class="_ImgRoda" src="img/phone-call.png" alt="Telefone contato">
+        <p id="_Contato" class="fs-4 fw-medium text-white">2424-2404</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
+  <script src="js/conection.js"></script>
+</body>
+
+</html>
