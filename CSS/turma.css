@@ -1,0 +1,57 @@
+.Aluno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    flex-direction: row;
+}
+
+.imgAluno {
+    width: 3em;
+    margin: 10px;
+    border-radius: 50px;
+}
+
+.NomeAlu, .CurAlu, .RmAlu, .FreqAlu, .HoraAlu, .HoraAlu-ausente, .Hora, .Freq, .RM, .Curso, .Nome {
+    width: 20em;
+    border-right: 1px solid #545454;
+    background-color: #DCDCDC;
+    margin: 0px;
+    padding: 5px;
+}
+
+.Hora, .Freq, .RM, .Curso, .Nome {
+    background-color: transparent;
+    border-right: 0px;
+    padding: 0px;
+}
+
+.Nome {
+    margin-left: 4em;
+}
+
+.CurAlu, .Curso {
+    width: 8em;
+    text-align: center;
+}
+
+.RmAlu, .RM {
+    width: 10em;
+    text-align: center;
+}
+
+.FreqAlu, .Freq {
+    width: 7em;
+    text-align: center;
+}
+
+.HoraAlu, .Hora, .HoraAlu-ausente {
+    width: 7em;
+    border-right: 0px;
+    text-align: center;
+}
+
+.HoraAlu-ausente{
+    color: #FF0000;
+}

@@ -1,5 +1,3 @@
-console.log("Entrou Cad");
-
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         window.location.href = "Tela-Principal.html"

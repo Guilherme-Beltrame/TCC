@@ -5,3 +5,7 @@ function SairCont(){
         alert("Erro ao sair da conta");
     })
 }
+
+function goToRoom(){
+    window.location.href ="1-A.html";
+}

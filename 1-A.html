@@ -8,6 +8,7 @@
     <title>Tela de card</title>
     <!-- Parte reservada a importar o CSS -->
     <link href="CSS/StyleSistem.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="CSS/turma.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
 </head>
@@ -17,8 +18,12 @@
     <nav class="navbar d-flex justify-content-center align-items-center"
         style="--bs-navbar-padding-y: 0; background-color: #000147; height: 70px; flex-wrap: nowrap;">
         <div class="d-flex justify-content-between container-fluid">
-            <div class="">
-                <img src="img/Logo.png" style="height: 48px;" alt="">
+            <div class="d-flex flex-row gap-3 justify-content-center align-items-center">
+                <a href="Tela-Principal.html">
+                    <img src="img/btn-voltar.png" style="height: 38px;" alt="">
+                </a>
+                <img src="img/Perfil-Aluno.png" style="height: 48px;" alt="">
+                <p class="fw-bold mb-0 text-light">ETEC TABOÃO DA SERRA</p>
             </div>
 
             <div class="d-flex flex-row align-items-center">
@@ -63,48 +68,35 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
-        <div class="d-flex mt-3 justify-content-center">
-            <p class="hs-1 fw-bold" id="_Text-titulo">TURMAS</p>
-        </div>
-        <div class="classes-size d-flex flex-row flex-wrap gap-5 align-items-center justify-content-center">
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <p class="fw-bold fs-1 text-primary-emphasis">+</p>
-                </div>
-            </div>
-            <div class="card" onclick="goToRoom()">
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <p class="fw-bold fs-1 text-primary-emphasis">1º ano A</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <p class="fw-bold fs-1 text-primary-emphasis">2º ano A</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <p class="fw-bold fs-1 text-primary-emphasis">3º ano A</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <p class="fw-bold fs-1 text-primary-emphasis">1º ano B</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <p class="fw-bold fs-1 text-primary-emphasis">2º ano B</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <p class="fw-bold fs-1 text-primary-emphasis">3º ano B</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <main class="d-flex flex-column justify-content-center align-items-center mt-3">
+        <ol>
+            <li class="Aluno">
+                <p class="Nome fw-bold">NOME</p>
+                <p class="Curso fw-bold">CURSO</p>
+                <p class="RM fw-bold">RM</p>
+                <p class="Freq fw-bold">FREQUÊNCIA</p>
+                <p class="Hora fw-bold">HORARIO</p>
+            </li>
+            <li class="Aluno">
+                <img src="img/Perfil-Aluno.png" class="imgAluno" alt="">
+                <p class="NomeAlu fw-bold">Enzo Vinycius Da Silva Dias</p>
+                <p class="CurAlu fw-bold">DS</p>
+                <p class="RmAlu fw-bold">20212930003</p>
+                <p class="FreqAlu fw-bold">98%</p>
+                <p class="HoraAlu fw-bold">07:15</p>
+            </li>
+            <li class="Aluno">
+                <img src="img/Perfil-Aluno.png" class="imgAluno" alt="">
+                <p class="NomeAlu fw-bold">Guilherme Beltrame Munhoz</p>
+                <p class="CurAlu fw-bold">DS</p>
+                <p class="RmAlu fw-bold">20212930003</p>
+                <p class="FreqAlu fw-bold">98%</p>
+                <p class="HoraAlu-ausente fw-bold">Ausente</p>
+            </li>
+        </ol>
+            
+    </main>
 
 
 

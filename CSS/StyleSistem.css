@@ -7,7 +7,33 @@
     --bs-btn-padding-x: .9rem;
     --bs-btn-font-size: .95rem;
     color: #175A89;
+}
 
+.classes-size .students-size{
+    width: 90%;
+}
+
+.card-body{
+    height: 250px;
+    width: 400px;
+}
+
+.col-img{
+    flex: 0 1 0%;
+}
+
+.list-group-image {
+    position: relative;
+    display: block;
+    padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
+    color: var(--bs-list-group-color);
+    text-decoration: none;
+}
+
+.card .card-body:hover{
+    cursor:pointer;
+    background-color: #dddddd;
+    opacity: 0.8;
 }
 
 #_Text-titulo {

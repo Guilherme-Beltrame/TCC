@@ -1,4 +1,4 @@
-console.log("Entrou CN");
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDTg1WvVGL3JYLVDSNVHoEWsBHTI9pg9zk",
