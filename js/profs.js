@@ -1,15 +1,15 @@
 
 function PuxaDados() {
     setTimeout(() => {
-        AdiDadosTela(fakesAlunos);
+        AdiDadosTela(fakeProfs);
     }, 1000);
 }
-function AdiDadosTela(Alunos) {
+function AdiDadosTela(Profs) {
     CriaDivsIniciais();
     const docAluno = document.getElementById("DocAlu");
 
-    Alunos.forEach(Aluno => {
-        console.log(Aluno.nome);
+    Profs.forEach(Prof => {
+        console.log(Prof.nome);
         const docAluno = document.getElementById("DocAlu");
         //cabecalho
         const divImgNomeSai = document.createElement('div');
@@ -17,20 +17,20 @@ function AdiDadosTela(Alunos) {
         docAluno.appendChild(divImgNomeSai);
         //imagem do lado esquerdo
         const imgAlu = document.createElement('img');
-        imgAlu.src = Aluno.img;
+        imgAlu.src = Prof.img;
         imgAlu.alt = "Foto Aluno";
         imgAlu.classList.add('imgAluno');
         divImgNomeSai.appendChild(imgAlu);
         //nome ao centro
         const NomeAlu = document.createElement('p');
-        NomeAlu.innerHTML = Aluno.nome;
+        NomeAlu.innerHTML = Prof.nome;
         NomeAlu.classList.add("fw-bold", "fs-4", "text-uppercase", "mb-0");
         divImgNomeSai.appendChild(NomeAlu);
         //botão dee sair ao canto supeerior direito
         const btnSair = document.createElement("button");
         btnSair.type = 'button';
         btnSair.onclick = function () {
-            saiDadAlu();
+            saiDadProf();
         }
         btnSair.classList.add("btn-close", "mb-5", "ms-2");
         divImgNomeSai.appendChild(btnSair);
@@ -39,17 +39,6 @@ function AdiDadosTela(Alunos) {
         const olDados = document.createElement('ol');
         olDados.classList.add('docDadoAlu');
         docAluno.appendChild(olDados);
-        //Dado 1
-        const item1 = document.createElement('li');
-        item1.classList.add('dado');
-        olDados.appendChild(item1);
-        const hoje = document.createElement("p");
-        hoje.innerHTML = 'Hoje: ';
-        hoje.classList.add('fw-bold');
-        item1.appendChild(hoje);
-        const estado = document.createElement("p");
-        estado.innerHTML = Aluno.estado;
-        item1.appendChild(estado);
         //Dado 2
         const item2 = document.createElement('li');
         item2.classList.add('dado');
@@ -59,7 +48,7 @@ function AdiDadosTela(Alunos) {
         Curso.classList.add('fw-bold');
         item2.appendChild(Curso);
         const curso = document.createElement("p");
-        curso.innerHTML = Aluno.curso;
+        curso.innerHTML = Prof.materia;
         item2.appendChild(curso);
         //Dado 3
         const item3 = document.createElement('li');
@@ -70,7 +59,7 @@ function AdiDadosTela(Alunos) {
         RM.classList.add('fw-bold');
         item3.appendChild(RM);
         const RMAlu = document.createElement("p");
-        RMAlu.innerHTML = Aluno.RMAlu;
+        RMAlu.innerHTML = Prof.RMProf;
         item3.appendChild(RMAlu);
         //Dado 4
         const item4 = document.createElement('li');
@@ -81,7 +70,7 @@ function AdiDadosTela(Alunos) {
         peri.classList.add('fw-bold');
         item4.appendChild(peri);
         const PerAula = document.createElement("p");
-        PerAula.innerHTML = Aluno.PerAula;
+        PerAula.innerHTML = Prof.PerAula;
         item4.appendChild(PerAula);
         //Dado 5
         const item5 = document.createElement('li');
@@ -92,7 +81,7 @@ function AdiDadosTela(Alunos) {
         fre.classList.add('fw-bold');
         item5.appendChild(fre);
         const freq = document.createElement("p");
-        freq.innerHTML = freqAluno(Aluno.freq) + '%';
+        freq.innerHTML = freqAluno(Prof.freq) + '%';
         item5.appendChild(freq);
         //Dado 6
         const item6 = document.createElement('li');
@@ -103,7 +92,7 @@ function AdiDadosTela(Alunos) {
         horaEntra.classList.add('fw-bold');
         item6.appendChild(horaEntra);
         const HEntra = document.createElement("p");
-        HEntra.innerHTML = Aluno.HEntra;
+        HEntra.innerHTML = Prof.HEntra;
         item6.appendChild(HEntra);
         //Dado 7
         const item7 = document.createElement('li');
@@ -114,8 +103,19 @@ function AdiDadosTela(Alunos) {
         horaSai.classList.add('fw-bold');
         item7.appendChild(horaSai);
         const HSaida = document.createElement("p");
-        HSaida.innerHTML = Aluno.HSaida;
+        HSaida.innerHTML = Prof.HSaida;
         item7.appendChild(HSaida);
+        //Dado 8
+        const item8 = document.createElement('li');
+        item8.classList.add('dado');
+        olDados.appendChild(item8);
+        const tel = document.createElement("p");
+        tel.innerHTML = 'Telefone: ';
+        tel.classList.add('fw-bold');
+        item8.appendChild(tel);
+        const Tel = document.createElement("p");
+        Tel.innerHTML = Prof.Tel;
+        item8.appendChild(Tel);
 
         //area do Btn sair mais cedo
         const divbtn = document.createElement('div');
@@ -130,7 +130,7 @@ function AdiDadosTela(Alunos) {
     });
 
 }
-function saiDadAlu() {
+function saiDadProf() {
     const divFund = document.getElementById("fundopreto");
     divFund.remove();
     const divDados = document.getElementById("DocAlu");
@@ -154,20 +154,20 @@ function CriaDivsIniciais() {
     main.appendChild(div2);
 }
 
-const fakesAlunos = [{
+const fakeProfs = [{
     img: 'img/Perfil-Aluno.png',
-    nome: 'Enzo Vinycius Da Silva Dias',
-    estado: 'Presente',
-    curso: 'Desenvolvimento de sistemas',
-    RMAlu: '20212930058',
-    PerAula: '7:30 ás 15:30',
+    nome: 'Ales Raposo Ribeiro',
+    materia: 'Materia: ',
+    RMProf: '20212930058',
+    PerAula: '7:30 ás 14:40',
     freq: {
         segunda: 1,
         terca: 1,
         quarta: 0,
-        quinta: 1,
+        quinta: 0,
         sexta: 1,
     },
     HEntra: '07:30 AM',
     HSaida: '15:30 PM',
+    Tel: '(11) 95485-4289',
 },]
