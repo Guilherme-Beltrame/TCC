@@ -9,3 +9,7 @@ function SairCont(){
 function goToRoom(){
     window.location.href ="1-A.html";
 }
+
+function pagProfs(){
+    window.location.href ="Profs.html";
+}

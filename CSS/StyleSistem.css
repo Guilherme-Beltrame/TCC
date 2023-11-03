@@ -1,3 +1,7 @@
+:root{
+    --apacity-img-profs: o;
+}
+
 #_Card-fund-BTN {
     background-color: #010D42;
 }
@@ -9,16 +13,46 @@
     color: #175A89;
 }
 
-.classes-size .students-size{
+
+.fab:hover {
+    opacity: 0.8;
+    background-color: #dddddd;
+    
+}
+
+button.fab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #00000020;
+}
+
+button.fab.fixed {
+    position: fixed;
+}
+
+button.fab.bottom {
+    top: 90px;
+}
+
+button.fab.right {
+    right: 32px;
+}
+
+
+.classes-size .students-size {
     width: 90%;
 }
 
-.card-body{
+.card-body {
     height: 250px;
     width: 400px;
 }
 
-.col-img{
+.col-img {
     flex: 0 1 0%;
 }
 
@@ -30,8 +64,8 @@
     text-decoration: none;
 }
 
-.card .card-body:hover{
-    cursor:pointer;
+.card .card-body:hover {
+    cursor: pointer;
     background-color: #dddddd;
     opacity: 0.8;
 }
@@ -39,5 +73,5 @@
 #_Text-titulo {
     font-family: 'Racing Sans One';
     font-size: 35px;
-    
+
 }

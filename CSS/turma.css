@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    align-self: center;
-    align-content: center;
     flex-direction: row;
 }
 
@@ -27,12 +25,16 @@
     padding: 0px;
 }
 
+.NomeAlu{
+    cursor: pointer;
+}
+
 .Nome {
     margin-left: 4em;
 }
 
 .CurAlu, .Curso {
-    width: 8em;
+    width: 10em;
     text-align: center;
 }
 
