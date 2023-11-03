@@ -13,3 +13,8 @@ function goToRoom(){
 function pagProfs(){
     window.location.href ="Profs.html";
 }
+
+function CadTurma(){
+    window.location.href = "CadTurma.html";
+}
+

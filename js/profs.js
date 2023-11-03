@@ -1,3 +1,7 @@
+function cadProfs(){
+    window.location.href = "CadProfs.html";
+}
+
 
 function PuxaDados() {
     setTimeout(() => {

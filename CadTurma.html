@@ -8,9 +8,8 @@
     <title>Tela de card</title>
     <!-- Parte reservada a importar o CSS -->
     <link href="CSS/StyleSistem.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="CSS/turma.css">
-    <link rel="stylesheet" href="CSS/Alu.css">
-    <link rel="stylesheet" href="CSS/StyleSistem.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="CSS/cads.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
 </head>
@@ -71,37 +70,34 @@
         </div>
     </nav>
 
-    <main id="main" class="d-flex flex-column justify-content-center align-items-center mt-3">
-        <button class="fab fixed bottom right d-flex flex-row" onclick="cadProfs()">
-            <p class="mb-0 fw-bold fs-5">+ Professores</p>
-        </button>
-        <ol>
-            <li class="Aluno">
-                <p class="Nome fw-bold">NOME</p>
-                <p class="Curso fw-bold">MATERIA</p>
-                <p class="RM fw-bold">RM</p>
-                <p class="Freq fw-bold">FREQUÊNCIA</p>
-                <p class="Hora fw-bold">HORARIO</p>
-            </li>
-            <li class="Aluno">
-                <img src="img/Perfil-Aluno.png" class="imgAluno" alt="">
-                <p class="NomeAlu fw-bold" onclick="PuxaDados()">Ales Raposo Ribeiro</p>
-                <p class="CurAlu fw-bold">Sociologia/Filosofia</p>
-                <p class="RmAlu fw-bold">20212930004</p>
-                <p class="FreqAlu fw-bold">98%</p>
-                <p class="HoraAlu fw-bold">07:15</p>
-            </li>
-            <li class="Aluno">
-                <img src="img/Perfil-Aluno.png" class="imgAluno" alt="">
-                <p class="NomeAlu fw-bold">Alicia Stefany Da Silva</p>
-                <p class="CurAlu fw-bold">P.Web</p>
-                <p class="RmAlu fw-bold">20212930023</p>
-                <p class="FreqAlu fw-bold">95%</p>
-                <p class="HoraAlu-ausente fw-bold">06:25</p>
-            </li>
-        </ol>
-
-
+    <main id="main" class="d-flex flex-row justify-content-center align-items-center mt-3">
+        <div class="FundoCad">
+            <div class="divTextCad">
+                <p class="textCad display-1"> Cadastrar turma</p>
+            </div>
+            <div class="DivFormCad">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="-NomeTur" placeholder="1º ano A" required>
+                    <label id="_TxtFor" for="-NomeTur">Nome Turma:</label>
+                </div>
+                <div class="addAlu form-floating mb-3">
+                    <input type="text" class="form-control" id="-NomeTur" placeholder="1º ano A" required>
+                    <label id="_TxtFor" for="-NomeTur">Alunos: </label>
+                    <button type="button" class="add fs-3 btn btn-primary">+</button>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="-NomeTur" placeholder="1º ano A" required>
+                    <label id="_TxtFor" for="-NomeTur">Curso:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="-profs" placeholder="1º ano A" required>
+                    <label id="_TxtFor" for="-profs">professores:</label>
+                </div>
+                <div class="btncad">
+                    <button type="button" class="Cadlargura btn btn-success">Cadastrar</button>
+                </div>
+            </div>
+        </div>
     </main>
 
 
@@ -116,7 +112,6 @@
     <script src="js/conection.js"></script>
     <script src="js/Home.js"></script>
     <script src="js/Inst-auth.js"></script>
-    <script src="js/profs.js"></script>
 </body>
 
 </html>
