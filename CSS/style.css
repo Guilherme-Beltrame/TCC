@@ -174,7 +174,7 @@
 }
 
 /*Estilizando textos de login*/
-#_TxtLoCa, .btn {
+.TxtLoCa, .btn {
     color: #ffffff;
     font-family: 'Nunito', sans-serif;
 }
