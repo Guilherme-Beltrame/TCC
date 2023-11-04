@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-.DocAlu {
+.DocAlu, .DocCad {
     display: flex;
     align-items: start;
     justify-content: start;
@@ -18,7 +18,7 @@
     top: 150px;
 }
 
-.headerAlu {
+.headerAlu, .headerCad {
     padding: 10px;
     display: flex;
     align-items: center;

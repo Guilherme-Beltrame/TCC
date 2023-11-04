@@ -15,13 +15,6 @@ function Entrar() {
     let btn = document.getElementById("_Btn");
 
     firebase.auth().signInWithEmailAndPassword(Email, Password).then(response => {
-        //console.log(Email, Password);
-        let V = Vai.id;
-        if (V === "Vai") {
-            Vai.removeAttribute('id');
-            Vai.id = 'Esse';
-            btn.click();
-        }
         console.log('sucess', response)
     }).catch(error => {
 
