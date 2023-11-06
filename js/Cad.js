@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        // window.location.href = "Tela-Principal.html"
+        window.location.href = "HTML/Tela-Principal.html"
     }
 
 })

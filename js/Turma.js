@@ -155,7 +155,7 @@ function CriaDivsIniciais() {
 }
 
 const fakesAlunos = [{
-    img: 'img/Perfil-Aluno.png',
+    img: '../img/Perfil-Aluno.png',
     nome: 'Enzo Vinycius Da Silva Dias',
     estado: 'Presente',
     curso: 'Desenvolvimento de sistemas',

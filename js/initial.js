@@ -1,13 +1,13 @@
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        window.location.href = "Tela-Principal.html"
+        window.location.href = "HTML/Tela-Principal.html"
     }
 
 })
 
 function PageLogin() {
-    window.location.href = "Login.html";
+    window.location.href = "HTML/Login.html";
 }
 function PageCad() {
-    window.location.href = "Cad.html";
+    window.location.href = "HTML/Cad.html";
 }

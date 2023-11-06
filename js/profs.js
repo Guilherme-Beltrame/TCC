@@ -159,7 +159,7 @@ function CriaDivsIniciais() {
 }
 
 const fakeProfs = [{
-    img: 'img/Perfil-Aluno.png',
+    img: '../img/Perfil-Aluno.png',
     nome: 'Ales Raposo Ribeiro',
     materia: 'Materia: ',
     RMProf: '20212930058',
