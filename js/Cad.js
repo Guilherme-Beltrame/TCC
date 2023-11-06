@@ -1,9 +1,13 @@
+
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        window.location.href = "HTML/Tela-Principal.html"
+        setTimeout(() => {
+            window.location.href = 'Tela-Principal.html';
+        }, 7000);
     }
 
 })
+
 
 function criaFundos() {
     const body = document.getElementById('_fundLC');
@@ -17,6 +21,24 @@ function criaFundos() {
 
     body.appendChild(fundPreto);
     body.appendChild(validacao);
+}
+
+function FimCadastro() {
+    criaFundos();
+    criaElementos();
+    msgSucesso();
+}
+
+function msgSucesso() {
+    const consequencia = document.getElementById('consequencia');
+    const btnConseq = document.getElementById('btnConseq');
+    const resulValida = document.getElementById('resulValida');
+    consequencia.innerHTML = 'Parabéns!';
+    resulValida.innerHTML = 'Seu cadastro foi concluído com sucesso!';
+    btnConseq.innerHTML = 'Entrar';
+    btnConseq.onclick = function () {
+        alert('Foi');
+    }
 }
 
 function criaElementos() {
@@ -60,12 +82,12 @@ function valida() {
         consequencia.innerHTML = 'Erro';
         resulValida.innerHTML = 'campo de CEP não foi preenchido corretamente';
         btnConseq.innerHTML = 'Tentar Novamente';
-    } else if (dados.cnpj.length  <= 13) {
+    } else if (dados.cnpj.length <= 13) {
         console.log(dados.cnpj);
         consequencia.innerHTML = 'Erro';
         resulValida.innerHTML = 'campo de CNPJ não foi preenchido corretamente';
         btnConseq.innerHTML = 'Tentar Novamente';
-    }else if (validateEmail(dados.email)) {
+    } else if (validateEmail(dados.email)) {
         consequencia.innerHTML = 'Erro';
         resulValida.innerHTML = 'campo de E-mail não foi preenchido corretamente';
         btnConseq.innerHTML = 'Tentar Novamente';
@@ -75,13 +97,13 @@ function valida() {
 function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
-  }
+}
 
 function salvardados() {
     const dadosCadInst = commitDados();
     db.collection('instituicoes').add(dadosCadInst)
         .then(() => {
-            console.log('foi')
+            FimCadastro();
         }).catch(error => {
 
             console.log(error);
@@ -96,8 +118,8 @@ function commitDados() {
         nome: 'Teste User',
         email: form.email().value,
         senha: form.senha().value,
-        //plano: form.plano().value,
-        //uid: firebase.auth().currentUser.uid
+        plano: form.plano().value,
+        uid: firebase.auth().currentUser.uid
     }
 }
 
@@ -106,6 +128,7 @@ function Cadastrar() {
         salvardados();
     }).catch(error => {
         alert("não foi", error);
+        console.log(error)
     })
 }
 
