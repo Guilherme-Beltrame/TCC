@@ -184,6 +184,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-#_TxtFor {
+#_TxtForCNPJ, #_TxtForEmail,#_TxtForSenha, #_TxtForN, #_TxtForCEP {
     font-family: 'Nunito', sans-serif;
 }
+

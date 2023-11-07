@@ -20,7 +20,6 @@
     justify-content: center;
 }
 
-
 .textCad {
     width: 50%;
     text-align: center;
@@ -118,4 +117,8 @@
 .btn, #_Btn{
     border-radius: 7px;
     width: 150px !important;
+}
+
+.erro{
+    color: rgba(255, 51, 51);
 }

@@ -37,7 +37,7 @@ function msgSucesso() {
     resulValida.innerHTML = 'Seu cadastro foi concluído com sucesso!';
     btnConseq.innerHTML = 'Entrar';
     btnConseq.onclick = function () {
-        alert('Foi');
+        window.location.href = 'Tela-Principal.html';
     }
 }
 
@@ -71,32 +71,104 @@ function criaElementos() {
     divBtn.appendChild(btn);
 }
 
-function valida() {
-    const dados = commitDados();
-    criaFundos();
-    criaElementos();
-    const consequencia = document.getElementById('consequencia');
-    const btnConseq = document.getElementById('btnConseq');
-    const resulValida = document.getElementById('resulValida');
-    if (dados.cep.length <= 7) {
-        consequencia.innerHTML = 'Erro';
-        resulValida.innerHTML = 'campo de CEP não foi preenchido corretamente';
-        btnConseq.innerHTML = 'Tentar Novamente';
-    } else if (dados.cnpj.length <= 13) {
-        console.log(dados.cnpj);
-        consequencia.innerHTML = 'Erro';
-        resulValida.innerHTML = 'campo de CNPJ não foi preenchido corretamente';
-        btnConseq.innerHTML = 'Tentar Novamente';
-    } else if (validateEmail(dados.email)) {
-        consequencia.innerHTML = 'Erro';
-        resulValida.innerHTML = 'campo de E-mail não foi preenchido corretamente';
-        btnConseq.innerHTML = 'Tentar Novamente';
+function confereCEP() {
+    const inputCEP = document.getElementById('-CEP');
+    const labelCEP = document.getElementById('_TxtForCEP');
+    var cep = form.cep().value;
+    console.log(cep);
+    console.log(validaCEP(cep))
+    if (validaCEP(cep)) {
+        inputCEP.classList.remove('erro');
+        labelCEP.classList.remove('erro');
+        labelCEP.innerHTML = '';
+        labelCEP.innerHTML = 'CEP';
+    } else {
+        labelCEP.innerHTML = '';
+        inputCEP.classList.add('erro');
+        labelCEP.classList.add('erro');
+        labelCEP.innerHTML = 'insira o cep corretamente: xxxxx-xxx';
     }
 }
 
-function validateEmail(email) {
+function ConfereCNPJ() {
+    const inputCNPJ = document.getElementById('-CNPJ');
+    const labelCNPJ = document.getElementById('_TxtForCNPJ');
+    var cnpj = form.cnpj().value;
+    console.log(cnpj)
+    console.log(validaCNPJ(cnpj));
+    if (validaCNPJ(cnpj)) {
+
+        inputCNPJ.classList.remove('erro');
+        labelCNPJ.classList.remove('erro');
+        labelCNPJ.innerHTML = '';
+        labelCNPJ.innerHTML = 'CNPJ';
+    }
+    else {
+        labelCNPJ.innerHTML = '';
+        inputCNPJ.classList.add('erro');
+        labelCNPJ.classList.add('erro');
+        labelCNPJ.innerHTML = 'insira o CNPJ corretamente: xx.xxx.xxx/0001-xx';
+    }
+}
+
+function ConfereEmail() {
+    const inputEmail = document.getElementById('-email');
+    const labelEmail = document.getElementById('_TxtForEmail');
+    var Email = form.email().value;
+    console.log(Email)
+    console.log(validaEmail(Email));
+    if (validaEmail(Email)) {
+        inputEmail.classList.remove('erro');
+        labelEmail.classList.remove('erro');
+        labelEmail.innerHTML = '';
+        labelEmail.innerHTML = 'E-mail';
+    }
+    else {
+        labelEmail.innerHTML = '';
+        inputEmail.classList.add('erro');
+        labelEmail.classList.add('erro');
+        labelEmail.innerHTML = 'insira o Email corretamente: xxxx@xxxxx.xxx';
+    }
+}
+
+function ConfereSenha() {
+    const inputSenha = document.getElementById('-Senha');
+    const labelSenha = document.getElementById('_TxtForSenha');
+    var Senha = form.senha().value;
+    console.log(Senha)
+    console.log(validaSenha(Senha));
+    if (validaSenha(Senha)) {
+        inputSenha.classList.remove('erro');
+        labelSenha.classList.remove('erro');
+        labelSenha.innerHTML = '';
+        labelSenha.innerHTML = 'ESenha';
+    }
+    else {
+        labelSenha.innerHTML = '';
+        inputSenha.classList.add('erro');
+        labelSenha.classList.add('erro');
+        labelSenha.innerHTML = 'insira o Senha corretamente: Uma Maiúscula, uma minúscula, um numero e um caracter especial ';
+    }
+}
+
+function validaSenha(senha) {
+    var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#.])(?:([0-9a-zA-Z$*&@#.])){8,}$/;
+    return re.test(senha);
+}
+
+function validaCNPJ(CNPJ) {
+    var re = /\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}/;
+    return re.test(CNPJ);
+}
+
+function validaEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
+}
+
+function validaCEP(cep) {
+    var re = /\d{5}\-?\d{3}/;
+    return re.test(cep);
 }
 
 function salvardados() {
@@ -175,7 +247,6 @@ function selectPlano() {
                 desc.remove();
             }
             plano.id = plano.value;
-
         }
     });
 }
