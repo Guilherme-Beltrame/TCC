@@ -88,6 +88,7 @@ function confereCEP() {
         labelCEP.classList.add('erro');
         labelCEP.innerHTML = 'insira o cep corretamente: xxxxx-xxx';
     }
+    habilitaBtn();
 }
 
 function ConfereCNPJ() {
@@ -109,6 +110,7 @@ function ConfereCNPJ() {
         labelCNPJ.classList.add('erro');
         labelCNPJ.innerHTML = 'insira o CNPJ corretamente: xx.xxx.xxx/0001-xx';
     }
+    habilitaBtn();
 }
 
 function ConfereEmail() {
@@ -129,6 +131,7 @@ function ConfereEmail() {
         labelEmail.classList.add('erro');
         labelEmail.innerHTML = 'insira o Email corretamente: xxxx@xxxxx.xxx';
     }
+    habilitaBtn();
 }
 
 function ConfereSenha() {
@@ -141,14 +144,15 @@ function ConfereSenha() {
         inputSenha.classList.remove('erro');
         labelSenha.classList.remove('erro');
         labelSenha.innerHTML = '';
-        labelSenha.innerHTML = 'ESenha';
+        labelSenha.innerHTML = 'Senha';
     }
     else {
         labelSenha.innerHTML = '';
         inputSenha.classList.add('erro');
         labelSenha.classList.add('erro');
-        labelSenha.innerHTML = 'insira o Senha corretamente: Uma Maiúscula, uma minúscula, um numero e um caracter especial ';
+        labelSenha.innerHTML = 'insira a Senha corretamente: Uma Maiúscula, uma minúscula, um numero e um caracter especial e com no minnimo 8 caracteres';
     }
+    habilitaBtn();
 }
 
 function validaSenha(senha) {
@@ -171,6 +175,48 @@ function validaCEP(cep) {
     return re.test(cep);
 }
 
+function habilitaBtn(){ 
+    form.btn().disabled  = apareceBtn();
+    console.log(apareceBtn())
+    
+    var num = form.nome().value;
+    console.log(num)
+}
+
+function apareceBtn(){
+    var cep = form.cep().value;
+    if(!cep || !validaCEP(cep)){
+        return true;
+    }
+    var num = form.num().value;
+    if (!num){
+        console.log(num);
+        return true;
+    }
+    var cnpj = form.cnpj().value;
+    if(!cnpj || !validaCNPJ(cnpj)){
+        return true;
+    }
+    var nome = form.nome().value;
+    if (!nome){
+        console.log(nome);
+        return true;
+    }
+    var email = form.email().value;
+    if (!email||!validaEmail(email)){
+        return true
+    }
+    var senha = form.senha().value;
+    if (!senha||!validaSenha(senha)){
+        return true;
+    }
+    var plano = form.plano('-selecionado').value;
+    if(!plano){
+        return true;
+    }   
+    return false;
+}
+
 function salvardados() {
     const dadosCadInst = commitDados();
     db.collection('instituicoes').add(dadosCadInst)
@@ -187,7 +233,7 @@ function commitDados() {
         cep: form.cep().value,
         numero: form.num().value,
         cnpj: form.cnpj().value,
-        nome: 'Teste User',
+        nome: form.nome().value,
         email: form.email().value,
         senha: form.senha().value,
         plano: form.plano().value,
@@ -210,8 +256,10 @@ function selectPlano() {
     const PremiumDiv = document.getElementById('PremiumDiv');
     const BusinessDiv = document.getElementById('BusinessDiv');
     const LiteDiv = document.getElementById('LiteDiv');
+    var selecionou;
     planos.forEach(plano => {
         if (plano.checked) {
+            selecionou = 1;
             let qual = plano.value;
             if (qual == 'Lite') {
                 const Lite = document.createElement('p');
@@ -249,13 +297,22 @@ function selectPlano() {
             plano.id = plano.value;
         }
     });
+
+    if(selecionou == 1 ){
+        const foi = form.plano('-selecionado').value;
+        console.log (foi);
+    }
+
+    habilitaBtn();
 }
 
 const form = {
+    nome : () => document.getElementById('-Nome'),
+    btn: () => document.getElementById('-Btn'),
     cep: () => document.getElementById('-CEP'),
     num: () => document.getElementById('-Num'),
     cnpj: () => document.getElementById('-CNPJ'),
     email: () => document.getElementById('-email'),
     senha: () => document.getElementById('-Senha'),
-    plano: () => document.getElementById('-selecionado'),
+    plano: (selecionado) => document.getElementById(selecionado),
 }
