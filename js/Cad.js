@@ -77,7 +77,7 @@ function confereCEP() {
     var cep = form.cep().value;
     console.log(cep);
     console.log(validaCEP(cep))
-    if (validaCEP(cep)) {
+    if (validaCEP(cep)&& cep.length == 8 || cep.length == 9) {
         inputCEP.classList.remove('erro');
         labelCEP.classList.remove('erro');
         labelCEP.innerHTML = '';
@@ -86,7 +86,7 @@ function confereCEP() {
         labelCEP.innerHTML = '';
         inputCEP.classList.add('erro');
         labelCEP.classList.add('erro');
-        labelCEP.innerHTML = 'insira o cep corretamente: xxxxx-xxx';
+        labelCEP.innerHTML = 'insira corretamente: xxxxx-xxx';
     }
     habilitaBtn();
 }
@@ -97,7 +97,7 @@ function ConfereCNPJ() {
     var cnpj = form.cnpj().value;
     console.log(cnpj)
     console.log(validaCNPJ(cnpj));
-    if (validaCNPJ(cnpj)) {
+    if (validaCNPJ(cnpj)&&cnpj.length ==14 || cnpj.length == 18) {
 
         inputCNPJ.classList.remove('erro');
         labelCNPJ.classList.remove('erro');
@@ -108,7 +108,7 @@ function ConfereCNPJ() {
         labelCNPJ.innerHTML = '';
         inputCNPJ.classList.add('erro');
         labelCNPJ.classList.add('erro');
-        labelCNPJ.innerHTML = 'insira o CNPJ corretamente: xx.xxx.xxx/0001-xx';
+        labelCNPJ.innerHTML = 'insira corretamente: xx.xxx.xxx/0001-xx';
     }
     habilitaBtn();
 }
@@ -236,7 +236,7 @@ function commitDados() {
         nome: form.nome().value,
         email: form.email().value,
         senha: form.senha().value,
-        plano: form.plano().value,
+        plano: form.plano('-selecionado').value,
         uid: firebase.auth().currentUser.uid
     }
 }
