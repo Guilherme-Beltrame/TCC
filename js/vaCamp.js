@@ -149,37 +149,3 @@ function SemNum(nome){
 function habilitaBtn(){ 
     form.btn().disabled  = apareceBtn();
 }
-
-function apareceBtn(){
-    var cep = form.cep().value;
-    if(!cep || !validaCEP(cep)){
-        return true;
-    }
-    var num = form.num().value;
-    if (!num){
-        console.log(num);
-        return true;
-    }
-    var cnpj = form.cnpj().value;
-    if(!cnpj || !validaCNPJ(cnpj)){
-        return true;
-    }
-    var nome = form.nome().value;
-    if (!nome || !SemNum(nome)){
-        console.log(nome);
-        return true;
-    }
-    var email = form.email().value;
-    if (!email||!validaEmail(email)){
-        return true
-    }
-    var senha = form.senha().value;
-    if (!senha||!validaSenha(senha)){
-        return true;
-    }
-    var plano = form.plano('-selecionado').value;
-    if(!plano){
-        return true;
-    }   
-    return false;
-}

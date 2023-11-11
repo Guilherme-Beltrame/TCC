@@ -8,25 +8,53 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 })
 
-function msgSucesso() {
-    const consequencia = document.getElementById('consequencia');
-    const btnConseq = document.getElementById('btnConseq');
-    const resulValida = document.getElementById('resulValida');
-    consequencia.innerHTML = 'Parabéns!';
-    resulValida.innerHTML = 'Seu cadastro foi concluído com sucesso!';
-    btnConseq.innerHTML = 'Entrar';
-    btnConseq.onclick = function () {
-        window.location.href = 'Tela-Principal.html';
+function apareceBtn(){
+    var cep = form.cep().value;
+    if(!cep || !validaCEP(cep)){
+        return true;
     }
+    var num = form.num().value;
+    if (!num){
+        console.log(num);
+        return true;
+    }
+    var cnpj = form.cnpj().value;
+    if(!cnpj || !validaCNPJ(cnpj)){
+        return true;
+    }
+    var nome = form.nome().value;
+    if (!nome || !SemNum(nome)){
+        console.log(nome);
+        return true;
+    }
+    var email = form.email().value;
+    if (!email||!validaEmail(email)){
+        return true
+    }
+    var senha = form.senha().value;
+    if (!senha||!validaSenha(senha)){
+        return true;
+    }
+    var plano = form.plano('-selecionado').value;
+    if(!plano){
+        return true;
+    }   
+    return false;
 }
+
+function FimCadastro() {
+    criaFundos();
+    criaElementos();
+    msgSucesso();
+}
+
 function salvardados() {
     const dadosCadInst = commitDados();
     db.collection('instituicoes').add(dadosCadInst)
         .then(() => {
             FimCadastro();
         }).catch(error => {
-
-            console.log(error);
+            alert(error, 'não foi possivel cadastrar os dados no banco de dados')
         });
 }
 
@@ -48,8 +76,7 @@ function Cadastrar() {
     firebase.auth().createUserWithEmailAndPassword(form.email().value, form.senha().value).then(() => {
         salvardados();
     }).catch(error => {
-        alert("não foi", error);
-        console.log(error)
+        alert("não foi", error,'tente Novamente');
     })
 }
 

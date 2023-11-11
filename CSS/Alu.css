@@ -1,33 +1,3 @@
-.fundPreto {
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    align-items: center;
-    justify-content: center;
-}
-
-.DocAlu, .DocCad {
-    display: flex;
-    align-items: start;
-    justify-content: start;
-    flex-direction: column;
-    background-color: #ffffff;
-    position: fixed;
-    top: 150px;
-}
-
-.headerAlu, .headerCad {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 10px;
-    border-bottom: 1px solid #8a8a8a99;
-}
-
 .docDadoAlu, .dado {
     display: flex;
     justify-content: start;

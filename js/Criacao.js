@@ -42,8 +42,14 @@ function criaFundos() {
     body.appendChild(validacao);
 }
 
-function FimCadastro() {
-    criaFundos();
-    criaElementos();
-    msgSucesso();
+function msgSucesso() {
+    const consequencia = document.getElementById('consequencia');
+    const btnConseq = document.getElementById('btnConseq');
+    const resulValida = document.getElementById('resulValida');
+    consequencia.innerHTML = 'Parabéns!';
+    resulValida.innerHTML = 'Seu cadastro foi concluído com sucesso!';
+    btnConseq.innerHTML = 'Entrar';
+    btnConseq.onclick = function () {
+        window.location.href = 'Tela-Principal.html';
+    }
 }
