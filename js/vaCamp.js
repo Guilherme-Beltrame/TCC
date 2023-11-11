@@ -165,7 +165,7 @@ function apareceBtn(){
         return true;
     }
     var nome = form.nome().value;
-    if (!nome){
+    if (!nome || !SemNum(nome)){
         console.log(nome);
         return true;
     }
