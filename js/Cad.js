@@ -8,27 +8,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 })
 
-
-function criaFundos() {
-    const body = document.getElementById('_fundLC');
-    const fundPreto = document.createElement('div');
-    fundPreto.classList.add('fundPreto');
-    fundPreto.id = "fundopreto";
-
-    const validacao = document.createElement('div');
-    validacao.classList.add('DocCad');
-    validacao.id = 'DocCad';
-
-    body.appendChild(fundPreto);
-    body.appendChild(validacao);
-}
-
-function FimCadastro() {
-    criaFundos();
-    criaElementos();
-    msgSucesso();
-}
-
 function msgSucesso() {
     const consequencia = document.getElementById('consequencia');
     const btnConseq = document.getElementById('btnConseq');
@@ -40,183 +19,6 @@ function msgSucesso() {
         window.location.href = 'Tela-Principal.html';
     }
 }
-
-function criaElementos() {
-    const validacao = document.getElementById('DocCad');
-
-    const headerCard = document.createElement('div');
-    headerCard.classList.add('headerCad');
-    headerCard.id = 'headerCad';
-    validacao.appendChild(headerCard);
-
-    const consequencia = document.createElement('p');
-    consequencia.classList.add('fs-2', 'fw-bold');
-    consequencia.id = 'consequencia';
-    headerCard.appendChild(consequencia);
-
-    const resul = document.createElement('p');
-    resul.classList.add('fs-2', 'mx-4', 'fw-semibold', 'my-5', 'text-center');
-    resul.id = 'resulValida';
-    validacao.appendChild(resul);
-
-    const divBtn = document.createElement('div');
-    divBtn.classList.add('entraCad', 'mb-5', 'd-flex', 'align-items-center', 'justify-content-center');
-    divBtn.id = 'divBtn';
-    validacao.appendChild(divBtn);
-
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.classList.add('btn', 'btn-success', 'fw-bold');
-    btn.id = 'btnConseq';
-    divBtn.appendChild(btn);
-}
-
-function confereCEP() {
-    const inputCEP = document.getElementById('-CEP');
-    const labelCEP = document.getElementById('_TxtForCEP');
-    var cep = form.cep().value;
-    console.log(cep);
-    console.log(validaCEP(cep))
-    if (validaCEP(cep)&& cep.length == 8 || cep.length == 9) {
-        inputCEP.classList.remove('erro');
-        labelCEP.classList.remove('erro');
-        labelCEP.innerHTML = '';
-        labelCEP.innerHTML = 'CEP';
-    } else {
-        labelCEP.innerHTML = '';
-        inputCEP.classList.add('erro');
-        labelCEP.classList.add('erro');
-        labelCEP.innerHTML = 'insira corretamente: xxxxx-xxx';
-    }
-    habilitaBtn();
-}
-
-function ConfereCNPJ() {
-    const inputCNPJ = document.getElementById('-CNPJ');
-    const labelCNPJ = document.getElementById('_TxtForCNPJ');
-    var cnpj = form.cnpj().value;
-    console.log(cnpj)
-    console.log(validaCNPJ(cnpj));
-    if (validaCNPJ(cnpj)&&cnpj.length ==14 || cnpj.length == 18) {
-
-        inputCNPJ.classList.remove('erro');
-        labelCNPJ.classList.remove('erro');
-        labelCNPJ.innerHTML = '';
-        labelCNPJ.innerHTML = 'CNPJ';
-    }
-    else {
-        labelCNPJ.innerHTML = '';
-        inputCNPJ.classList.add('erro');
-        labelCNPJ.classList.add('erro');
-        labelCNPJ.innerHTML = 'insira corretamente: xx.xxx.xxx/0001-xx';
-    }
-    habilitaBtn();
-}
-
-function ConfereEmail() {
-    const inputEmail = document.getElementById('-email');
-    const labelEmail = document.getElementById('_TxtForEmail');
-    var Email = form.email().value;
-    console.log(Email)
-    console.log(validaEmail(Email));
-    if (validaEmail(Email)) {
-        inputEmail.classList.remove('erro');
-        labelEmail.classList.remove('erro');
-        labelEmail.innerHTML = '';
-        labelEmail.innerHTML = 'E-mail';
-    }
-    else {
-        labelEmail.innerHTML = '';
-        inputEmail.classList.add('erro');
-        labelEmail.classList.add('erro');
-        labelEmail.innerHTML = 'insira o Email corretamente: xxxx@xxxxx.xxx';
-    }
-    habilitaBtn();
-}
-
-function ConfereSenha() {
-    const inputSenha = document.getElementById('-Senha');
-    const labelSenha = document.getElementById('_TxtForSenha');
-    var Senha = form.senha().value;
-    console.log(Senha)
-    console.log(validaSenha(Senha));
-    if (validaSenha(Senha)) {
-        inputSenha.classList.remove('erro');
-        labelSenha.classList.remove('erro');
-        labelSenha.innerHTML = '';
-        labelSenha.innerHTML = 'Senha';
-    }
-    else {
-        labelSenha.innerHTML = '';
-        inputSenha.classList.add('erro');
-        labelSenha.classList.add('erro');
-        labelSenha.innerHTML = 'insira a Senha corretamente: Uma Maiúscula, uma minúscula, um numero e um caracter especial e com no minnimo 8 caracteres';
-    }
-    habilitaBtn();
-}
-
-function validaSenha(senha) {
-    var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#.])(?:([0-9a-zA-Z$*&@#.])){8,}$/;
-    return re.test(senha);
-}
-
-function validaCNPJ(CNPJ) {
-    var re = /\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}/;
-    return re.test(CNPJ);
-}
-
-function validaEmail(email) {
-    var re = /\S+@\S+\.\S+/;
-    return re.test(email);
-}
-
-function validaCEP(cep) {
-    var re = /\d{5}\-?\d{3}/;
-    return re.test(cep);
-}
-
-function habilitaBtn(){ 
-    form.btn().disabled  = apareceBtn();
-    console.log(apareceBtn())
-    
-    var num = form.nome().value;
-    console.log(num)
-}
-
-function apareceBtn(){
-    var cep = form.cep().value;
-    if(!cep || !validaCEP(cep)){
-        return true;
-    }
-    var num = form.num().value;
-    if (!num){
-        console.log(num);
-        return true;
-    }
-    var cnpj = form.cnpj().value;
-    if(!cnpj || !validaCNPJ(cnpj)){
-        return true;
-    }
-    var nome = form.nome().value;
-    if (!nome){
-        console.log(nome);
-        return true;
-    }
-    var email = form.email().value;
-    if (!email||!validaEmail(email)){
-        return true
-    }
-    var senha = form.senha().value;
-    if (!senha||!validaSenha(senha)){
-        return true;
-    }
-    var plano = form.plano('-selecionado').value;
-    if(!plano){
-        return true;
-    }   
-    return false;
-}
-
 function salvardados() {
     const dadosCadInst = commitDados();
     db.collection('instituicoes').add(dadosCadInst)
@@ -237,7 +39,8 @@ function commitDados() {
         email: form.email().value,
         senha: form.senha().value,
         plano: form.plano('-selecionado').value,
-        uid: firebase.auth().currentUser.uid
+        uid: firebase.auth().currentUser.uid,
+        type: 'instituicao',
     }
 }
 

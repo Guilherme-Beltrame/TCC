@@ -27,7 +27,7 @@
                     <label id="_TxtFor" for="-email">E-mail:</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="-senha" placeholder="Password" required>
+                    <input type="password" class="form-control" id="-Senha" placeholder="Password" required>
                     <label id="_TxtFor" for="-senha">Senha:</label>
                 </div>
                 <p class="text-white">Caso esqueça sua senha, digite o e-mail no campo email e <a
@@ -38,42 +38,6 @@
             <div>
                 <button type="button" id="_Btn" class="btn btn-success" onclick="Entrar()" data-bs-toggle="modal"
                     data-bs-target="#Esse">Entrar</button>
-                <div class="modal fade " id="NVai" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="Close">
-                    <div class="modal-dialog modal-dialog-centered text-center">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5 fw-bold text-uppercase text-black mx-auto"
-                                    id="exampleModalLabel">Ocorreu um erro!</h1>
-                            </div>
-                            <div class="modal-body fw-bold text-uppercase text-black mx-auto">
-                                Você não inseriu os valores corretos!
-                            </div>
-                            <div class="modal-footer mx-auto">
-                                <button type="button" class="btn btn-success fw-bold text-uppercase text-black"><a
-                                        class="text-light link-offset-2 link-underline link-underline-opacity-0"
-                                        href="Login.html">Tentar Novamente</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="Vai" tabindex="-1" aria-labelledby="exampleModalLabel" aria-modal="Close">
-                    <div class="modal-dialog modal-dialog-centered text-center">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5 fw-bold text-uppercase text-black mx-auto"
-                                    id="exampleModalLabel">Parabéns</h1>
-                            </div>
-                            <div class="modal-body fw-bold text-uppercase text-black mx-auto">
-                                Seu cadastro foi concluído com sucesso!
-                            </div>
-                            <div class="modal-footer mx-auto">
-                                <button type="button" class="btn btn-success fw-bold text-uppercase text-black"><a
-                                        class="text-light link-offset-2 link-underline link-underline-opacity-0"
-                                        href="Tela-Principal.html">Entrar</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -86,26 +50,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
     <script src="../js/conection.js"></script>
     <script src="../js/Login.js"></script>
-    <script>
-        (() => {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            const forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.from(forms).forEach(form => {
-                form.addEventListener('submit', event => {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-        })()
-    </script>
+    <script src="../js/Criacao.js"></script>
+    <script src="../js/vaCamp.js"></script>
 </body>
 
 </html>

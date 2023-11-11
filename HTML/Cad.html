@@ -31,7 +31,7 @@
                         <label id="_TxtForCEP" for="-CEP">CEP</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="-Num" onchange="habilitaBtn()" placeholder="123">
+                        <input type="number" class="form-control" id="-Num" onchange="confereNum()" placeholder="123">
                         <label id="_TxtForN" for="-Num">Nº:</label>
                     </div>
                 </div>
@@ -42,9 +42,9 @@
                         <label id="_TxtForCNPJ" for="-CNPJ">CNPJ:</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="-Nome" onchange="habilitaBtn()"
+                        <input type="text" class="form-control" id="-Nome" onchange="confereNome()"
                             placeholder="Emerson Claudio">
-                        <label id="_TxtForCNPJ" for="-Nome">Nome da Instituição:</label>
+                        <label id="_TxtForNome" for="-Nome">Nome da Instituição:</label>
                     </div>
                 </div>
                 <div class="form-floating mb-3">
@@ -112,6 +112,8 @@
         <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
         <script src="../js/conection.js"></script>
         <script src="../js/Cad.js"></script>
+        <script src="../js/vaCamp.js"></script>
+        <script src="../js/Criacao.js"></script>
 </body>
 
 </html>
