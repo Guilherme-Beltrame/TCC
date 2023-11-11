@@ -1,36 +1,41 @@
-function SairCont(){
-    firebase.auth().signOut().then(()=> {
+function SairCont() {
+    firebase.auth().signOut().then(() => {
         window.location.href = 'Login.html';
     }).catch(() => {
         alert("Erro ao sair da conta");
     })
 }
 
-function goToRoom(){
-    window.location.href ="1-A.html";
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        pegaDadosdoBD(user);
+
+        console.log(user)
+    }
+})
+
+function pegaDadosdoBD(user) {
+    db.collection('Turma')
+        .where('users.inst', '==', user.uid)
+        .get()
+        .then(snapshot => {
+            const Turmas = snapshot.docs.map(doc => ({
+                ...doc.data(),
+                id: doc.id
+            }));
+            ExibiTurTela(Turmas);
+            console.log(Turmas);
+        })
 }
 
-function pagProfs(){
-    window.location.href ="Profs.html";
+function goToRoom(Turma) {
+    window.location.href = "1-A.html?id="+Turma.id+"&inst="+Turma.users.inst+"&prof="+Turma.users.prof;
 }
 
-function CadTurma(){
+function pagProfs() {
+    window.location.href = "Profs.html";
+}
+
+function CadTurma() {
     window.location.href = "CadTurma.html";
-}
-
-verdadosusu();
-
-function verdadosusu(){
-    const user = firebase.auth().currentUser;
-
-if (user) {
-  user.providerData.forEach((profile) => {
-    console.log("Sign-in provider: " + profile.providerId);
-    console.log("  Provider-specific UID: " + profile.uid);
-    console.log("  Name: " + profile.displayName);
-    console.log("  Email: " + profile.email);
-    console.log("  Photo URL: " + profile.photoURL);
-  });
-}
-
 }

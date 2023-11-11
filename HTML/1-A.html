@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width">
     <!-- Importa o icone que ficara como logo, logo ao topo da tela ao lado do title -->
     <link rel="shortcut icon" href="../img/Favicon.ico" type="image/x-icon">
-    <title>Tela de card</title>
+    <title>Turma</title>
     <!-- Parte reservada a importar o CSS -->
     <link href="../CSS/StyleSistem.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../CSS/turma.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/Alu.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
@@ -75,7 +76,7 @@
     </nav>
 
     <main id="main" class="d-flex flex-column justify-content-center align-items-center mt-3">
-        <ol>
+        <ol id="Alunos">
             <li class="Aluno">
                 <p class="Nome fw-bold">NOME</p>
                 <p class="Curso fw-bold">CURSO</p>
@@ -83,75 +84,8 @@
                 <p class="Freq fw-bold">FREQUÊNCIA</p>
                 <p class="Hora fw-bold">HORARIO</p>
             </li>
-            <li class="Aluno">
-                <img src="../img/Perfil-Aluno.png" class="imgAluno" alt="">
-                <p class="NomeAlu fw-bold" onclick="PuxaDados()">Enzo Vinycius Da Silva Dias</p>
-                <p class="CurAlu fw-bold">DS</p>
-                <p class="RmAlu fw-bold">20212930003</p>
-                <p class="FreqAlu fw-bold">98%</p>
-                <p class="HoraAlu fw-bold">07:15</p>
-            </li>
-            <li class="Aluno">
-                <img src="../img/Perfil-Aluno.png" class="imgAluno" alt="">
-                <p class="NomeAlu fw-bold">Guilherme Beltrame Munhoz</p>
-                <p class="CurAlu fw-bold">DS</p>
-                <p class="RmAlu fw-bold">20212930003</p>
-                <p class="FreqAlu fw-bold">98%</p>
-                <p class="HoraAlu-ausente fw-bold">Ausente</p>
-            </li>
         </ol>
-        <!--
-        <div class="fundPreto"> </div>
-            <div class="DocAlu">
-                <div class="headerAlu">
-                    <img src="img/Perfil-Aluno.png" class="imgAluno" alt="Foto-aluno">
-                    <p class="fw-bold fs-4 text-uppercase mb-0">Enzo Vinycius Da Silva Dias</p>
-                    <button type="button" class="btn-close mb-5 ms-2"></button>
-                </div>
-
-                <ol class="docDadoAlu">
-                    <li class="dado">
-                        <p class="fw-bold">Hoje: </p>
-                        <p>Presente</p>
-                    </li>
-                    <li class="dado">
-                        <p class="fw-bold">Curso: </p>
-                        <p>Desenvolvimento de sistemas</p>
-                    </li>
-                    <li class="dado">
-                        <p class="fw-bold">RM: </p>
-                        <p>20212930058</p>
-                    </li>
-                    <li class="dado">
-                        <p class="fw-bold">Período de aula: </p>
-                        <p>7:30 ás 15:30</p>
-                    </li>
-                    <li class="dado">
-                        <p class="fw-bold">Frequência: </p>
-                        <p>88%</p>
-                    </li>
-                    <li class="dado">
-                        <p class="fw-bold">Horário de entrada: </p>
-                        <p>07:30 AM </p>
-                    </li>
-                    <li class="dado">
-                        <p class="fw-bold">Horário de saída: </p>
-                        <p>15:30 PM </p>
-                    </li>
-                </ol>
-                <div class="saidaAlu d-flex align-items-end justify-content-end mb-3">
-                    <button type="button" class="btn btn-success fw-bold">Ausente</button>
-                </div>
-            </div>
-
-            -->
-
-
     </main>
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
@@ -159,8 +93,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
     <script src="../js/conection.js"></script>
-    <script src="../js/Home.js"></script>
     <script src="../js/Inst-auth.js"></script>
+    <script src="../js/Criacao.js"></script>
     <script src="../js/Turma.js"></script>
 </body>
 

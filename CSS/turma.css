@@ -13,13 +13,23 @@
 
 .NomeAlu, .CurAlu, .RmAlu, .FreqAlu, .HoraAlu, .HoraAlu-ausente, .Hora, .Freq, .RM, .Curso, .Nome {
     width: 20em;
+    height: 3.3em;
     border-right: 1px solid #545454;
+    align-items: center;
     background-color: #DCDCDC;
-    margin: 0px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2px;
     padding: 5px;
 }
 
+.NomeAlu{
+    justify-content: start;
+}
+
 .Hora, .Freq, .RM, .Curso, .Nome {
+    justify-content: start;
+    height: auto;
     background-color: transparent;
     border-right: 0px;
     padding: 0px;

@@ -2,12 +2,12 @@ function cadProfs(){
     window.location.href = "CadProfs.html";
 }
 
-
 function PuxaDados() {
     setTimeout(() => {
         AdiDadosTela(fakeProfs);
     }, 1000);
 }
+
 function AdiDadosTela(Profs) {
     CriaDivsIniciais();
     const docAluno = document.getElementById("DocAlu");
