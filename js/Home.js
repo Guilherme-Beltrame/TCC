@@ -1,16 +1,6 @@
-function SairCont() {
-    firebase.auth().signOut().then(() => {
-        window.location.href = 'Login.html';
-    }).catch(() => {
-        alert("Erro ao sair da conta");
-    })
-}
-
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         pegaDadosdoBD(user);
-
-        console.log(user)
     }
 })
 
@@ -24,7 +14,7 @@ function pegaDadosdoBD(user) {
                 id: doc.id
             }));
             ExibiTurTela(Turmas);
-            console.log(Turmas);
+            ExibBtnProfs(user.uid);
         })
 }
 
@@ -32,8 +22,8 @@ function goToRoom(Turma) {
     window.location.href = "1-A.html?id="+Turma.id+"&inst="+Turma.users.inst+"&prof="+Turma.users.prof;
 }
 
-function pagProfs() {
-    window.location.href = "Profs.html";
+function pagProfs(inst) {
+    window.location.href = "Profs.html?inst="+inst;
 }
 
 function CadTurma() {

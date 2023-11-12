@@ -54,6 +54,49 @@ function msgSucesso() {
     }
 }
 
+function ExibiProfsTela(Professores){
+    const AreaProfs = document.getElementById('Profs');
+
+    Professores.forEach(professor => {
+        const ItemProf = document.createElement('li');
+        ItemProf.classList.add('Aluno');
+        const imgProf = document.createElement('img');
+        imgProf.classList.add('imgAluno');
+        imgProf.src = '../img/Perfil-Aluno.png';
+
+        const NomeProf = document.createElement('p');
+        NomeProf.innerHTML = professor.nome;
+        NomeProf.classList.add('NomeAlu', 'fw-bold');
+        NomeProf.addEventListener('click',()=>{
+            PuxaDados(professor.idProf);
+        })
+
+        const CurProf = document.createElement('p');
+        CurProf.innerHTML = professor.materia;
+        CurProf.classList.add('CurAlu', 'fw-bold');
+
+        const RmProf = document.createElement('p');
+        RmProf.innerHTML = professor.rm;
+        RmProf.classList.add('RmAlu', 'fw-bold');
+
+        const FreqProf = document.createElement('p');
+        FreqProf.innerHTML = freqAluno(professor.frequencia).value;
+        FreqProf.classList.add('FreqAlu', 'fw-bold');
+
+        const HoraProf = document.createElement('p');
+        HoraProf.innerHTML = professor.entrada;
+        HoraProf.classList.add('HoraAlu', 'fw-bold');
+
+        AreaProfs.appendChild(ItemProf);
+        ItemProf.appendChild(imgProf);
+        ItemProf.appendChild(NomeProf);
+        ItemProf.appendChild(CurProf);
+        ItemProf.appendChild(RmProf);
+        ItemProf.appendChild(FreqProf);
+        ItemProf.appendChild(HoraProf);
+    });
+}
+
 function ExibiAluTela(Alunos){
     const AreaAlunos = document.getElementById('Alunos');
     Alunos.forEach(aluno => {
@@ -117,6 +160,23 @@ function freqAluno(Freq) {
     return {
         value: total +'%',
     };
+}
+
+function ExibBtnProfs(inst){
+    const Areabtn = document.getElementById('main');
+
+    const btnProfs = document.createElement('button');
+    btnProfs.classList.add('fab', 'fixed', 'bottom', 'right', 'd-flex', 'flex-row');
+    btnProfs.addEventListener('click', () =>{
+        pagProfs(inst);
+    });
+
+    const txtProfs = document.createElement('p');
+    txtProfs.classList.add('mb-0', 'fw-bold', 'fs-5');
+    txtProfs.innerHTML = 'Professores';
+
+    Areabtn.appendChild(btnProfs);
+    btnProfs.appendChild(txtProfs);
 }
 
 function ExibiTurTela(Turmas){

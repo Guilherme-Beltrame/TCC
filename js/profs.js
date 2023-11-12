@@ -2,6 +2,35 @@ function cadProfs(){
     window.location.href = "CadProfs.html";
 }
 
+firebase.auth().onAuthStateChanged(user => {
+    if (user.uid == pegaIds().uidInst) {
+        ExibiProfsInsti(pegaIds().uidInst);
+    } else {
+        alert('Você não tem permissão em acessar esses dados');
+        window.location.href = "../index.html";
+    }
+})
+
+function ExibiProfsInsti(IdInst) {
+    db.collection('professores')
+        .where('id-inst', '==', IdInst)
+        .get()
+        .then(snapshot => {
+            const Professores = snapshot.docs.map(Professor => ({
+                ...Professor.data(),
+                idProf: Professor.id
+            }));
+            ExibiProfsTela(Professores);
+        })
+}
+
+function pegaIds() {
+    const parametrosUsuario = new URLSearchParams(window.location.search);
+    return {
+        uidInst: parametrosUsuario.get('inst'),
+    }
+}
+
 function PuxaDados() {
     setTimeout(() => {
         AdiDadosTela(fakeProfs);
