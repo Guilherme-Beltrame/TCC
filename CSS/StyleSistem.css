@@ -76,3 +76,7 @@ button.fab.right {
     font-size: 35px;
 
 }
+
+.fora{
+    display: none !important;
+}

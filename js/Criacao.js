@@ -187,8 +187,9 @@ function ExibBtnProfs(inst){
 }
 
 function ExibiTurTela(Turmas){
+    
     const AreaTurmas = document.getElementById('-Turmas');
-
+    console.log(Turmas);
     Turmas.forEach(Turma => {
         const divturma = document.createElement('div');
         divturma.classList.add('card');

@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(user => {
-    seInst(user.uid);
     seProf(user.uid);
+    seInst(user.uid);
 })
 
 function seInst(id) {
@@ -13,7 +13,7 @@ function seInst(id) {
             }));
             type.forEach(typeinst => {
                 console.log(typeinst.type)
-                pegaDadosdoBD(typeinst.user.uid)
+                pegaDadosdoBDInst(typeinst.user.uid)
                 ExibBtnProfs(typeinst.user.uid);
             });
         })
@@ -24,18 +24,48 @@ function seInst(id) {
 }
 
 function seProf(id) {
-    db.collection('Professores')
-        .where('uid', '==', id)
+    retielemento();
+    db.collection('professores')
+        .where('user.uid', '==', id)
         .get()
-        .then(() => {
-            return true
+        .then(types => {
+            const type = types.docs.map(proftype => ({
+                ...proftype.data(),
+            }));
+            type.forEach(typeprof => {
+                console.log(typeprof.user.uid);
+                pegaDadosdoBDprof(typeprof.user.uid);
+            });
         })
         .catch(error => {
+            console.log(error)
             return false
         });
 }
 
-function pegaDadosdoBD(id) {
+function retielemento(){
+    const el = {
+        tracos: () => document.getElementById('tracos'),
+        divCadTur: () => document.getElementById('addTur'),
+    }
+    el.tracos().classList.add('fora');
+    el.divCadTur().classList.add('fora');
+}
+
+function pegaDadosdoBDprof(id) {
+    db.collection('Turma')
+        .where('users.prof', '==', id)
+        .get()
+        .then(snapshot => {
+            const Turmas = snapshot.docs.map(doc => ({
+                ...doc.data(),
+                id: doc.id
+            }));
+            ExibiTurTela(Turmas);
+        })
+}
+
+function pegaDadosdoBDInst(id) {
     db.collection('Turma')
         .where('users.inst', '==', id)
         .get()
