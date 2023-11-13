@@ -1,45 +1,43 @@
 firebase.auth().onAuthStateChanged(user => {
-    console.log(seInst(user.uid))
-    if (seInst(user.uid)) {
-        pegaDadosdoBD(user.uid);
-    } else if (seProf(user.uid)) {
-        pegaDadosdoBD(user.uid);
-    } else {
-        
-        alert('Você não tem permissão em acessar esses dados');
-        //window.location.href = "../index.html";
-    }
+    seInst(user.uid);
+    seProf(user.uid);
 })
 
 function seInst(id) {
     db.collection('instituicoes')
         .where('user.uid', '==', id)
         .get()
-        .then(() =>{
-            console.log(id)
-            return true
+        .then(types => {
+            const type = types.docs.map(insttype => ({
+                ...insttype.data(),
+            }));
+            type.forEach(typeinst => {
+                console.log(typeinst.type)
+                pegaDadosdoBD(typeinst.user.uid)
+                ExibBtnProfs(typeinst.user.uid);
+            });
         })
-        .catch(error =>{
-            console.log(id)
-            return error
-        });
+        .catch(error => {
+            console.log(error)
+            return false
+        })
 }
 
 function seProf(id) {
     db.collection('Professores')
         .where('uid', '==', id)
         .get()
-        .then(() =>{
+        .then(() => {
             return true
         })
-        .catch(error =>{
+        .catch(error => {
             return false
         });
 }
 
-function pegaDadosdoBD(user) {
+function pegaDadosdoBD(id) {
     db.collection('Turma')
-        .where('users.inst', '==', user.uid)
+        .where('users.inst', '==', id)
         .get()
         .then(snapshot => {
             const Turmas = snapshot.docs.map(doc => ({
@@ -47,7 +45,6 @@ function pegaDadosdoBD(user) {
                 id: doc.id
             }));
             ExibiTurTela(Turmas);
-            ExibBtnProfs(user.uid);
         })
 }
 
