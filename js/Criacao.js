@@ -80,7 +80,7 @@ function ExibiProfsTela(Professores){
         RmProf.classList.add('RmAlu', 'fw-bold');
 
         const FreqProf = document.createElement('p');
-        FreqProf.innerHTML = freqAluno(professor.frequencia).value;
+        FreqProf.innerHTML = frequencia(professor.frequencia).value;
         FreqProf.classList.add('FreqAlu', 'fw-bold');
 
         const HoraProf = document.createElement('p');
@@ -122,7 +122,7 @@ function ExibiAluTela(Alunos){
         RmAlu.classList.add('RmAlu', 'fw-bold');
 
         const FreqAlu = document.createElement('p');
-        FreqAlu.innerHTML = freqAluno(aluno.Frequencia).value;
+        FreqAlu.innerHTML = frequencia(aluno.Frequencia).value;
         FreqAlu.classList.add('FreqAlu', 'fw-bold');
 
         const HoraAlu = document.createElement('p');
@@ -139,24 +139,31 @@ function ExibiAluTela(Alunos){
     });
 }
 
-function freqAluno(Freq) {
+function frequencia(Freq) {
     var dias = 0;
     if(Freq.Segunda&&Freq.Segunda == 1){
+        console.log(dias);
         dias++;
     }
-    if(Freq.Terca&&Freq.Terca == 1){
+    if(Freq.Terça&&Freq.Terça == 1){
         dias++;
+        console.log(dias);
     }
     if(Freq.Quarta&&Freq.Quarta == 1){
+        console.log(dias);
         dias++;
     }
     if(Freq.Quinta&&Freq.Quinta == 1){
         dias++;
+        console.log(dias);
     }
     if(Freq.Sexta&&Freq.Sexta == 1){
         dias++;
+        console.log(dias);
     }
     const total = (dias / 5) * 100;
+    console.log(total);
+    console.log(dias);
     return {
         value: total +'%',
     };

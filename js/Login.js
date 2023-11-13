@@ -5,22 +5,22 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function Entrar() {
-    const Email =form.email().value;
+    const Email = form.email().value;
     const Password = form.senha().value;
     firebase.auth().signInWithEmailAndPassword(Email, Password).then(response => {
-        window.location.href = "Tela-Principal.html"
+        window.location.href = "Tela-Principal.html?uid=" + response.user.uid;
     }).catch(error => {
         MsgErro();
     });
 }
 
-function MsgErro(){
+function MsgErro() {
     criaFundos();
     criaElementos();
     MsgInvaliCredenciais();
 }
 
-function MsgInvaliCredenciais(){
+function MsgInvaliCredenciais() {
     const consequencia = document.getElementById('consequencia');
     const btnConseq = document.getElementById('btnConseq');
     const resulValida = document.getElementById('resulValida');
@@ -32,30 +32,30 @@ function MsgInvaliCredenciais(){
     }
 }
 
-function msgRcu(email){
+function msgRcu(email) {
     criaFundos();
     criaElementos();
     MsgVeriEmail(email);
 }
 
-function apareceBtn(){
+function apareceBtn() {
     var email = form.email().value;
-    if (!email||!validaEmail(email)){
+    if (!email || !validaEmail(email)) {
         return true
     }
     var senha = form.senha().value;
-    if (!senha||!validaSenha(senha)){
+    if (!senha || !validaSenha(senha)) {
         return true;
     }
     return false;
 }
 
-function MsgVeriEmail(email){
+function MsgVeriEmail(email) {
     const consequencia = document.getElementById('consequencia');
     const btnConseq = document.getElementById('btnConseq');
     const resulValida = document.getElementById('resulValida');
     consequencia.innerHTML = 'Parabéns!';
-    resulValida.innerHTML = 'Verifique o email <strong>'+email+'</strong> e altere sua Senha!';
+    resulValida.innerHTML = 'Verifique o email <strong>' + email + '</strong> e altere sua Senha!';
     btnConseq.innerHTML = 'Fechar';
     btnConseq.onclick = function () {
         window.location.href = 'Login.html';
@@ -65,7 +65,7 @@ function MsgVeriEmail(email){
 function RecuSenha() {
     const Email = form.email().value;
     firebase.auth().sendPasswordResetEmail(Email).then(() => {
-       msgRcu(Email);
+        msgRcu(Email);
     }).catch(error => {
         alert("algo deu errado" + error);
     })

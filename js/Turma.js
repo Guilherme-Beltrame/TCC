@@ -43,8 +43,9 @@ function PuxaDados(AluId) {
                 alert("Erro ao carregar dados");
             }
         })
-        .catch(()=>{
+        .catch(erro=>{
             alert("Erro ao carregaaaaaaaaar dados");
+            console.log(erro)
         })
 }
 
@@ -132,7 +133,8 @@ function AdiDadosTela(Aluno) {
     fre.classList.add('fw-bold');
     item5.appendChild(fre);
     const freq = document.createElement("p");
-    freq.innerHTML = freqAluno(Aluno.Frequencia).value;
+    
+    freq.innerHTML = frequencia(Aluno.Frequencia).value;
     item5.appendChild(freq);
     //Dado 6
     const item6 = document.createElement('li');
