@@ -2,7 +2,7 @@
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         setTimeout(() => {
-            window.location.href = 'Tela-Principal.html';
+            window.location.href = 'Home.html';
         }, 7000);
     }
 

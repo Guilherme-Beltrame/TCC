@@ -1,14 +1,29 @@
 firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        window.location.href = "Tela-Principal.html"
-    }
+    setTimeout(() => {
+        if (user) {
+            window.location.href = "Tela-Principal.html"
+        }
+    }, 1000);
 });
+
+function seInst(id) {
+    db.collection('instituicoes')
+        .where('user.uid', '==', id)
+        .get()
+        .then(() => {
+            window.location.href = 'HomeInst'
+        })
+        .catch(error => {
+            console.log(error)
+            return false
+        })
+}
 
 function Entrar() {
     const Email = form.email().value;
     const Password = form.senha().value;
     firebase.auth().signInWithEmailAndPassword(Email, Password).then(response => {
-        window.location.href = "Tela-Principal.html?uid=" + response.user.uid;
+        seInst(response.user.uid);
     }).catch(error => {
         MsgErro();
     });

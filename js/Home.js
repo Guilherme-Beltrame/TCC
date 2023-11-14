@@ -61,8 +61,11 @@ function pegaDadosdoBDprof(id) {
                 ...doc.data(),
                 id: doc.id
             }));
-            ExibiTurTela(Turmas);
+            ExibiTurTelaProf(Turmas);
         })
+        .catch(erro =>{
+            console.log(erro)
+        });
 }
 
 function pegaDadosdoBDInst(id) {
@@ -74,12 +77,16 @@ function pegaDadosdoBDInst(id) {
                 ...doc.data(),
                 id: doc.id
             }));
-            ExibiTurTela(Turmas);
+            ExibiTurTelaInst(Turmas);
         })
 }
 
-function goToRoom(Turma) {
-    window.location.href = "1-A.html?id=" + Turma.id + "&inst=" + Turma.users.inst + "&prof=" + Turma.users.prof;
+function goToRoomInst(Turma) {
+    window.location.href = "TurmaInst.html?id=" + Turma.id + "&inst=" + Turma.users.inst + "&prof=" + Turma.users.prof;
+}
+
+function goToRoomProf(Turma) {
+    window.location.href = "TurmaProf.html?id=" + Turma.id + "&inst=" + Turma.users.inst + "&prof=" + Turma.users.prof;
 }
 
 function pagProfs(inst) {

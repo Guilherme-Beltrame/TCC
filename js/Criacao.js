@@ -97,6 +97,42 @@ function ExibiProfsTela(Professores){
     });
 }
 
+function ExibiAluTelaProf(Alunos){
+    const AreaAlunos = document.getElementById('Alunos');
+    Alunos.forEach(aluno => {
+        const ItemAluno = document.createElement('li');
+        ItemAluno.classList.add('Aluno');
+        const imgAlu = document.createElement('img');
+        imgAlu.classList.add('imgAluno');
+        imgAlu.src = '../img/Perfil-Aluno.png';
+
+        const NomeAlu = document.createElement('p');
+        NomeAlu.innerHTML = aluno.Nome;
+        NomeAlu.classList.add('NomeAlu', 'fw-bold');
+        NomeAlu.addEventListener('click',()=>{
+            PuxaDadosprof(aluno.AluId);
+        })
+        const RmAlu = document.createElement('p');
+        RmAlu.innerHTML = aluno.RM;
+        RmAlu.classList.add('RmAlu', 'fw-bold');
+
+        const FreqAlu = document.createElement('p');
+        FreqAlu.innerHTML = frequencia(aluno.Frequencia).value;
+        FreqAlu.classList.add('FreqAlu', 'fw-bold');
+
+        const Estado = document.createElement('p');
+        Estado.innerHTML = aluno.Estado;
+        Estado.classList.add('HoraAlu', 'fw-bold');
+
+        AreaAlunos.appendChild(ItemAluno);
+        ItemAluno.appendChild(imgAlu);
+        ItemAluno.appendChild(NomeAlu);
+        ItemAluno.appendChild(RmAlu);
+        ItemAluno.appendChild(FreqAlu);
+        ItemAluno.appendChild(Estado);
+    });
+}
+
 function ExibiAluTela(Alunos){
     const AreaAlunos = document.getElementById('Alunos');
     Alunos.forEach(aluno => {
@@ -186,15 +222,35 @@ function ExibBtnProfs(inst){
     btnProfs.appendChild(txtProfs);
 }
 
-function ExibiTurTela(Turmas){
+function ExibiTurTelaInst(Turmas){
     
     const AreaTurmas = document.getElementById('-Turmas');
-    console.log(Turmas);
     Turmas.forEach(Turma => {
         const divturma = document.createElement('div');
         divturma.classList.add('card');
         divturma.addEventListener('click', ()=> {
-            goToRoom(Turma);
+            goToRoomInst(Turma);
+        })
+        const divNomeTurma = document.createElement('div');
+        divNomeTurma.classList.add('card-body', 'd-flex', 'align-items-center', 'justify-content-center');
+
+        const NomeTurma = document.createElement('p');
+        NomeTurma.classList.add('fw-bold', 'fs-1', 'text-primary-emphasis');
+        NomeTurma.innerHTML = Turma.nome;
+
+        AreaTurmas.appendChild(divturma);
+        divturma.appendChild(divNomeTurma);
+        divNomeTurma.appendChild(NomeTurma);
+    });
+}
+function ExibiTurTelaProf(Turmas){
+    
+    const AreaTurmas = document.getElementById('-Turmas');
+    Turmas.forEach(Turma => {
+        const divturma = document.createElement('div');
+        divturma.classList.add('card');
+        divturma.addEventListener('click', ()=> {
+            goToRoomProf(Turma);
         })
         const divNomeTurma = document.createElement('div');
         divNomeTurma.classList.add('card-body', 'd-flex', 'align-items-center', 'justify-content-center');
