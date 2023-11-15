@@ -121,6 +121,19 @@ function ConfereSenha() {
     habilitaBtn();
 }
 
+function aceitaTermos(){
+    const AceiTerm = document.getElementById('-aceitaTermos');
+    var aceTer = form.aceitaTermos().value;
+    if(aceTer ==''){
+        console.log('ent alte val true')
+        AceiTerm.value = 'True';
+    }else if (aceTer == 'True'){
+        console.log('ent alte val vazio')
+        AceiTerm.value = '';
+    }
+    habilitaBtn();
+}
+
 function validaSenha(senha) {
     var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#.])(?:([0-9a-zA-Z$*&@#.])){8,}$/;
     return re.test(senha);
@@ -149,3 +162,4 @@ function SemNum(nome){
 function habilitaBtn(){ 
     form.btn().disabled  = apareceBtn();
 }
+

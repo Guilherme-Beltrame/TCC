@@ -39,6 +39,10 @@ function apareceBtn(){
     if(!plano){
         return true;
     }   
+    var termos = form.plano('-aceitaTermos').value;
+    if(termos == ''){
+        return true;
+    }   
     return false;
 }
 
@@ -145,4 +149,5 @@ const form = {
     email: () => document.getElementById('-email'),
     senha: () => document.getElementById('-Senha'),
     plano: (selecionado) => document.getElementById(selecionado),
+    aceitaTermos: () => document.getElementById('-aceitaTermos'),
 }

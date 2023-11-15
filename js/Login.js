@@ -1,31 +1,56 @@
 firebase.auth().onAuthStateChanged(function (user) {
     setTimeout(() => {
         if (user) {
-            window.location.href = "Tela-Principal.html"
+            seInst(user.uid);
+            seProf(user.uid);
         }
-    }, 1000);
+    }, 2000);
 });
 
 function seInst(id) {
     db.collection('instituicoes')
         .where('user.uid', '==', id)
         .get()
-        .then(() => {
-            window.location.href = 'HomeInst'
+        .then(promisse => {
+            const Type = promisse.docs.map(doc => doc = doc.data().type);
+            if (Type == 'instituicao') {
+                window.location.href = 'HomeInst.html'
+            }
         })
         .catch(error => {
             console.log(error)
-            return false
         })
 }
 
+function seProf(id) {
+    db.collection('professores')
+        .where('user.uid', '==', id)
+        .get()
+        .then(promisse => {
+            const Type = promisse.docs.map(doc => doc = doc.data().type);
+            if (Type == 'professor') {
+                window.location.href = 'HomeProf.html'
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
 function Entrar() {
     const Email = form.email().value;
     const Password = form.senha().value;
     firebase.auth().signInWithEmailAndPassword(Email, Password).then(response => {
         seInst(response.user.uid);
+        seProf(response.user.uid);
     }).catch(error => {
         MsgErro();
+        console.log(error)
+    });
+}
+
+function dados(user) {
+    user.forEach(element => {
+        console.log('foi')
     });
 }
 

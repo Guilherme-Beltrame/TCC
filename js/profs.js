@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged(user => {
         ExibiProfsInsti(pegaIds().uidInst);
     } else {
         alert('Você não tem permissão em acessar esses dados');
-        window.location.href = "../index.html";
+        window.location.href = "HomeInst.html";
     }
 })
 

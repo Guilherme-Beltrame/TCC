@@ -29,6 +29,7 @@
 /*Estilizando o titulo na tela principal*/
 #_Name {
     font-family: 'Alegreya', serif;
+    font-weight: 900;
 }
 
 /*Estilizando o texto com o slogan*/
@@ -36,6 +37,7 @@
     font-family: 'Alice', serif;
     text-align: center;
     font-size: larger;
+    font-weight: 800;
 }
 
 /*Estilizando botão tela principal*/

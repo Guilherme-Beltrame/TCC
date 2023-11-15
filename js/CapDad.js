@@ -8,4 +8,5 @@ const form = {
     email: () => document.getElementById('-email'),
     senha: () => document.getElementById('-Senha'),
     plano: (selecionado) => document.getElementById(selecionado),
+    aceitaTermos: () => document.getElementById('-aceitaTermos'),
 }

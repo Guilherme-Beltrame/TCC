@@ -222,35 +222,14 @@ function ExibBtnProfs(inst){
     btnProfs.appendChild(txtProfs);
 }
 
-function ExibiTurTelaInst(Turmas){
+function ExibiTurTela(Turmas){
     
     const AreaTurmas = document.getElementById('-Turmas');
     Turmas.forEach(Turma => {
         const divturma = document.createElement('div');
         divturma.classList.add('card');
         divturma.addEventListener('click', ()=> {
-            goToRoomInst(Turma);
-        })
-        const divNomeTurma = document.createElement('div');
-        divNomeTurma.classList.add('card-body', 'd-flex', 'align-items-center', 'justify-content-center');
-
-        const NomeTurma = document.createElement('p');
-        NomeTurma.classList.add('fw-bold', 'fs-1', 'text-primary-emphasis');
-        NomeTurma.innerHTML = Turma.nome;
-
-        AreaTurmas.appendChild(divturma);
-        divturma.appendChild(divNomeTurma);
-        divNomeTurma.appendChild(NomeTurma);
-    });
-}
-function ExibiTurTelaProf(Turmas){
-    
-    const AreaTurmas = document.getElementById('-Turmas');
-    Turmas.forEach(Turma => {
-        const divturma = document.createElement('div');
-        divturma.classList.add('card');
-        divturma.addEventListener('click', ()=> {
-            goToRoomProf(Turma);
+            goToRoom(Turma);
         })
         const divNomeTurma = document.createElement('div');
         divNomeTurma.classList.add('card-body', 'd-flex', 'align-items-center', 'justify-content-center');
