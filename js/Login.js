@@ -4,7 +4,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             seInst(user.uid);
             seProf(user.uid);
         }
-    }, 2000);
+    }, 1000);
 });
 
 function seInst(id) {
@@ -37,8 +37,8 @@ function seProf(id) {
         })
 }
 function Entrar() {
-    const Email = form.email().value;
-    const Password = form.senha().value;
+    const Email = formLogin.email().value;
+    const Password = formLogin.senha().value;
     firebase.auth().signInWithEmailAndPassword(Email, Password).then(response => {
         seInst(response.user.uid);
         seProf(response.user.uid);
@@ -46,6 +46,10 @@ function Entrar() {
         MsgErro();
         console.log(error)
     });
+}
+
+function habilitaBtn(){ 
+    formLogin.btn().disabled  = apareceBtn();
 }
 
 function dados(user) {
@@ -79,11 +83,11 @@ function msgRcu(email) {
 }
 
 function apareceBtn() {
-    var email = form.email().value;
+    var email = formLogin.email().value;
     if (!email || !validaEmail(email)) {
         return true
     }
-    var senha = form.senha().value;
+    var senha = formLogin.senha().value;
     if (!senha || !validaSenha(senha)) {
         return true;
     }
@@ -103,16 +107,10 @@ function MsgVeriEmail(email) {
 }
 
 function RecuSenha() {
-    const Email = form.email().value;
+    const Email = formLogin.email().value;
     firebase.auth().sendPasswordResetEmail(Email).then(() => {
         msgRcu(Email);
-    }).catch(error => {
-        alert("algo deu errado" + error);
+    }).catch(() => {
+        alert("insira o email corrtamente");
     })
-}
-
-const form = {
-    email: () => document.getElementById('-email'),
-    senha: () => document.getElementById('-Senha'),
-    btn: () => document.getElementById('_Btn'),
 }

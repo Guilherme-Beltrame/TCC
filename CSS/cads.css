@@ -37,25 +37,49 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 6px;
 }
 
 .add {
     background-color: #0E0F8A !important;
-    height: 60px;
-    width: 60px;
+    width: 4em !important;
+    color: #FFFFFF;
     padding: 0px !important;
-    border: #ffffff solid 5px !important;
+    border-radius: 15px;
+    border: #ffffff solid 0.30em !important;
 }
 
 .add:hover {
     opacity: 0.8;
 }
 
-.addAlu {
+.addAlu, .addCamp {
+    background-color: #FFFFFF;
+    width: 100%;
+    border-radius: 0.375rem;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.possAdd{
+    background-color: #FFFFFF;
+    width: 100%;
+    border-radius: 0.375rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.addTur{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:0px;
 }
 
 .periodos {
@@ -80,9 +104,6 @@
     justify-content: center;
 }
 
-.btncad{
-    width: 15em;
-}
 
 .Cadlargura{
     font-weight: 650 !important;
@@ -118,6 +139,69 @@
 }
 
 .erro{
-    color: rgba(255, 51, 51);
+    color: rgba(255, 51, 51) !important;
     flex-wrap: wrap;
+}
+
+p{
+    margin-bottom: 0px !important;
+}
+
+.turmas{
+    display: flex;
+    width: 28em;
+    flex-wrap: wrap;
+}
+
+.turmaSelect{
+    height: auto;
+    width: 9em;
+    background-color: #898ACF;
+    border-radius: 20px;
+    border: #0E0F8A solid 1px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:7px;
+}
+
+.TurSelec{
+    margin-top: auto;
+    text-align: center;
+}
+
+.btn-close{
+    display: block;
+}
+
+.turpossi{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #FFFFFF;
+    padding-bottom: 4px;
+    position: absolute;
+    left: 3px;
+    top: 55px;
+    border-radius: 0px 0px 30px 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Tur{
+    color: #175A89;
+}
+
+.Tur:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.btn-close{
+    opacity: 1 !important;
+}
+
+.btn-close:hover{
+    opacity: 0.5 !important;
 }

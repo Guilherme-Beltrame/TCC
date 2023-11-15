@@ -1,9 +1,26 @@
-
 firebase.auth().onAuthStateChanged(user => {
+    
+    seProf(user.uid);
     if(user){
         pegaDadosdoBD(user.uid);
     }
 })
+
+function seProf(id) {
+    db.collection('professores')
+        .where('user.uid', '==', id)
+        .get()
+        .then(promisse => {
+            const Type = promisse.docs.map(doc => doc = doc.data().type);
+            if (Type == 'professor') {
+                alert('Você não tem permissão de acesso a essa pág.')
+                window.location.href = 'HomeProf.html'
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
 
 function pegaDadosdoBD(id) {
     db.collection('Turma')

@@ -19,12 +19,30 @@ function confereCEP() {
     habilitaBtn();
 }
 
+function confereRM() {
+    const inputNum = document.getElementById('-RM');
+    const labelNum = document.getElementById('_TxtForRM');
+    var RM = formCadAlu.rm().value; 
+    if (RM > 0 && RM.length == 10 || RM.length == 11) {
+        inputNum.classList.remove('erro');
+        labelNum.classList.remove('erro');
+        labelNum.innerHTML = '';
+        labelNum.innerHTML = 'RM';
+    } else {
+        labelNum.innerHTML = '';
+        inputNum.classList.add('erro');
+        labelNum.classList.add('erro');
+        labelNum.innerHTML = 'insira o RM correto';
+    }
+    habilitaBtn();
+}
+
 function confereNum() {
     const inputNum = document.getElementById('-Num');
     const labelNum = document.getElementById('_TxtForN');
     var Num = form.num().value; 
     console.log(Num);
-    if (Num >= 0 && Num) {
+    if (Num > 0 && Num) {
         inputNum.classList.remove('erro');
         labelNum.classList.remove('erro');
         labelNum.innerHTML = '';
@@ -57,6 +75,43 @@ function confereNome() {
     habilitaBtn();
 }
 
+function confereNomeTur() {
+    const labelNome = document.getElementById('_TxtForTurN');
+    const btncad = document.getElementById('-btnTurCad');
+    const nomeInst = formCadTur.nomeTur();
+    const nomeInstval = formCadTur.nomeTur().value;
+    if (nomeInstval != '' && nomeInstval.length >= 3) {
+        nomeInst.classList.remove('erro');
+        labelNome.classList.remove('erro');
+        labelNome.innerHTML = '';
+        labelNome.innerHTML = 'Nome';
+        btncad.disabled = false;
+    } else {
+        btncad.disabled = true;
+        labelNome.innerHTML = '';
+        nomeInst.classList.add('erro');
+        labelNome.classList.add('erro');
+        labelNome.innerHTML = 'Nome Invalido!';
+    }
+}
+
+function confereNomeAlu() {
+    const labelNome = document.getElementById('_TxtForN');
+    const nomeInst = formCadAlu.nome();
+    const nomeInstval = formCadAlu.nome().value;
+    if (nomeInstval != '' && nomeInstval.length >= 3) {
+        nomeInst.classList.remove('erro');
+        labelNome.classList.remove('erro');
+        labelNome.innerHTML = '';
+        labelNome.innerHTML = 'Nome';
+    } else {
+        labelNome.innerHTML = '';
+        nomeInst.classList.add('erro');
+        labelNome.classList.add('erro');
+        labelNome.innerHTML = 'Nome Invalido!';
+    }
+}
+
 function ConfereCNPJ() {
     const inputCNPJ = document.getElementById('-CNPJ');
     const labelCNPJ = document.getElementById('_TxtForCNPJ');
@@ -75,6 +130,27 @@ function ConfereCNPJ() {
         inputCNPJ.classList.add('erro');
         labelCNPJ.classList.add('erro');
         labelCNPJ.innerHTML = 'insira corretamente: xx.xxx.xxx/0001-xx';
+    }
+    habilitaBtn();
+}
+
+function ConfereEmailAlu() {
+    const inputEmail = formCadAlu.emailAlu();
+    const labelEmail = document.getElementById('_TxtForE');
+    var Email = formCadAlu.emailAlu().value;
+    console.log(Email)
+    console.log(validaEmail(Email));
+    if (validaEmail(Email)) {
+        inputEmail.classList.remove('erro');
+        labelEmail.classList.remove('erro');
+        labelEmail.innerHTML = '';
+        labelEmail.innerHTML = 'E-mail';
+    }
+    else {
+        labelEmail.innerHTML = '';
+        inputEmail.classList.add('erro');
+        labelEmail.classList.add('erro');
+        labelEmail.innerHTML = 'insira o Email corretamente: xxxx@xxxxx.xxx';
     }
     habilitaBtn();
 }
@@ -158,8 +234,3 @@ function SemNum(nome){
     var re =/(?=\D)([a-zA-Z])*([^a-zA-Zà-úÀ-Ú])?/;
     return re.test(nome);
 }
-
-function habilitaBtn(){ 
-    form.btn().disabled  = apareceBtn();
-}
-

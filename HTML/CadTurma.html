@@ -74,28 +74,15 @@
     <main id="main" class="d-flex flex-row justify-content-center align-items-center mt-3">
         <div class="FundoCad">
             <div class="divTextCad">
-                <p class="textCad display-1"> Cadastrar turma</p>
+                <p class="textCad display-1"> Cadastrar Turma</p>
             </div>
             <div class="DivFormCad">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="-NomeTur" placeholder="1º ano A" required>
-                    <label id="_TxtFor" for="-NomeTur">Nome Turma:</label>
-                </div>
-                <div class="addAlu form-floating mb-3">
-                    <input type="text" class="form-control" id="-NomeTur" placeholder="1º ano A" required>
-                    <label id="_TxtFor" for="-NomeTur">Alunos: </label>
-                    <button type="button" class="add fs-3 btn btn-primary">+</button>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="-NomeTur" placeholder="1º ano A" required>
-                    <label id="_TxtFor" for="-NomeTur">Curso:</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="-profs" placeholder="1º ano A" required>
-                    <label id="_TxtFor" for="-profs">professores:</label>
+                    <input type="text" class="form-control" id="-NomeTur" onchange="confereNomeTur()" placeholder="1º ano A">
+                    <label id="_TxtForTurN" for="-NomeTur">Nome Turma:</label>
                 </div>
                 <div class="btncad">
-                    <button type="button" class="Cadlargura btn btn-success">Cadastrar</button>
+                    <button type="button" disabled onclick="cadTurBD()" id="-btnTurCad" class="Cadlargura btn btn-success">Cadastrar</button>
                 </div>
             </div>
         </div>
@@ -111,8 +98,11 @@
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
     <script src="../js/conection.js"></script>
-    <script src="../js/Home.js"></script>
+    <script src="../js/HomeInst.js"></script>
     <script src="../js/Inst-auth.js"></script>
+    <script src="../js/CapDad.js"></script>
+    <script src="../js/vaCamp.js"></script>
+    <script src="../js/CadTur.js"></script>
 </body>
 
 </html>
