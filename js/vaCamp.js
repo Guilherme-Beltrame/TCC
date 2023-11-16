@@ -22,7 +22,7 @@ function confereCEP() {
 function confereRM() {
     const inputNum = document.getElementById('-RM');
     const labelNum = document.getElementById('_TxtForRM');
-    var RM = formCadAlu.rm().value; 
+    const RM = formCadAlu.rm().value; 
     if (RM > 0 && RM.length == 10 || RM.length == 11) {
         inputNum.classList.remove('erro');
         labelNum.classList.remove('erro');
@@ -233,4 +233,11 @@ function validaCEP(cep) {
 function SemNum(nome){
     var re =/(?=\D)([a-zA-Z])*([^a-zA-Zà-úÀ-Ú])?/;
     return re.test(nome);
+}
+
+function ValidaRM(dado){
+    if (dado > 0 && dado.length == 10 || dado.length == 11){
+        return true;
+    }
+    return false;
 }

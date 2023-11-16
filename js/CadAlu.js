@@ -18,7 +18,6 @@ function cadTurBD() {
             alert('Erro ao cadastrar, recarregue a pág. e tente novamente.');
             console.log(erro);
         })
-
 }
 
 
@@ -36,9 +35,9 @@ function apareceBtn(){
     if (!validaEmail(email)){
         return true;
     }
-    var RM = formCadAlu.rm().value;
-    if(!RM || RM.length != 10 && RM.length != 11){
-        return true;
+    const RM = formCadAlu.rm().value;
+    if(RM){
+        return !ValidaRM(RM);
     }
     return false;
 }

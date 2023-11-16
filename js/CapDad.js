@@ -25,6 +25,7 @@ const formCadTur = {
 const formCadAlu = {
     nome: () => document.getElementById('-nome'),
     emailAlu: () => document.getElementById('-email'),
+    Turma: () => document.getElementById('-NomeTur'),
     rm: () => document.getElementById('-RM'),
     btn: () => document.getElementById('-bnt'),
     Segunda: () => document.getElementById('Segunda'),

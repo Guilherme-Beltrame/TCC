@@ -4,19 +4,8 @@ function seSelecionado(){
     const Quarta = formCadAlu.Quarta();
     const Quinta = formCadAlu.Quinta();
     const Sexta = formCadAlu.Sexta();
-    const SegundaEntrada = formCadAlu.SegundaEntrada();
-    const SegundaSaida = formCadAlu.SegundaSaida();
-    const TercaEntrada = formCadAlu.TercaEntrada();
-    const TercaSaida = formCadAlu.TercaSaida();
-    const QuartaEntrada = formCadAlu.QuartaEntrada();
-    const QuartaSaida = formCadAlu.QuartaSaida();
-    const QuintaEntrada = formCadAlu.QuintaEntrada();
-    const QuintaSaida = formCadAlu.QuintaSaida();
-    const SextaEntrada = formCadAlu.SextaEntrada();
-    const SextaSaida = formCadAlu.SextaSaida();
     if(Segunda.checked){
         Segunda.value = 1;
-        
     }else{
         Segunda.value = 0;
     }
