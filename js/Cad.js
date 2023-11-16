@@ -95,6 +95,7 @@ function selectPlano() {
     const BusinessDiv = document.getElementById('BusinessDiv');
     const LiteDiv = document.getElementById('LiteDiv');
     var selecionou;
+    console.log(planos);
     planos.forEach(plano => {
         if (plano.checked) {
             selecionou = 1;

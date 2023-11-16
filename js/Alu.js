@@ -1,7 +1,6 @@
 function AdiDadosTela(Alunos) {
     CriaDivsIniciais();
     const docAluno = document.getElementById("DocAlu");
-
     Alunos.forEach(Aluno => {
         console.log(Aluno.nome);
         const docAluno = document.getElementById("DocAlu");

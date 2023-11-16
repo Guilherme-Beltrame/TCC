@@ -216,6 +216,25 @@ function ConfereSenha() {
     habilitaBtn();
 }
 
+function ValidaPeriodos(dados){
+    var diaCheck = 0;
+    console.log(dados)
+    dados.forEach(DiaSemana => {
+        console.log(DiaSemana);
+        if(DiaSemana.checked){
+            diaCheck++;
+            DiaSemana.value = 1;
+        }
+    });
+    if(diaCheck==0){
+        console.log('nenhum dia selecionado')
+        return true;
+    }else if(diaCheck > 0){
+        console.log('algum dia foi selecionado')
+        return false;
+    }
+}
+
 function aceitaTermos(){
     const AceiTerm = document.getElementById('-aceitaTermos');
     var aceTer = form.aceitaTermos().value;

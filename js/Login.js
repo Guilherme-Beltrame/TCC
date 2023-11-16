@@ -52,12 +52,6 @@ function habilitaBtn(){
     formLogin.btn().disabled  = apareceBtn();
 }
 
-function dados(user) {
-    user.forEach(element => {
-        console.log('foi')
-    });
-}
-
 function MsgErro() {
     criaFundos();
     criaElementos();
