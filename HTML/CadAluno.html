@@ -78,7 +78,7 @@
             </div>
             <div class="DivFormCad">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" onkeydown="confereNomeAlu()" id="-nome"
+                    <input type="text" class="form-control" onchange="confereNomeAlu()" id="-nome"
                         placeholder="1º ano A" required>
                     <label id="_TxtForN" for="-nome">Nome:</label>
                 </div>
@@ -95,7 +95,7 @@
                 <div class="addTur mb-3" >
                     <div class="possAdd">
                         <div class="addCamp form-floating mb-2">
-                            <input type="text" class="form-control" id="-NomeTur" onkeydown="" placeholder="1º ano A" >
+                            <input type="text" class="form-control" id="-NomeTur" onchange="ConfereTurma()" placeholder="1º ano A" >
                             <label id="_TxtForTur" for="-NomeTur">Turma: </label>
                             <button type="button" class="add fs-3 btn-primary">+</button>
                         </div>

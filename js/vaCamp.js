@@ -75,6 +75,24 @@ function confereNome() {
     habilitaBtn();
 }
 
+function ConfereTurma() {
+    const inputNome = document.getElementById('-NomeTur');
+    const labelNome = document.getElementById('_TxtForTur');
+    var Nome = formCadAlu.Turma().value;
+    if (Nome.length > 1 && Nome != '') {
+        inputNome.classList.remove('erro');
+        labelNome.classList.remove('erro');
+        labelNome.innerHTML = '';
+        labelNome.innerHTML = 'Nome';
+    } else {
+        labelNome.innerHTML = '';
+        inputNome.classList.add('erro');
+        labelNome.classList.add('erro');
+        labelNome.innerHTML = 'insira o Nome';
+    }
+    habilitaBtn();
+}
+
 function confereNomeTur() {
     const labelNome = document.getElementById('_TxtForTurN');
     const btncad = document.getElementById('-btnTurCad');
@@ -110,6 +128,7 @@ function confereNomeAlu() {
         labelNome.classList.add('erro');
         labelNome.innerHTML = 'Nome Invalido!';
     }
+    habilitaBtn();
 }
 
 function ConfereCNPJ() {

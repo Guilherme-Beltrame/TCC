@@ -29,14 +29,23 @@ function CadAlu(){
 function apareceBtn(){
     var nome = formCadAlu.nome().value;
     if(nome == ''){
+        console.log(nome)
         return true;
     }
     var email = formCadAlu.emailAlu().value;
     if (!validaEmail(email)){
+        console.log(email)
+        return true;
+    }
+    var turma = formCadAlu.Turma().value
+    if(turma == ''||turma.length <=1){
+        console.log(turma);
         return true;
     }
     const RM = formCadAlu.rm().value;
     if(RM){
+        console.log(RM)
+        console.log(ValidaRM(RM));
         return !ValidaRM(RM);
     }
     return false;
