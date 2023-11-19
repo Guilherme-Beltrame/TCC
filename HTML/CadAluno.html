@@ -121,77 +121,77 @@
                     <p class="" id="_TxtFor"> Período</p>
                     <div class="diaSemana">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="" onclick="habilitaBtn()" id="Segunda">
+                            <input class="form-check-input" type="checkbox" name="dia" value="false" onclick="ValidaPeriodos()" id="Segunda">
                             <label class="form-check-label" for="Segunda">
                                 Segunda
                             </label>
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" id="SegundaEntrada" class="form-control" />
+                            <input type="time" id="SegundaEntrada" name="HoraEntra" class="form-control" />
                             <p>ás</p>
-                            <input type="time" id="SegundaSaida" class="form-control" />
+                            <input type="time" id="SegundaSaida" name="HoraSaida" class="form-control" />
                         </div>
                     </div>
                     <div class="diaSemana">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox"name="dia" value="" onclick="habilitaBtn()" id="Terca">
+                            <input class="form-check-input" type="checkbox"name="dia" value="false" onclick="ValidaPeriodos()" id="Terca">
                             <label class="form-check-label" for="Terca">
                                 Terça
                             </label>
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" id="TercaEntrada" class="form-control" />
+                            <input type="time" id="TercaEntrada" name="HoraEntra" class="form-control" />
                             <p>ás</p>
-                            <input type="time" id="TercaSaida" class="form-control" />
+                            <input type="time" id="TercaSaida" name="HoraSaida" class="form-control" />
                         </div>
                     </div>
                     <div class="diaSemana">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="" onclick="habilitaBtn()" id="Quarta">
+                            <input class="form-check-input" type="checkbox" name="dia" value="false" onclick="ValidaPeriodos()" id="Quarta">
                             <label class="form-check-label" for="Quarta">
                                 Quarta
                             </label>
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" id="QuartaEntrada" class="form-control" />
+                            <input type="time" id="QuartaEntrada" name="HoraEntra" class="form-control" />
                             <p>ás</p>
-                            <input type="time" id="QuartaSaida" class="form-control" />
+                            <input type="time" id="QuartaSaida" name="HoraSaida" class="form-control" />
                         </div>
                     </div>
                     <div class="diaSemana">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="" onclick="habilitaBtn()" id="Quinta">
+                            <input class="form-check-input" type="checkbox" name="dia" value="false" onclick="ValidaPeriodos()" id="Quinta">
                             <label class="form-check-label" for="Quinta">
                                 Quinta
                             </label>
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" id="QuintaEntrada" class="form-control" />
+                            <input type="time" id="QuintaEntrada" name="HoraEntra" class="form-control" />
                             <p>ás</p>
-                            <input type="time" id="QuintaSaida" class="form-control" />
+                            <input type="time" id="QuintaSaida" name="HoraSaida" class="form-control" />
                         </div>
                     </div>
                     <div class="diaSemana">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="" onclick="habilitaBtn()" id="Sexta">
+                            <input class="form-check-input" type="checkbox" name="dia" value="false" onclick="ValidaPeriodos()" id="Sexta">
                             <label class="form-check-label" for="Sexta">
                                 Sexta
                             </label>
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" class="form-control" />
+                            <input type="time" class="form-control"  name="HoraEntra" id="SextaEntrada" />
                             <p>ás</p>
-                            <input type="time" class="form-control" />
+                            <input type="time" class="form-control" name="HoraSaida" id="SextaSaida" />
                         </div>
                     </div>
                 </div>
                 <div class="btncad">
-                    <button type="button" id="-bnt" onclick="CadAlu()"
+                    <button type="button" id="-bnt" onclick="" disabled
                         class="Cadlargura btn btn-success">Cadastrar</button>
                 </div>
             </div>

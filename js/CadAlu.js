@@ -20,41 +20,71 @@ function cadTurBD() {
         })
 }
 
-
-
 function CadAlu() {
     const dados = fakeDados();
 
     db.collection('Alunos')
-    .add(dados)
-    .then(()=>{
-        window.location.href='HomeInst.html'
-    })
-    .catch(erro =>{
-        console.log(erro);
-        alert(erro);
-    })
+        .add(dados)
+        .then(() => {
+            window.location.href = 'HomeInst.html'
+        })
+        .catch(erro => {
+            console.log(erro);
+            alert(erro);
+        })
+}
+
+function commitDados(){
+    return{
+        email: formCadAlu.email().value,
+        cronograma: {
+            Segunda:{
+                
+            }
+        }
+    }
 }
 
 function fakeDados() {
     return {
-        Curso: 'Desenvolvimento de Sistemas',
         Email: 'Gui@gmail.com',
-        Entrada: '07:30 AM',
-        Estado: 'Ausente',
-        Frequencia: {
-            Segunda: 0,
-            Terca: 0,
-            Quarta: 0,
-            Quinta: 0,
-            Sexta: 0,
+        Cronograma: {
+            Segunda: {
+                exist: true,
+                estado: 'Presente',
+                Entrada: '07:30',
+                Saida: '',
+                Periodo: '07:30 as 15:30'
+            }, terca: {
+                exist: true,
+                estado: 'Presente',
+                Entrada: '07:30',
+                Saida: '',
+                Periodo: '07:30 as 15:30'
+            }, Quarta: {
+                exist: false,
+                estado: '',
+                Entrada: '',
+                Saida: '',
+                Periodo: ''
+            }, Segunda: {
+                exist: true,
+                estado: 'Ausente',
+                Entrada: '07:30',
+                Saida: '10:30',
+                Periodo: '08:30 as 15:30'
+            }, Segunda: {
+                exist: false,
+                estado: 'Presente',
+                Entrada: '07:30',
+                Saida: '',
+                Periodo: '07:30 as 15:30'
+            },
         },
         Nome: 'Giovana Almeida',
         RM: 2021200394,
-        Saida: '15:30 PM',
         Turma: '1º ano A',
         idTurma: 'fGF3zfRjTKnwtBre5JOV',
-        periodo: '7:30 ás 15:30',
         uid: 'duqCTVcpKybWOpLxpuxOVzZUoV42'
     }
 }
@@ -75,15 +105,54 @@ function apareceBtn() {
         console.log(turma);
         return true;
     }
-    const dias = document.getElementsByName('dia');
-    ValidaPeriodos(dias);
     const RM = formCadAlu.rm().value;
-    if (RM) {
-        console.log(RM)
-        console.log(ValidaRM(RM));
-        return !ValidaRM(RM);
+    if (RM < 0 || RM.length < 10 || RM.length > 11) {
+        console.log(RM.length)
+        return true;
     }
-    return false;
+    const dias = document.getElementsByName('dia');
+    var number = 0;
+    var cont = 0;
+    var nomes;
+    if (dias) {
+        dias.forEach(dia => {
+            console.log(dia.value);
+            if (dia.value == 1) {
+                nomes = dia.id + 'Entrada';
+                console.log(formCadAlu.Entrada(nomes).value);
+                if (formCadAlu.Entrada(nomes).value == '') {
+                    console.log('foiEntraVazio')
+                    number++;
+                    console.log(number)
+                }
+                nomes = dia.id + 'Saida';
+                if (formCadAlu.Saida(nomes).value == '') {
+                    console.log('foiSaidaVazio')
+                    number++;
+                    console.log(number)
+
+                }
+            } else if (dia.value == 0) {
+                nomes = dia.id + 'Entrada';
+                if(formCadAlu.Entrada(nomes).value!= ''){
+                    cont++;
+                }
+                nomes = dia.id + 'Saida';
+                if (formCadAlu.Saida(nomes).value != '') {
+                    cont++;
+                }
+            }
+        });
+        if (number > 0) {
+            console.log(number);
+            return true;
+        } else if(cont>0){
+            console.log(cont);
+            return true;
+        }
+    } else {
+        return false;
+    }
 }
 
 function habilitaBtn() {

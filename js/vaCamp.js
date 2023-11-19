@@ -22,7 +22,7 @@ function confereCEP() {
 function confereRM() {
     const inputNum = document.getElementById('-RM');
     const labelNum = document.getElementById('_TxtForRM');
-    const RM = formCadAlu.rm().value; 
+    const RM = formCadAlu.rm().value;
     if (RM > 0 && RM.length == 10 || RM.length == 11) {
         inputNum.classList.remove('erro');
         labelNum.classList.remove('erro');
@@ -40,7 +40,7 @@ function confereRM() {
 function confereNum() {
     const inputNum = document.getElementById('-Num');
     const labelNum = document.getElementById('_TxtForN');
-    var Num = form.num().value; 
+    var Num = form.num().value;
     console.log(Num);
     if (Num > 0 && Num) {
         inputNum.classList.remove('erro');
@@ -61,7 +61,7 @@ function confereNome() {
     const labelNome = document.getElementById('_TxtForNome');
     var Nome = form.nome().value;
     console.log(SemNum(Nome));
-    if (Nome.length > 1 && SemNum(Nome) ) {
+    if (Nome.length > 1 && SemNum(Nome)) {
         inputNome.classList.remove('erro');
         labelNome.classList.remove('erro');
         labelNome.innerHTML = '';
@@ -95,7 +95,6 @@ function ConfereTurma() {
 
 function confereNomeTur() {
     const labelNome = document.getElementById('_TxtForTurN');
-    const btncad = document.getElementById('-btnTurCad');
     const nomeInst = formCadTur.nomeTur();
     const nomeInstval = formCadTur.nomeTur().value;
     if (nomeInstval != '' && nomeInstval.length >= 3) {
@@ -103,14 +102,13 @@ function confereNomeTur() {
         labelNome.classList.remove('erro');
         labelNome.innerHTML = '';
         labelNome.innerHTML = 'Nome';
-        btncad.disabled = false;
     } else {
-        btncad.disabled = true;
         labelNome.innerHTML = '';
         nomeInst.classList.add('erro');
         labelNome.classList.add('erro');
         labelNome.innerHTML = 'Nome Invalido!';
     }
+    habilitaBtn();
 }
 
 function confereNomeAlu() {
@@ -137,7 +135,7 @@ function ConfereCNPJ() {
     var cnpj = form.cnpj().value;
     console.log(cnpj)
     console.log(validaCNPJ(cnpj));
-    if (validaCNPJ(cnpj)&&cnpj.length == 18) {
+    if (validaCNPJ(cnpj) && cnpj.length == 18) {
 
         inputCNPJ.classList.remove('erro');
         labelCNPJ.classList.remove('erro');
@@ -216,35 +214,44 @@ function ConfereSenha() {
     habilitaBtn();
 }
 
-function ValidaPeriodos(dados){
-    var diaCheck = 0;
-    console.log(dados)
-    dados.forEach(DiaSemana => {
-        console.log(DiaSemana);
-        if(DiaSemana.checked){
-            diaCheck++;
-            DiaSemana.value = 1;
-        }
-    });
-    if(diaCheck==0){
-        console.log('nenhum dia selecionado')
-        return true;
-    }else if(diaCheck > 0){
-        console.log('algum dia foi selecionado')
-        return false;
-    }
-}
-
-function aceitaTermos(){
+function aceitaTermos() {
     const AceiTerm = document.getElementById('-aceitaTermos');
     var aceTer = form.aceitaTermos().value;
-    if(aceTer ==''){
+    if (aceTer == '') {
         console.log('ent alte val true')
         AceiTerm.value = 'True';
-    }else if (aceTer == 'True'){
+    } else if (aceTer == 'True') {
         console.log('ent alte val vazio')
         AceiTerm.value = '';
     }
+    habilitaBtn();
+}
+
+function ConfereHoraEntrada() {
+    const horaEntradas = document.getElementsByName('HoraEntra');
+    console.log(horaEntradas);
+    var cont = 0;
+    horaEntradas.forEach(HoraDEntrada => {
+        console.log(HoraDEntrada.value);
+        if (HoraDEntrada.value = '') {
+            HoraDEntrada.classList.add('erro');
+        } else if (HoraDEntrada.value != '') {
+            console.log(HoraDEntrada.value);
+        }
+    });
+}
+
+function ValidaPeriodos() {
+    const dados = document.getElementsByName('dia');
+    console.log(dados)
+    dados.forEach(DiaSemana => {
+        if (DiaSemana.checked) {
+            DiaSemana.value = 1;
+        } else if (!DiaSemana.checked) {
+            DiaSemana.value = 0;
+        }
+        console.log(dados.values);
+    });
     habilitaBtn();
 }
 
@@ -268,13 +275,13 @@ function validaCEP(cep) {
     return re.test(cep);
 }
 
-function SemNum(nome){
-    var re =/(?=\D)([a-zA-Z])*([^a-zA-Zà-úÀ-Ú])?/;
+function SemNum(nome) {
+    var re = /(?=\D)([a-zA-Z])*([^a-zA-Zà-úÀ-Ú])?/;
     return re.test(nome);
 }
 
-function ValidaRM(dado){
-    if (dado > 0 && dado.length == 10 || dado.length == 11){
+function ValidaRM(dado) {
+    if (dado > 0 && dado.length == 10 || dado.length == 11) {
         return true;
     }
     return false;
