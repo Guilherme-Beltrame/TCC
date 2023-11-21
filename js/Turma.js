@@ -23,7 +23,7 @@ function pegaIds() {
 
 function ExibiAlunosProf(idTurma) {
     db.collection('Alunos')
-        .where('id-turma', '==', idTurma)
+        .where('idTurma', '==', idTurma)
         .get()
         .then(snapshot => {
             const Alunos = snapshot.docs.map(Aluno => ({

@@ -2,6 +2,7 @@
 firebase.auth().onAuthStateChanged(user => {
     if(user){
         pegaDadosdoBD(user.uid);
+        saiTelaCarregando();
     }
 })
 
@@ -15,7 +16,7 @@ function pegaDadosdoBD(id) {
                 id: doc.id
             }));
             console.log(Turmas);
-            ExibiTurTela(Turmas);
+            ExibiTurTelaProf(Turmas);
         })
         .catch(erro =>{
             console.log(erro)
@@ -24,10 +25,6 @@ function pegaDadosdoBD(id) {
 
 function goToRoom(Turma) {
     window.location.href = "TurmaProf.html?id=" + Turma.id + "&prof=" + Turma.users.prof;
-}
-
-function pagProfs(inst) {
-    window.location.href = "Profs.html?inst=" + inst;
 }
 
 function CadTurma() {

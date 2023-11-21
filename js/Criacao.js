@@ -222,6 +222,50 @@ function ExibBtnProfs(inst) {
     btnProfs.appendChild(txtProfs);
 }
 
+function ExibiTurTelaProf(Turmas) {
+
+    const AreaTurmas = document.getElementById('-Turmas');
+    Turmas.forEach(Turma => {
+        const divturma = document.createElement('div');
+        divturma.classList.add('card');
+        divturma.addEventListener('click', () => {
+            goToRoom(Turma);
+        })
+        AreaTurmas.appendChild(divturma);
+
+        const divgeral = document.createElement('div');
+        divgeral.id = 'divGeral' + Turma.TurID;
+        divgeral.classList.add('card-body', 'd-flex', 'flex-column', 'align-items-center', 'justify-content-center');
+        divturma.appendChild(divgeral);
+
+        const divLiTurma = document.createElement('div');
+        divLiTurma.classList.add('sembtn', 'align-items-end', 'justify-content-end');
+        divLiTurma.id = Turma.TurID;
+        divgeral.appendChild(divLiTurma);
+
+        const btnExclui = document.createElement('button');
+        btnExclui.classList.add('btnExcluiSala', 'btn');
+        btnExclui.addEventListener('click', event => {
+            event.stopPropagation();
+            MsgExcluiTur(Turma.TurID, Turma.nome);
+        })
+        divLiTurma.appendChild(btnExclui);
+
+        const imgBtnExclui = document.createElement('img');
+        imgBtnExclui.src = '../img/lixeira.png';
+        btnExclui.appendChild(imgBtnExclui);
+
+        const divNomeTurma = document.createElement('div');
+        divNomeTurma.id = 'divNome' + Turma.TurID;
+        divgeral.appendChild(divNomeTurma);
+
+        const NomeTurma = document.createElement('p');
+        NomeTurma.classList.add('fw-bold', 'fs-1', 'text-primary-emphasis');
+        NomeTurma.innerHTML = Turma.nome;
+        divNomeTurma.appendChild(NomeTurma);
+    });
+}
+
 function ExibiTurTela(Turmas) {
 
     const AreaTurmas = document.getElementById('-Turmas');
