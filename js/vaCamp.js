@@ -246,9 +246,9 @@ function ValidaPeriodos() {
     console.log(dados)
     dados.forEach(DiaSemana => {
         if (DiaSemana.checked) {
-            DiaSemana.value = 1;
+            DiaSemana.value = 'true';
         } else if (!DiaSemana.checked) {
-            DiaSemana.value = 0;
+            DiaSemana.value = 'false';
         }
         console.log(dados.values);
     });

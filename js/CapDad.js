@@ -1,6 +1,6 @@
 
 const form = {
-    nome : () => document.getElementById('-Nome'),
+    nome: () => document.getElementById('-Nome'),
     btn: () => document.getElementById('-Btn'),
     cep: () => document.getElementById('-CEP'),
     num: () => document.getElementById('-Num'),
@@ -19,7 +19,7 @@ const formLogin = {
 
 const formCadTur = {
     nomeTur: () => document.getElementById('-NomeTur'),
-    curNome: () => document.getElementById('-NomeCur'),
+    btncad: () => document.getElementById('-btnTurCad'),
 }
 
 const formCadAlu = {
@@ -28,11 +28,7 @@ const formCadAlu = {
     Turma: () => document.getElementById('-NomeTur'),
     rm: () => document.getElementById('-RM'),
     btn: () => document.getElementById('-bnt'),
-    Segunda: () => document.getElementById('Segunda'),
-    Terca: () => document.getElementById('Terca'),
-    Quarta: () => document.getElementById('Quarta'),
-    Quinta: () => document.getElementById('Quinta'),
-    Sexta: () => document.getElementById('Sexta'),
+    DiaCheck: diaSelec => document.getElementById(diaSelec),
     Entrada: diaSelec => document.getElementById(diaSelec),
     Saida: diaSelec => document.getElementById(diaSelec),
 }

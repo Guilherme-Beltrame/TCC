@@ -12,7 +12,7 @@ function criaElementos() {
     headerCard.appendChild(consequencia);
 
     const resul = document.createElement('p');
-    resul.classList.add('fs-2', 'mx-4', 'fw-semibold', 'my-5', 'text-center');
+    resul.classList.add('fs-2', 'mx-4', 'fw-semibold', 'mb-5', 'text-center');
     resul.id = 'resulValida';
     validacao.appendChild(resul);
 
@@ -27,9 +27,9 @@ function criaElementos() {
     btn.id = 'btnConseq';
     divBtn.appendChild(btn);
 }
-
-function criaFundos() {
-    const body = document.getElementById('_fundLC');
+ 
+function criaFundos(fundo) {
+    const body = document.getElementById(fundo);
     const fundPreto = document.createElement('div');
     fundPreto.classList.add('fundPreto');
     fundPreto.id = "fundopreto";
@@ -54,7 +54,7 @@ function msgSucesso() {
     }
 }
 
-function ExibiProfsTela(Professores){
+function ExibiProfsTela(Professores) {
     const AreaProfs = document.getElementById('Profs');
 
     Professores.forEach(professor => {
@@ -67,7 +67,7 @@ function ExibiProfsTela(Professores){
         const NomeProf = document.createElement('p');
         NomeProf.innerHTML = professor.nome;
         NomeProf.classList.add('NomeAlu', 'fw-bold');
-        NomeProf.addEventListener('click',()=>{
+        NomeProf.addEventListener('click', () => {
             PuxaDados(professor.idProf);
         })
 
@@ -97,7 +97,7 @@ function ExibiProfsTela(Professores){
     });
 }
 
-function ExibiAluTelaProf(Alunos){
+function ExibiAluTelaProf(Alunos) {
     const AreaAlunos = document.getElementById('Alunos');
     Alunos.forEach(aluno => {
         const ItemAluno = document.createElement('li');
@@ -109,7 +109,7 @@ function ExibiAluTelaProf(Alunos){
         const NomeAlu = document.createElement('p');
         NomeAlu.innerHTML = aluno.Nome;
         NomeAlu.classList.add('NomeAlu', 'fw-bold');
-        NomeAlu.addEventListener('click',()=>{
+        NomeAlu.addEventListener('click', () => {
             PuxaDadosprof(aluno.AluId);
         })
         const RmAlu = document.createElement('p');
@@ -133,7 +133,7 @@ function ExibiAluTelaProf(Alunos){
     });
 }
 
-function ExibiAluTela(Alunos){
+function ExibiAluTela(Alunos) {
     const AreaAlunos = document.getElementById('Alunos');
     Alunos.forEach(aluno => {
         const ItemAluno = document.createElement('li');
@@ -145,7 +145,7 @@ function ExibiAluTela(Alunos){
         const NomeAlu = document.createElement('p');
         NomeAlu.innerHTML = aluno.Nome;
         NomeAlu.classList.add('NomeAlu', 'fw-bold');
-        NomeAlu.addEventListener('click',()=>{
+        NomeAlu.addEventListener('click', () => {
             PuxaDados(aluno.AluId);
         })
 
@@ -177,23 +177,23 @@ function ExibiAluTela(Alunos){
 
 function frequencia(Freq) {
     var dias = 0;
-    if(Freq.Segunda&&Freq.Segunda == 1){
+    if (Freq.Segunda && Freq.Segunda == 1) {
         console.log(dias);
         dias++;
     }
-    if(Freq.Terça&&Freq.Terça == 1){
+    if (Freq.Terça && Freq.Terça == 1) {
         dias++;
         console.log(dias);
     }
-    if(Freq.Quarta&&Freq.Quarta == 1){
+    if (Freq.Quarta && Freq.Quarta == 1) {
         console.log(dias);
         dias++;
     }
-    if(Freq.Quinta&&Freq.Quinta == 1){
+    if (Freq.Quinta && Freq.Quinta == 1) {
         dias++;
         console.log(dias);
     }
-    if(Freq.Sexta&&Freq.Sexta == 1){
+    if (Freq.Sexta && Freq.Sexta == 1) {
         dias++;
         console.log(dias);
     }
@@ -201,16 +201,16 @@ function frequencia(Freq) {
     console.log(total);
     console.log(dias);
     return {
-        value: total +'%',
+        value: total + '%',
     };
 }
 
-function ExibBtnProfs(inst){
+function ExibBtnProfs(inst) {
     const Areabtn = document.getElementById('main');
 
     const btnProfs = document.createElement('button');
     btnProfs.classList.add('fab', 'fixed', 'bottom', 'right', 'd-flex', 'flex-row');
-    btnProfs.addEventListener('click', () =>{
+    btnProfs.addEventListener('click', () => {
         pagProfs(inst);
     });
 
@@ -222,24 +222,96 @@ function ExibBtnProfs(inst){
     btnProfs.appendChild(txtProfs);
 }
 
-function ExibiTurTela(Turmas){
-    
+function ExibiTurTela(Turmas) {
+
     const AreaTurmas = document.getElementById('-Turmas');
     Turmas.forEach(Turma => {
         const divturma = document.createElement('div');
         divturma.classList.add('card');
-        divturma.addEventListener('click', ()=> {
+        divturma.addEventListener('click', () => {
             goToRoom(Turma);
         })
+        AreaTurmas.appendChild(divturma);
+
+        const divgeral = document.createElement('div');
+        divgeral.id = 'divGeral' + Turma.TurID;
+        divgeral.classList.add('card-body', 'd-flex', 'flex-column', 'align-items-center', 'justify-content-center');
+        divturma.appendChild(divgeral);
+
+        const divLiTurma = document.createElement('div');
+        divLiTurma.classList.add('sembtn', 'align-items-end', 'justify-content-end');
+        divLiTurma.id = Turma.TurID;
+        divgeral.appendChild(divLiTurma);
+
+        const btnExclui = document.createElement('button');
+        btnExclui.classList.add('btnExcluiSala', 'btn');
+        btnExclui.addEventListener('click', event => {
+            event.stopPropagation();
+            MsgExcluiTur(Turma.TurID, Turma.nome);
+        })
+        divLiTurma.appendChild(btnExclui);
+
+        const imgBtnExclui = document.createElement('img');
+        imgBtnExclui.src = '../img/lixeira.png';
+        btnExclui.appendChild(imgBtnExclui);
+
         const divNomeTurma = document.createElement('div');
-        divNomeTurma.classList.add('card-body', 'd-flex', 'align-items-center', 'justify-content-center');
+        divNomeTurma.id = 'divNome' + Turma.TurID;
+        divgeral.appendChild(divNomeTurma);
 
         const NomeTurma = document.createElement('p');
         NomeTurma.classList.add('fw-bold', 'fs-1', 'text-primary-emphasis');
         NomeTurma.innerHTML = Turma.nome;
-
-        AreaTurmas.appendChild(divturma);
-        divturma.appendChild(divNomeTurma);
         divNomeTurma.appendChild(NomeTurma);
+
+        divturma.onmouseleave = () => {
+            SaiLixeira(Turma.TurID, ('divNome' + Turma.TurID), ('divGeral' + Turma.TurID));
+        }
+        divturma.onmouseenter = () => {
+            ApaLixeira(Turma.TurID, ('divNome' + Turma.TurID), ('divGeral' + Turma.TurID));
+        }
     });
+}
+
+function MsgExcluiTur(TurID, turNome) {
+    criaFundos('main');
+    criaElementos();
+    const consequencia = document.getElementById('consequencia');
+    const btnConseq = document.getElementById('btnConseq');
+    const resulValida = document.getElementById('resulValida');
+    const cabecalho = document.getElementById('headerCad');
+    consequencia.innerHTML = 'Cuidado!';
+    resulValida.innerHTML = 'Term certeza que deseja excluir permanentemente a turma ' + turNome + '?';
+    btnConseq.innerHTML = 'Sim';
+    btnConseq.onclick = function () {
+        ExcluiTurmaDB(TurID, turNome);
+    }
+    const btnSair = document.createElement("button");
+    btnSair.type = 'button';
+    btnSair.id = 'sairbtn';
+    btnSair.onclick = function () {
+        const divFund = document.getElementById("fundopreto");
+        divFund.remove();
+        const divDados = document.getElementById("DocCad");
+        divDados.remove();
+    }
+    btnSair.classList.add("btn-close", "mb-5", "ms-2");
+    cabecalho.appendChild(btnSair);
+}
+
+function msgSucessoExclu(turNome) {
+    const btnsai= document.getElementById('sairbtn');
+    btnsai.remove();
+    const cabecalho = document.getElementById('headerCad');
+    cabecalho.classList.remove('headerCad');
+    cabecalho.classList.add('pt-4')
+    const consequencia = document.getElementById('consequencia');
+    const btnConseq = document.getElementById('btnConseq');
+    const resulValida = document.getElementById('resulValida');
+    consequencia.innerHTML = 'Parabéns!';
+    resulValida.innerHTML = 'A turma ' + turNome + ' Foi excluida com sucesso';
+    btnConseq.innerHTML = 'Fechar';
+    btnConseq.onclick = function () {
+        window.location.href = 'HomeInst.html'
+    }
 }

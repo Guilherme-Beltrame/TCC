@@ -5,7 +5,9 @@ function cadProfs() {
 firebase.auth().onAuthStateChanged(user => {
     if (user.uid == pegaIds().uidInst) {
         ExibiProfsInsti(pegaIds().uidInst);
+        saiTelaCarregando();
     } else {
+        saiTelaCarregando();
         alert('Você não tem permissão em acessar esses dados');
         window.location.href = "HomeInst.html";
     }
@@ -32,6 +34,7 @@ function pegaIds() {
 }
 
 function PuxaDados(profID) {
+    entratelaCarregando();
     db.collection('professores')
         .doc(profID)
         .get()
@@ -40,10 +43,13 @@ function PuxaDados(profID) {
                 console.log(dadosprof.data());
                 AdiDadosTela(dadosprof.data());
             } else {
+                saiTelaCarregando();
                 alert("Erro ao carregar dados");
             }
+            saiTelaCarregando();
         })
         .catch(() => {
+            saiTelaCarregando();
             alert("Erro ao carregaaaaaaaaar dados");
         })
 }

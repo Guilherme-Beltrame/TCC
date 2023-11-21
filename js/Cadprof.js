@@ -113,11 +113,6 @@ function apareceBtn() {
         console.log(turma);
         return true;
     }
-    const RM = formCadAlu.rm().value;
-    if (RM < 0 || RM.length < 10 || RM.length > 11) {
-        console.log(RM.length)
-        return true;
-    }
     const dias = document.getElementsByName('dia');
     var number = 0;
     var cont = 0;

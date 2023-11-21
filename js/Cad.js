@@ -2,7 +2,7 @@
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         setTimeout(() => {
-            window.location.href = 'Home.html';
+            window.location.href = 'HomeInst.html';
         }, 7000);
     }
 

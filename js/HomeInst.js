@@ -1,8 +1,8 @@
 firebase.auth().onAuthStateChanged(user => {
-    
     seProf(user.uid);
-    if(user){
+    if (user) {
         pegaDadosdoBD(user.uid);
+        saiTelaCarregando();
     }
 })
 
@@ -29,18 +29,20 @@ function pegaDadosdoBD(id) {
         .then(snapshot => {
             const Turmas = snapshot.docs.map(doc => ({
                 ...doc.data(),
-                id: doc.id
+                TurID: doc.id
             }));
+            
             ExibiTurTela(Turmas);
             ExibBtnProfs(id);
+            
         })
-        .catch(erro =>{
+        .catch(erro => {
             console.log(erro)
         });
 }
 
 function goToRoom(Turma) {
-    window.location.href = "TurmaInst.html?id=" + Turma.id + "&inst=" + Turma.users.inst;
+    window.location.href = "TurmaInst.html?id=" + Turma.TurID + "&inst=" + Turma.users.inst;
 }
 
 function pagProfs(inst) {
@@ -49,4 +51,47 @@ function pagProfs(inst) {
 
 function CadTurma() {
     window.location.href = "CadTurma.html";
+}
+
+function ApaLixeira(idTurma, idDivNome, idDivGeral) {
+    console.log('entraAbre')
+    const lixeira = document.getElementById(idTurma);
+    const divGeral = document.getElementById(idDivGeral);
+    const divnome = document.getElementById(idDivNome);
+
+    console.log(idDivNome, idDivGeral, idTurma)
+
+    divGeral.classList.remove('justify-content-center');
+    divGeral.classList.add('justify-content-start');
+
+    lixeira.classList.remove('sembtn');
+    lixeira.classList.add('combtn');
+
+    divnome.classList.add('mt-4');
+}
+
+function SaiLixeira(idTurma, idDivNome, idDivGeral) {
+    console.log('entraAentrabre')
+    const lixeira = document.getElementById(idTurma);
+    const divGeral = document.getElementById(idDivGeral);
+    const divnome = document.getElementById(idDivNome);
+
+    divGeral.classList.remove('justify-content-start');
+    divGeral.classList.add('justify-content-center');
+
+    lixeira.classList.remove('combtn');
+    lixeira.classList.add('sembtn');
+
+    divnome.classList.remove('mt-4');
+}
+
+function ExcluiTurmaDB(idTur, NomeTur){
+    entratelaCarregando();
+    db.collection("Turma").doc(idTur).delete().then(() => {
+        saiTelaCarregando();
+        msgSucessoExclu(NomeTur);
+    }).catch((error) => {
+        saiTelaCarregando();
+        console.error("Error removing document: ", error);
+    });
 }

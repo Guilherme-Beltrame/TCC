@@ -20,3 +20,17 @@ function cadTurBD() {
         })
 
 }
+
+function apareceBtn(){
+    const nometur = formCadTur.nomeTur().value;
+    if(nometur == '' || nometur.length < 3){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function habilitaBtn(){
+    formCadTur.btncad().disabled = apareceBtn();
+}

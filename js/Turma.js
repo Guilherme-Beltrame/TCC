@@ -1,9 +1,12 @@
 firebase.auth().onAuthStateChanged(user => {
     if (user.uid == pegaIds().uidInst) {
         ExibiAlunosInsti(pegaIds().uidTurma);
+        saiTelaCarregando();
     } else if (user.uid == pegaIds().uidProf) {
         ExibiAlunosProf(pegaIds().uidTurma);
+        saiTelaCarregando();
     } else {
+        saiTelaCarregando();
         alert('Você não tem permissão em acessar esses dados');
         window.location.href = "../index.html";
     }
@@ -45,23 +48,28 @@ function ExibiAlunosInsti(idTurma) {
 }
 
 function PuxaDadosprof(AluId) {
+    entratelaCarregando();
     db.collection('Alunos')
         .doc(AluId)
         .get()
         .then(dados => {
             if (dados.exists) {
                 AdiDadosTelaProf(dados.data());
+                saiTelaCarregando();
             } else {
+                saiTelaCarregando();
                 alert("Erro ao carregar dados");
             }
         })
         .catch(erro=>{
+            saiTelaCarregando();
             alert("Erro ao carregaaaaaaaaar dados");
             console.log(erro)
         })
 }
 
 function PuxaDados(AluId) {
+    entratelaCarregando();
     db.collection('Alunos')
         .doc(AluId)
         .get()
@@ -69,11 +77,14 @@ function PuxaDados(AluId) {
             if (dados.exists) {
                 console.log(dados.data());
                 AdiDadosTela(dados.data());
+                saiTelaCarregando();
             } else {
+                saiTelaCarregando();
                 alert("Erro ao carregar dados");
             }
         })
         .catch(erro=>{
+            saiTelaCarregando();
             alert("Erro ao carregaaaaaaaaar dados");
             console.log(erro)
         })
