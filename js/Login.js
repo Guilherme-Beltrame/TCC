@@ -53,7 +53,7 @@ function habilitaBtn(){
 }
 
 function MsgErro() {
-    criaFundos();
+    criaFundos('_fundLC');
     criaElementos();
     MsgInvaliCredenciais();
 }

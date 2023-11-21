@@ -47,7 +47,7 @@ function apareceBtn(){
 }
 
 function FimCadastro() {
-    criaFundos();
+    criaFundos('_fundLC');
     criaElementos();
     msgSucesso();
 }
