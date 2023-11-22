@@ -1,6 +1,6 @@
 
 function CadAlu() {
-    console.log(buscaIdTurma(formCadAlu.Turma().value).turID)
+    console.log(buscaIdTurma(formCadAlu.Turma().value))
     const dados = commitDados();
     console.log(dados);
     // const dados = fakeDados();
@@ -15,42 +15,42 @@ function CadAlu() {
     //     })
 }
 
-function commitDados(){
-    return{
+function commitDados() {
+    return {
         email: formCadAlu.emailAlu().value,
         cronograma: {
-            Segunda:{
-                exist:formCadAlu.DiaCheck('Segunda').value,
-                estado:'',
-                entrada:'',
+            Segunda: {
+                exist: formCadAlu.DiaCheck('Segunda').value,
+                estado: '',
+                entrada: '',
                 saida: '',
                 Periodo: formCadAlu.Entrada('SegundaEntrada').value + ' as ' + formCadAlu.Saida('SegundaSaida').value,
             },
-            Terca:{
-                exist:formCadAlu.DiaCheck('Terca').value,
-                estado:'',
-                entrada:'',
+            Terca: {
+                exist: formCadAlu.DiaCheck('Terca').value,
+                estado: '',
+                entrada: '',
                 saida: '',
                 Periodo: formCadAlu.Entrada('TercaEntrada').value + 'as' + formCadAlu.Saida('TercaSaida').value,
             },
-            Quarta:{
-                exist:formCadAlu.DiaCheck('Quarta').value,
-                estado:'',
-                entrada:'',
+            Quarta: {
+                exist: formCadAlu.DiaCheck('Quarta').value,
+                estado: '',
+                entrada: '',
                 saida: '',
                 Periodo: formCadAlu.Entrada('QuartaEntrada').value + 'as' + formCadAlu.Saida('QuartaSaida').value,
             },
-            Quinta:{
-                exist:formCadAlu.DiaCheck('Quinta').value,
-                estado:'',
-                entrada:'',
+            Quinta: {
+                exist: formCadAlu.DiaCheck('Quinta').value,
+                estado: '',
+                entrada: '',
                 saida: '',
                 Periodo: formCadAlu.Entrada('QuintaEntrada').value + 'as' + formCadAlu.Saida('QuintaSaida').value,
             },
-            Sexta:{
-                exist:formCadAlu.DiaCheck('Sexta').value,
-                estado:'',
-                entrada:'',
+            Sexta: {
+                exist: formCadAlu.DiaCheck('Sexta').value,
+                estado: '',
+                entrada: '',
                 saida: '',
                 Periodo: formCadAlu.Entrada('SextaEntrada').value + 'as' + formCadAlu.Saida('SextaSaida').value,
             }
@@ -58,31 +58,30 @@ function commitDados(){
         nome: formCadAlu.nome().value,
         RM: parseFloat(formCadAlu.rm().value),
         turma: formCadAlu.Turma().value,
-        idTurma: buscaIdTurma(formCadAlu.Turma().value).turID,
+        idTurma: buscaIdTurma(formCadAlu.Turma().value),
         uid: firebase.auth().userCurrent
     }
 }
 
-function buscaIdTurma(nameTurma){
+function buscaIdTurma(nameTurma) {
     db.collection('Turma')
         .where('nome', '==', nameTurma)
         .get()
         .then(snapshot => {
             const turmas = snapshot.docs.map(Turma => ({
                 ...Turma.data(),
-                idTurma:Turma.id,
+                idTurma: Turma.id,
             }));
-            var idTur;
-            turmas.forEach(turma =>{
+            var TurmaId
+            turmas.forEach(turma => {
                 console.log(turma.idTurma)
-                idTur = turma.idTurma;
+                TurmaId = turma.idTurma.toString();
+                console.log(TurmaId)
             });
-            console.log(idTur)
-            return {
-                turID: idTur,
-            };
+            return TurmaId;
+
         })
-        .catch(erro  => {
+        .catch(erro => {
             console.log(erro);
         });
 }
@@ -147,7 +146,7 @@ function apareceBtn() {
                 console.log(dia.value)
                 nomes = dia.id + 'Entrada';
                 console.log(nomes)
-                if(formCadAlu.Entrada(nomes).value!= ''){
+                if (formCadAlu.Entrada(nomes).value != '') {
                     console.log(cont)
                     cont++;
                 }
@@ -161,10 +160,10 @@ function apareceBtn() {
         if (number > 0) {
             console.log(number);
             return true;
-        } else if(cont>0){
+        } else if (cont > 0) {
             console.log(cont);
             return true;
-        } else if (cont2 == 5){
+        } else if (cont2 == 5) {
             return true;
         }
     } else {
