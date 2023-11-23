@@ -40,9 +40,13 @@
 }
 
 .presente{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
     color: #00BF63 !important;
 }
 
 .ausente{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
     color: #BF0600 !important;
 }

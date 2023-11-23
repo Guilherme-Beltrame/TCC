@@ -32,10 +32,3 @@ const formCadAlu = {
     Entrada: diaSelec => document.getElementById(diaSelec),
     Saida: diaSelec => document.getElementById(diaSelec),
 }
-
-const prePalavras = {
-    ausente : 'Ausente',
-    faltou: 'Faltou',
-    SemAula: 'Sem aula hoje',
-    aSair: 'A sair',
-}
