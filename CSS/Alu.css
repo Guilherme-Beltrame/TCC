@@ -24,3 +24,25 @@
 .saidaAlu{
     width: 95%;
 }
+
+.tituDadAlu{
+    font-family: 'Racing Sans One', cursive;
+    color: #0E0F8A;
+}
+
+.nomeAlu{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.dadAlu{
+    font-family: 'Open Sans', sans-serif;
+    color: #494949;
+}
+
+.presente{
+    color: #00BF63 !important;
+}
+
+.ausente{
+    color: #BF0600 !important;
+}

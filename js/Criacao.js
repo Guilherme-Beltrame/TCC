@@ -27,7 +27,7 @@ function criaElementos() {
     btn.id = 'btnConseq';
     divBtn.appendChild(btn);
 }
- 
+
 function criaFundos(fundo) {
     const body = document.getElementById(fundo);
     const fundPreto = document.createElement('div');
@@ -143,66 +143,386 @@ function ExibiAluTela(Alunos) {
         imgAlu.src = '../img/Perfil-Aluno.png';
 
         const NomeAlu = document.createElement('p');
-        NomeAlu.innerHTML = aluno.Nome;
+        NomeAlu.innerHTML = aluno.nome;
         NomeAlu.classList.add('NomeAlu', 'fw-bold');
         NomeAlu.addEventListener('click', () => {
             PuxaDados(aluno.AluId);
         })
 
-        const CurAlu = document.createElement('p');
-        CurAlu.innerHTML = aluno.Curso;
-        CurAlu.classList.add('CurAlu', 'fw-bold');
 
         const RmAlu = document.createElement('p');
         RmAlu.innerHTML = aluno.RM;
         RmAlu.classList.add('RmAlu', 'fw-bold');
 
         const FreqAlu = document.createElement('p');
-        FreqAlu.innerHTML = frequencia(aluno.Frequencia).value;
+        FreqAlu.innerHTML = frequencia(aluno.cronograma);
         FreqAlu.classList.add('FreqAlu', 'fw-bold');
 
         const HoraAlu = document.createElement('p');
-        HoraAlu.innerHTML = aluno.Entrada;
+        HoraAlu.innerHTML = HorarioAlu(aluno.cronograma);
         HoraAlu.classList.add('HoraAlu', 'fw-bold');
 
         AreaAlunos.appendChild(ItemAluno);
         ItemAluno.appendChild(imgAlu);
         ItemAluno.appendChild(NomeAlu);
-        ItemAluno.appendChild(CurAlu);
         ItemAluno.appendChild(RmAlu);
         ItemAluno.appendChild(FreqAlu);
         ItemAluno.appendChild(HoraAlu);
     });
 }
 
-function frequencia(Freq) {
-    var dias = 0;
-    if (Freq.Segunda && Freq.Segunda == 1) {
-        console.log(dias);
-        dias++;
+function PegaPeriodo(cronograma) {
+    let dataAtual = new Date().getDay();
+    if (dataAtual == 1) {
+        if (cronograma.Segunda.exist == "true") {
+            return cronograma.Segunda.Periodo;
+        } else if (cronograma.Segunda.exist == "false") {
+            return "Sem Aula Hoje";
+        }
     }
-    if (Freq.Terça && Freq.Terça == 1) {
-        dias++;
-        console.log(dias);
+    if (dataAtual == 2) {
+        if (cronograma.Terca.exist == "true") {
+            return cronograma.Terca.Periodo;
+        } else if (cronograma.Terca.exist == "false") {
+            return "Sem Aula Hoje";
+        }
     }
-    if (Freq.Quarta && Freq.Quarta == 1) {
-        console.log(dias);
-        dias++;
+    if (dataAtual == 3) {
+        if (cronograma.Quarta.exist == "true") {
+            return cronograma.Quarta.Periodo;
+        } else if (cronograma.Quarta.exist == "false") {
+            return "Sem Aula Hoje";
+        }
     }
-    if (Freq.Quinta && Freq.Quinta == 1) {
-        dias++;
-        console.log(dias);
+    if (dataAtual == 4) {
+        if (cronograma.Quinta.exist == "true") {
+            return cronograma.Quinta.Periodo;
+        } else if (cronograma.Quinta.exist == "false") {
+            return "Sem Aula Hoje";
+        }
     }
-    if (Freq.Sexta && Freq.Sexta == 1) {
-        dias++;
-        console.log(dias);
+    if (dataAtual == 5) {
+        if (cronograma.Sexta.exist == "true") {
+            return cronograma.Sexta.Periodo;
+        } else if (cronograma.Sexta.exist == "false") {
+            return "Sem Aula Hoje";
+        }
     }
-    const total = (dias / 5) * 100;
-    console.log(total);
-    console.log(dias);
-    return {
-        value: total + '%',
-    };
+}
+
+function StatusAlu(cronograma) {
+    let dataAtual = new Date().getDay();
+    if (dataAtual == 1) {
+        if (cronograma.Segunda.exist == "true") {
+            if (cronograma.Segunda.estado == "Presente") {
+                return "Presente";
+            } else if (cronograma.Segunda.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Segunda.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 2) {
+        if (cronograma.Terca.exist == "true") {
+            if (cronograma.Terca.estado == "Presente") {
+                return "Presente";
+            } else if (cronograma.Terca.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Terca.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 3) {
+        if (cronograma.Quarta.exist == "true") {
+            if (cronograma.Quarta.estado == "Presente") {
+                return "Presente";
+            } else if (cronograma.Quarta.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Quarta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 4) {
+        if (cronograma.Quinta.exist == "true") {
+            if (cronograma.Quinta.estado == "Presente") {
+                return "Presente";
+            } else if (cronograma.Quinta.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Quinta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 5) {
+        if (cronograma.Sexta.exist == "true") {
+            if (cronograma.Sexta.estado == "Presente") {
+                return "Presente";
+            } else if (cronograma.Sexta.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Sexta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+
+
+}
+
+function horaEntrada(cronograma) {
+    let dataAtual = new Date().getDay();
+    if (dataAtual == 1) {
+        if (cronograma.Segunda.exist == "true") {
+            if (cronograma.Segunda.estado == "Presente") {
+                return cronograma.Segunda.entrada;
+            } else if (cronograma.Segunda.estado == "Ausente") {
+                if(cronograma.Segunda.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Segunda.saida != ""){
+                    return cronograma.Segunda.saida;
+                }
+            }
+        } else if (cronograma.Segunda.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 2) {
+        if (cronograma.Terca.exist == "true") {
+            if (cronograma.Terca.estado == "Presente") {
+                return cronograma.Terca.entrada;
+            } else if (cronograma.Terca.estado == "Ausente") {
+                if(cronograma.Terca.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Terca.saida != ""){
+                    return cronograma.Terca.saida;
+                }
+            }
+        } else if (cronograma.Terca.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 3) {
+        if (cronograma.Quarta.exist == "true") {
+            if (cronograma.Quarta.estado == "Presente") {
+                return cronograma.Quarta.entrada;
+            } else if (cronograma.Quarta.estado == "Ausente") {
+                if(cronograma.Quarta.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Quarta.saida != ""){
+                    return cronograma.Quarta.saida;
+                }
+            }
+        } else if (cronograma.Quarta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 4) {
+        if (cronograma.Quinta.exist == "true") {
+            if (cronograma.Quinta.estado == "Presente") {
+                return cronograma.Quinta.entrada;
+            } else if (cronograma.Quinta.estado == "Ausente") {
+                if(cronograma.Quinta.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Quinta.saida != ""){
+                    return cronograma.Quinta.saida;
+                }
+            }
+        } else if (cronograma.Quinta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 5) {
+        if (cronograma.Sexta.exist == "true") {
+            if (cronograma.Sexta.estado == "Presente") {
+                return cronograma.Sexta.entrada;
+            } else if (cronograma.Sexta.estado == "Ausente") {
+                if(cronograma.Sexta.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Sexta.saida != ""){
+                    return cronograma.Sexta.saida;
+                }
+            }
+        } else if (cronograma.Sexta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+}
+
+function horaSaida(cronograma) {
+    let dataAtual = new Date().getDay();
+    if (dataAtual == 1) {
+        if (cronograma.Segunda.exist == "true") {
+            if (cronograma.Segunda.estado == "Presente") {
+                return "A sair";
+            } else if (cronograma.Segunda.estado == "Ausente") {
+                if(cronograma.Segunda.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Segunda.saida != ""){
+                    return cronograma.Segunda.saida;
+                }
+            }
+        } else if (cronograma.Segunda.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 2) {
+        if (cronograma.Terca.exist == "true") {
+            if (cronograma.Terca.estado == "Presente") {
+                return "A sair";
+            } else if (cronograma.Terca.estado == "Ausente") {
+                if(cronograma.Terca.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Terca.saida != ""){
+                    return cronograma.Terca.saida;
+                }
+            }
+        } else if (cronograma.Terca.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 3) {
+        if (cronograma.Quarta.exist == "true") {
+            if (cronograma.Quarta.estado == "Presente") {
+                return "A sair";
+            } else if (cronograma.Quarta.estado == "Ausente") {
+                if(cronograma.Quarta.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Quarta.saida != ""){
+                    return cronograma.Quarta.saida;
+                }
+            }
+        } else if (cronograma.Quarta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 4) {
+        if (cronograma.Quinta.exist == "true") {
+            if (cronograma.Quinta.estado == "Presente") {
+                return "A sair";
+            } else if (cronograma.Quinta.estado == "Ausente") {
+                if(cronograma.Quinta.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Quinta.saida != ""){
+                    return cronograma.Quinta.saida;
+                }
+            }
+        } else if (cronograma.Quinta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 5) {
+        if (cronograma.Sexta.exist == "true") {
+            if (cronograma.Sexta.estado == "Presente") {
+                return "A sair";
+            } else if (cronograma.Sexta.estado == "Ausente") {
+                if(cronograma.Sexta.saida == ""){
+                    return "Não compareceu";
+                }else if(cronograma.Sexta.saida != ""){
+                    return cronograma.Sexta.saida;
+                }
+            }
+        } else if (cronograma.Sexta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+}
+
+function HorarioAlu(cronograma) {
+    let dataAtual = new Date().getDay();
+    if (dataAtual == 1) {
+        if (cronograma.Segunda.exist == "true") {
+            if (cronograma.Segunda.estado == "Presente") {
+                return cronograma.Segunda.entrada;
+            } else if (cronograma.Segunda.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Segunda.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 2) {
+        if (cronograma.Terca.exist == "true") {
+            if (cronograma.Terca.estado == "Presente") {
+                return cronograma.Terca.entrada;
+            } else if (cronograma.Terca.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Terca.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 3) {
+        if (cronograma.Quarta.exist == "true") {
+            if (cronograma.Quarta.estado == "Presente") {
+                return cronograma.Quarta.entrada;
+            } else if (cronograma.Quarta.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Quarta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 4) {
+        if (cronograma.Quinta.exist == "true") {
+            if (cronograma.Quinta.estado == "Presente") {
+                return cronograma.Quinta.entrada;
+            } else if (cronograma.Quinta.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Quinta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+    if (dataAtual == 5) {
+        if (cronograma.Sexta.exist == "true") {
+            if (cronograma.Sexta.estado == "Presente") {
+                return cronograma.Sexta.entrada;
+            } else if (cronograma.Sexta.estado == "Ausente") {
+                return "Ausente"
+            }
+        } else if (cronograma.Sexta.exist == "false") {
+            return "Sem Aula";
+        }
+    }
+}
+
+function frequencia(cronograma) {
+    var DiasIdos = 0
+    var DiasObrigatorios = 0
+    if (cronograma.Segunda.exist == "true") {
+        DiasObrigatorios++;
+        if (cronograma.Segunda.estado == 'Presente') {
+            DiasIdos++;
+        }
+    }
+    if (cronograma.Terca.exist == "true") {
+        DiasObrigatorios++;
+        if (cronograma.Terca.estado == 'Presente') {
+            DiasIdos++;
+        }
+    }
+    if (cronograma.Quarta.exist == "true") {
+        DiasObrigatorios++;
+        if (cronograma.Quarta.estado == 'Presente') {
+            DiasIdos++;
+        }
+    }
+    if (cronograma.Quinta.exist == "true") {
+        DiasObrigatorios++;
+        if (cronograma.Quinta.estado == 'Presente') {
+            DiasIdos++;
+        }
+    }
+    if (cronograma.Sexta.exist == "true") {
+        DiasObrigatorios++;
+        if (cronograma.Sexta.estado == 'Presente') {
+            DiasIdos++;
+        }
+    }
+    const freq = (DiasIdos / DiasObrigatorios) * 100;
+    return freq + '%';
 }
 
 function ExibBtnProfs(inst) {
@@ -288,7 +608,7 @@ function ExibiTurTela(Turmas) {
         divgeral.appendChild(divLiTurma);
 
         const btnExclui = document.createElement('button');
-        btnExclui.classList.add('btnExcluiSala', 'btn');
+        btnExclui.classList.add('btnExcluiSala');
         btnExclui.addEventListener('click', event => {
             event.stopPropagation();
             MsgExcluiTur(Turma.TurID, Turma.nome);
@@ -344,7 +664,7 @@ function MsgExcluiTur(TurID, turNome) {
 }
 
 function msgSucessoExclu(turNome) {
-    const btnsai= document.getElementById('sairbtn');
+    const btnsai = document.getElementById('sairbtn');
     btnsai.remove();
     const cabecalho = document.getElementById('headerCad');
     cabecalho.classList.remove('headerCad');

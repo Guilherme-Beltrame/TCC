@@ -1,18 +1,15 @@
-
-function CadAlu() {
-    console.log(buscaIdTurma(formCadAlu.Turma().value))
+async function CadAlu() {
+    await buscaIdTurma(formCadAlu.Turma().value);
     const dados = commitDados();
-    console.log(dados);
-    // const dados = fakeDados();
-    // db.collection('Alunos')
-    //     .add(dados)
-    //     .then(() => {
-    //         window.location.href = 'HomeInst.html'
-    //     })
-    //     .catch(erro => {
-    //         console.log(erro);
-    //         alert(erro);
-    //     })
+    db.collection('Alunos')
+        .add(dados)
+        .then(() => {
+            window.location.href = 'HomeInst.html'
+        })
+        .catch(erro => {
+            console.log(erro);
+            alert(erro);
+        })
 }
 
 function commitDados() {
@@ -58,13 +55,14 @@ function commitDados() {
         nome: formCadAlu.nome().value,
         RM: parseFloat(formCadAlu.rm().value),
         turma: formCadAlu.Turma().value,
-        idTurma: buscaIdTurma(formCadAlu.Turma().value),
-        uid: firebase.auth().userCurrent
+        idTurma: TurmaId,
+        uid: firebase.auth().currentUser.uid
     }
 }
+var TurmaId
+async function buscaIdTurma(nameTurma) {
 
-function buscaIdTurma(nameTurma) {
-    db.collection('Turma')
+    await db.collection('Turma')
         .where('nome', '==', nameTurma)
         .get()
         .then(snapshot => {
@@ -72,18 +70,13 @@ function buscaIdTurma(nameTurma) {
                 ...Turma.data(),
                 idTurma: Turma.id,
             }));
-            var TurmaId
-            turmas.forEach(turma => {
-                console.log(turma.idTurma)
-                TurmaId = turma.idTurma.toString();
-                console.log(TurmaId)
-            });
-            return TurmaId;
 
+            TurmaId = turmas[0].idTurma;
         })
         .catch(erro => {
             console.log(erro);
         });
+
 }
 
 function fakeDados() {

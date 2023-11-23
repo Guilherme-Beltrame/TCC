@@ -9,6 +9,7 @@
     <title>Tela de card</title>
     <!-- Parte reservada a importar o CSS -->
     <link href="../CSS/StyleSistem.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../CSS/fontes.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" type="text/css" href="../CSS/cads.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -128,9 +129,9 @@
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" id="SegundaEntrada" name="HoraEntra" class="form-control" />
+                            <input type="time" id="SegundaEntrada" onchange="habilitaBtn()" name="HoraEntra" class="form-control" />
                             <p>ás</p>
-                            <input type="time" id="SegundaSaida" name="HoraSaida" class="form-control" />
+                            <input type="time" id="SegundaSaida" onchange="habilitaBtn()" name="HoraSaida" class="form-control" />
                         </div>
                     </div>
                     <div class="diaSemana">
@@ -142,9 +143,9 @@
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" id="TercaEntrada" name="HoraEntra" class="form-control" />
+                            <input type="time" id="TercaEntrada" onchange="habilitaBtn()" name="HoraEntra" class="form-control" />
                             <p>ás</p>
-                            <input type="time" id="TercaSaida" name="HoraSaida" class="form-control" />
+                            <input type="time" id="TercaSaida" onchange="habilitaBtn()" name="HoraSaida" class="form-control" />
                         </div>
                     </div>
                     <div class="diaSemana">
@@ -156,9 +157,9 @@
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" id="QuartaEntrada" name="HoraEntra" class="form-control" />
+                            <input type="time" id="QuartaEntrada" onchange="habilitaBtn()" name="HoraEntra" class="form-control" />
                             <p>ás</p>
-                            <input type="time" id="QuartaSaida" name="HoraSaida" class="form-control" />
+                            <input type="time" id="QuartaSaida" onchange="habilitaBtn()" name="HoraSaida" class="form-control" />
                         </div>
                     </div>
                     <div class="diaSemana">
@@ -170,9 +171,9 @@
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" id="QuintaEntrada" name="HoraEntra" class="form-control" />
+                            <input type="time" id="QuintaEntrada" onchange="habilitaBtn()" name="HoraEntra" class="form-control" />
                             <p>ás</p>
-                            <input type="time" id="QuintaSaida" name="HoraSaida" class="form-control" />
+                            <input type="time" id="QuintaSaida" onchange="habilitaBtn()" name="HoraSaida" class="form-control" />
                         </div>
                     </div>
                     <div class="diaSemana">
@@ -184,9 +185,9 @@
                         </div>
                         <div class="periodo cs-form">
                             <p>Horário</p>
-                            <input type="time" class="form-control"  name="HoraEntra" id="SextaEntrada" />
+                            <input type="time" class="form-control" onchange="habilitaBtn()"  name="HoraEntra" id="SextaEntrada" />
                             <p>ás</p>
-                            <input type="time" class="form-control" name="HoraSaida" id="SextaSaida" />
+                            <input type="time" class="form-control" onchange="habilitaBtn()" name="HoraSaida" id="SextaSaida" />
                         </div>
                     </div>
                 </div>
@@ -208,7 +209,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
     <script src="../js/conection.js"></script>
-    <script src="../js/HomeInst.js"></script>
     <script src="../js/Inst-auth.js"></script>
     <script src="../js/CapDad.js"></script>
     <script src="../js/vaCamp.js"></script>

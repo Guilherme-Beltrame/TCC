@@ -80,7 +80,17 @@ button.fab.right {
     display: none !important;
 }
 
+.btnExcluiSala{
+    background-color: #dddddd;
+    width:70px !important;
+    height: 45px;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
 .btnExcluiSala:hover{
+
     cursor: pointer;
     background-color: #ffa4a4 !important;
 }
