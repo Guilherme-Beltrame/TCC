@@ -26,7 +26,7 @@
                     <img src="../img/btn-voltar.png" style="height: 38px;" alt="">
                 </a>
                 <img src="../img/Perfil-Aluno.png" style="height: 48px;" alt="">
-                <p class="fw-bold mb-0 text-light">ETEC TABOÃO DA SERRA</p>
+                <p class="fw-bold mb-0 text-light" id="NomeInstituição"></p>
             </div>
 
             <div class="d-flex flex-row align-items-center">
@@ -75,17 +75,35 @@
     <main id="main" class="d-flex flex-row justify-content-center align-items-center mt-3">
         <div class="FundoCad">
             <div class="divTextCad">
-                <p class="textCad display-1"> Cadastrar Turma</p>
-            </div>
-            <div class="DivFormCad">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="-NomeTur" onchange="confereNomeTur()" placeholder="1º ano A">
-                    <label id="_TxtForTurN" for="-NomeTur">Nome Turma:</label>
+                <p class="textCad display-5"> Cadastrar Turma</p>
+                <div class="DivFormCad">
+                    <div class="diasAulas">
+                        <div class="">
+                            <div class="form-check" >
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" >
+                                <label class="form-check-label" for="flexCheckDisabled">
+                                    Segunda
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="-NomeTur" onchange="confereNomeTur()"
+                            placeholder="1º ano A">
+                        <label id="_TxtForTurN" for="-NomeTur">Nome Turma:</label>
+                    </div>
+                    <div class="btncad">
+                        <button type="button" disabled onclick="cadTurBD()" id="-btnTurCad"
+                            class="Cadlargura btn btn-success">Cadastrar</button>
+                    </div>
                 </div>
-                <div class="btncad">
-                    <button type="button" disabled onclick="cadTurBD()" id="-btnTurCad" class="Cadlargura btn btn-success">Cadastrar</button>
-                </div>
             </div>
+            <div class="horario">
+               
+            </div>
+        </div>
+        <div class="fundPreto" id="fundoload">
+            <div class="animation is-animation"></div>
         </div>
     </main>
 
@@ -103,6 +121,7 @@
     <script src="../js/Inst-auth.js"></script>
     <script src="../js/CapDad.js"></script>
     <script src="../js/vaCamp.js"></script>
+    <script src="../js/loading.js"></script>
     <script src="../js/CadTur.js"></script>
 </body>
 

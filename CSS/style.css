@@ -218,3 +218,8 @@
     gap: 10px;
     border-bottom: 1px solid #8a8a8a99;
 }
+
+.termosUso{
+    font-family: 'Cardo', serif;
+    color: #00FFFC;
+}
