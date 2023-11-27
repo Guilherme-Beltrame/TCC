@@ -24,7 +24,7 @@ function pegaDadosdoBD(id) {
 }
 
 function goToRoom(Turma) {
-    window.location.href = "TurmaProf.html?id=" + Turma.id + "&prof=" + Turma.users.prof;
+    window.location.href = "turmaProf.html?id=" + Turma.id + "&prof=" + Turma.users.prof;
 }
 
 function CadTurma() {

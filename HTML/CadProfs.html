@@ -60,13 +60,18 @@
                             <a class="nav-link active" aria-current="page" href="Planos.html">Planos </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contato </a>
+                            <a class="nav-link active" aria-current="page" href="Tela contate.html">Contato </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="link-underline-opacity-100-hover link-primary link-offset-2 link-underline-opacity-25"
+                                aria-current="page" href="../pdfs/TERMOS DE USO DA TRUSTY GATE.pdf">Termos de uso </a>
                         </li>
                         <li class="nav-item">
                             <a onclick="SairCont()"
                                 class="link-underline-opacity-100-hover link-danger link-offset-2 link-underline-opacity-25"
                                 style="cursor: pointer;"> Sair </a>
                         </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -75,9 +80,15 @@
     <main id="main" class="d-flex flex-row justify-content-center align-items-center mt-3">
         <div class="FundoCad">
             <div class="divTextCad">
-                <p class="textCad display-1"> Cadastro professor</p>
+                <input type="file" style="display: none;" id="ImgCad" accept=".jpg, .jpeg, .png">
+                <label id="iconAddFile" class="BackAddFile" for="ImgCad">
+                    <img src="../img/add.png" width="200em" alt="">
+                    <p class="text-center mt-2 fs-bold fs-3" style="color: #000147;">Adicionar Foto</p>
+                </label>
             </div>
+            
             <div class="DivFormCad">
+                <p class="textCad display-3 mb-5"> Cadastro professor</p>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" onchange="confereNomeAlu()" id="-nome"
                         placeholder="1º ano A" required>
@@ -87,6 +98,11 @@
                     <input type="text" class="form-control" onchange="ConfereEmailAlu()" id="-email"
                         placeholder="1º ano A" required>
                     <label id="_TxtForE" for="-email">Email Institucional:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" onchange="confereRM()" id="-RM" placeholder="1º ano A"
+                        required>
+                    <label id="_TxtForRM" for="-RM">RM:</label>
                 </div>
                 <div class="addTur mb-3">
                     <div class="possAdd">
@@ -114,87 +130,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="periodos mb-2">
-                    <p class="" id="_TxtFor"> Período</p>
-                    <div class="diaSemana">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="false"
-                                onclick="ValidaPeriodos()" id="Segunda">
-                            <label class="form-check-label" for="Segunda">
-                                Segunda
-                            </label>
-                        </div>
-                        <div class="periodo cs-form">
-                            <p>Horário</p>
-                            <input type="time" id="SegundaEntrada" name="HoraEntra" class="form-control" />
-                            <p>ás</p>
-                            <input type="time" id="SegundaSaida" name="HoraSaida" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="diaSemana">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="false"
-                                onclick="ValidaPeriodos()" id="Terca">
-                            <label class="form-check-label" for="Terca">
-                                Terça
-                            </label>
-                        </div>
-                        <div class="periodo cs-form">
-                            <p>Horário</p>
-                            <input type="time" id="TercaEntrada" name="HoraEntra" class="form-control" />
-                            <p>ás</p>
-                            <input type="time" id="TercaSaida" name="HoraSaida" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="diaSemana">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="false"
-                                onclick="ValidaPeriodos()" id="Quarta">
-                            <label class="form-check-label" for="Quarta">
-                                Quarta
-                            </label>
-                        </div>
-                        <div class="periodo cs-form">
-                            <p>Horário</p>
-                            <input type="time" id="QuartaEntrada" name="HoraEntra" class="form-control" />
-                            <p>ás</p>
-                            <input type="time" id="QuartaSaida" name="HoraSaida" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="diaSemana">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="false"
-                                onclick="ValidaPeriodos()" id="Quinta">
-                            <label class="form-check-label" for="Quinta">
-                                Quinta
-                            </label>
-                        </div>
-                        <div class="periodo cs-form">
-                            <p>Horário</p>
-                            <input type="time" id="QuintaEntrada" name="HoraEntra" class="form-control" />
-                            <p>ás</p>
-                            <input type="time" id="QuintaSaida" name="HoraSaida" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="diaSemana">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="dia" value="false"
-                                onclick="ValidaPeriodos()" id="Sexta">
-                            <label class="form-check-label" for="Sexta">
-                                Sexta
-                            </label>
-                        </div>
-                        <div class="periodo cs-form">
-                            <p>Horário</p>
-                            <input type="time" class="form-control" name="HoraEntra" id="SextaEntrada" />
-                            <p>ás</p>
-                            <input type="time" class="form-control" name="HoraSaida" id="SextaSaida" />
-                        </div>
-                    </div>
-                </div>
                 <div class="btncad">
                     <button type="button" id="-bnt" onclick="CadAlu()" disabled
-                        class="Cadlargura btn btn-success">Cadastrar</button>
+                        class="mt-4 btn btn-success" style="width: 100% !important;height: 45px;"><p class="fs-5">Cadastrar</p></button>
                 </div>
             </div>
         </div>
@@ -215,6 +153,7 @@
     <script src="../js/conection.js"></script>
     <script src="../js/HomeInst.js"></script>
     <script src="../js/CapDad.js"></script>
+    <script src="../js/nomeUserInst.js"></script>
     <script src="../js/Inst-auth.js"></script>
     <script src="../js/vaCamp.js"></script>
     <script src="../js/loading.js"></script>

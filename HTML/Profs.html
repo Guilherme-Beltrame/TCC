@@ -32,7 +32,7 @@
             </div>
 
             <div class="d-flex flex-row align-items-center">
-                <form class="d-flex" role="search">
+                <form class="d-flex " role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 </form>
 
@@ -53,10 +53,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="CadTurma.html">Cadastrar Turma </a>
+                            <a class="nav-link active" aria-current="page" href="CadProfs.html">Cadastrar Professor </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="CadProfs.html">Cadastrar Professor </a>
+                            <a class="nav-link active" aria-current="page" href="CadTurma.html">Cadastrar Turma </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="CadAluno.html">Cadastrar Aluno </a>
@@ -65,21 +65,26 @@
                             <a class="nav-link active" aria-current="page" href="Planos.html">Planos </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contato </a>
+                            <a class="nav-link active" aria-current="page" href="Tela contate.html">Contato </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="link-underline-opacity-100-hover link-primary link-offset-2 link-underline-opacity-25"
+                                aria-current="page" target="_blank" href="../pdfs/TERMOS DE USO DA TRUSTY GATE.pdf">Termos de uso </a>
                         </li>
                         <li class="nav-item">
                             <a onclick="SairCont()"
                                 class="link-underline-opacity-100-hover link-danger link-offset-2 link-underline-opacity-25"
                                 style="cursor: pointer;"> Sair </a>
                         </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </nav>
 
     <main id="main" class="d-flex flex-column justify-content-center align-items-center mt-3">
-        <button class="fab fixed bottom right d-flex flex-row" onclick="cadProfs()">
-            <p class="mb-0 fw-bold fs-5">+ Professores</p>
+        <button style="background-color: #000147;" class="fab fixed Top right d-flex flex-row" onclick="cadProfs()">
+            <p class="mb-0 fw-bold fs-5 text-light">+ Professores</p>
         </button>
         <ol id="Profs">
             <li class="Aluno">
@@ -110,6 +115,7 @@
     <script src="../js/profs.js"></script>
     <script src="../js/HomeInst.js"></script>
     <script src="../js/loading.js"></script>
+    <script src="../js/nomeUserInst.js"></script>
 </body>
 
 </html>

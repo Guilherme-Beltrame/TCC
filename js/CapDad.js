@@ -20,6 +20,9 @@ const formLogin = {
 const formCadTur = {
     nomeTur: () => document.getElementById('-NomeTur'),
     btncad: () => document.getElementById('-btnTurCad'),
+    horaentra: aulaselec => document.getElementById(aulaselec),
+    horasai: aulaselec => document.getElementById(aulaselec),
+    autoTime: () => document.getElementById('habilitaAll'),
 }
 
 const formCadAlu = {

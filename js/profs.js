@@ -22,6 +22,7 @@ function ExibiProfsInsti(IdInst) {
                 ...Professor.data(),
                 idProf: Professor.id
             }));
+            console.log(Professores);
             ExibiProfsTela(Professores);
         })
 }

@@ -21,6 +21,10 @@ function pegaIds() {
     }
 }
 
+function cadAlu(){
+        window.location.href = 'CadAluno.html'
+}
+
 function ExibiAlunosProf(idTurma) {
     db.collection('Alunos')
         .where('idTurma', '==', idTurma)
@@ -30,7 +34,10 @@ function ExibiAlunosProf(idTurma) {
                 ...Aluno.data(),
                 AluId: Aluno.id
             }));
+            console.log(Alunos)
             ExibiAluTelaProf(Alunos);
+        }).catch(erro=>{
+            console.log(erro)
         })
 }
 
@@ -43,6 +50,7 @@ function ExibiAlunosInsti(idTurma) {
                 ...Aluno.data(),
                 AluId: Aluno.id
             }));
+            console.log(Alunos);
             ExibiAluTela(Alunos);
         })
 }
@@ -104,7 +112,7 @@ function AdiDadosTelaProf(Aluno) {
     divImgNomeSai.appendChild(imgAlu);
     //nome ao centro
     const NomeAlu = document.createElement('p');
-    NomeAlu.innerHTML = Aluno.Nome;
+    NomeAlu.innerHTML = Aluno.nome;
     NomeAlu.classList.add("fw-bold", "fs-4", "text-uppercase", "mb-0");
     divImgNomeSai.appendChild(NomeAlu);
     //botão dee sair ao canto supeerior direito
@@ -120,17 +128,6 @@ function AdiDadosTelaProf(Aluno) {
     const olDados = document.createElement('ol');
     olDados.classList.add('docDadoAlu');
     docAluno.appendChild(olDados);
-    //Dado 4
-    const item4 = document.createElement('li');
-    item4.classList.add('dado');
-    olDados.appendChild(item4);
-    const Turma = document.createElement("p");
-    Turma.innerHTML = 'Série: ';
-    Turma.classList.add('fw-bold', 'tituDadAlu');
-    item4.appendChild(Turma);
-    const Serie = document.createElement("p");
-    Serie.innerHTML = Aluno.Serie;
-    item4.appendChild(Serie);
     //Dado 1
     const item1 = document.createElement('li');
     item1.classList.add('dado');
@@ -140,19 +137,9 @@ function AdiDadosTelaProf(Aluno) {
     hoje.classList.add('fw-bold', 'tituDadAlu');
     item1.appendChild(hoje);
     const estado = document.createElement("p");
-    estado.innerHTML = Aluno.Estado;
+    colorEstado(Aluno.cronograma, estado);
+    estado.innerHTML = StatusAlu(Aluno.cronograma);
     item1.appendChild(estado);
-    //Dado 2
-    const item2 = document.createElement('li');
-    item2.classList.add('dado');
-    olDados.appendChild(item2);
-    const Curso = document.createElement("p");
-    Curso.innerHTML = 'Hoje: ';
-    Curso.classList.add('fw-bold', 'tituDadAlu');
-    item2.appendChild(Curso);
-    const curso = document.createElement("p");
-    curso.innerHTML = Aluno.Curso;
-    item2.appendChild(curso);
     //Dado 3
     const item3 = document.createElement('li');
     item3.classList.add('dado');
@@ -173,8 +160,7 @@ function AdiDadosTelaProf(Aluno) {
     fre.classList.add('fw-bold', 'tituDadAlu');
     item5.appendChild(fre);
     const freq = document.createElement("p");
-
-    freq.innerHTML = frequencia(Aluno.Frequencia).value;
+    freq.innerHTML = frequencia(Aluno.cronograma);
     item5.appendChild(freq);
 }
 

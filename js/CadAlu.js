@@ -115,6 +115,7 @@ function apareceBtn() {
     var cont = 0;
     var cont2 = 0;
     var nomes;
+    
     if (dias) {
         dias.forEach(dia => {
             console.log(dia.value);

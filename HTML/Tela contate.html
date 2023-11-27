@@ -1,0 +1,145 @@
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <!-- Importa o icone que ficara como logo, logo ao topo da tela ao lado do title -->
+  <link rel="shortcut icon" href="../img/Favicon.ico" type="image/x-icon">
+  <title>Tela de contato</title>
+  <!-- Parte reservada a importar o CSS -->
+  <link href="../CSS/Contat.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body style="font-family: 'Racing Sans One';">
+
+  <nav class="navbar d-flex justify-content-center align-items-center"
+    style="--bs-navbar-padding-y: 0; background-color: #000147; height: 70px; flex-wrap: nowrap;">
+    <div class="d-flex justify-content-between container-fluid">
+      <div class="d-flex flex-row gap-3 justify-content-center align-items-center">
+        <a href="HomeInst.html">
+          <img src="../img/btn-voltar.png" style="height: 38px;" alt="">
+        </a>
+        <img src="../img/Perfil-Aluno.png" style="height: 48px;" alt="">
+        <p class="fw-bold mb-0 text-light" id="NomeInstituição"></p>
+      </div>
+
+      <div class="d-flex flex-row align-items-center">
+        <form class="d-flex mb-0" role="search">
+          <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+        </form>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+          aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+          <img src="../img/Tres traços.png" style="height: 30px;" alt="">
+        </button>
+      </div>
+
+      <div class="offcanvas offcanvas-end" style="background-color: #fff;" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Funções</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="CadProfs.html">Cadastrar Professor </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="CadTurma.html">Cadastrar Turma </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="CadAluno.html">Cadastrar Aluno </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="Planos.html">Planos </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="Tela contate.html">Contato </a>
+            </li>
+            <li class="nav-item">
+              <a class="link-underline-opacity-100-hover link-primary link-offset-2 link-underline-opacity-25"
+                aria-current="page" target="_blank" href="../pdfs/TERMOS DE USO DA TRUSTY GATE.pdf">Termos de uso </a>
+            </li>
+            <li class="nav-item">
+              <a onclick="SairCont()"
+                class="link-underline-opacity-100-hover link-danger link-offset-2 link-underline-opacity-25"
+                style="cursor: pointer;"> Sair </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container ">
+    <div class="d-flex flex-row borda">
+      <div class="tela" style="padding: 20;">
+        <h2 style="color: #25269D; margin-top: 10;"> Contate-nós </h2>
+
+
+        <div class="mb-3">
+          <label for="label10" class="form-label">Nome</label>
+          <input class="est" type="email" class="form-control" id="label10">
+        </div>
+
+        <div class="mb-3">
+          <label for="-email" id="_TxtForEmail" class="form-label">Email
+          </label>
+          <input class="est" onchange="ConfereEmail()" type="email" class="form-control" id="-email">
+        </div>
+
+        <div class="mb-3">
+          <label for="label10" class="form-label">Mensagem</label>
+          <input class="est" type="email" class="form-control" id="label10">
+        </div>
+
+        <div class="botao">
+          <button type="button" class="btn btn-success">Enviar</button>
+        </div>
+      </div>
+
+      <div class="tela2">
+        <div class="logosTela2">
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-6 col-sm-4"><img src="../img/whatsapp.png" height="50" width="50"></div>
+              <div class="col-6 col-sm-4">
+                <h4>whatsapp</h4>
+                <p class="fttelefone " style="white-space: nowrap;"> 55 (11) 2424-2404</p>
+              </div>
+              <!-- Force next columns to break to new line at md breakpoint and up -->
+              <div class="w-100 d-none d-md-block"></div>
+              <div class="col-6 col-sm-4"> <img src="../img/telefone fto.png" height="60" width="60"></div>
+              <div class="col-6 col-sm-4">
+                <h4> Telefone</h4>
+                <p style="white-space: nowrap;" class="fttelefone"> 55 (11) 92323-2303</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
+  <script src="../js/conection.js"></script>
+  <script src="../js/Inst-auth.js"></script>
+  <script src="../js/CapDad.js"></script>
+  <script src="../js/loading.js"></script>
+  <script src="../js/vaCamp.js"></script>
+  <script src="../js/nomeUserInst.js"></script>
+</body>
+
+</html>

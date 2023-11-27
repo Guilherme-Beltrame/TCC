@@ -1,6 +1,8 @@
-/*importando fontes*/
 
-/*Começando códigos de estilização*/
+body, html{
+    height: 100% !important;
+  }
+  
 
 /*Estilizando barra de navegação*/
 #_Nav {

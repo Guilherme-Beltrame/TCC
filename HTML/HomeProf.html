@@ -19,7 +19,7 @@
     <nav class="navbar d-flex justify-content-center align-items-center"
         style="--bs-navbar-padding-y: 0; background-color: #000147; height: 70px; flex-wrap: nowrap;">
         <div class="d-flex justify-content-between container-fluid">
-            <div class="">
+            <div class="d-flex align-items-center gap-3">
                 <img src="../img/Logo.png" style="height: 48px;" alt="">
                 <p class="fw-bold mb-0 text-light" id="NomeInstituição"></p>
             </div>
@@ -46,13 +46,15 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contato </a>
+                            <a class="link-underline-opacity-100-hover link-primary link-offset-2 link-underline-opacity-25"
+                                aria-current="page" target="_blank" href="../pdfs/TERMOS DE USO DA TRUSTY GATE.pdf">Termos de uso </a>
                         </li>
                         <li class="nav-item">
                             <a onclick="SairCont()"
                                 class="link-underline-opacity-100-hover link-danger link-offset-2 link-underline-opacity-25"
                                 style="cursor: pointer;"> Sair </a>
                         </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -78,6 +80,7 @@
     <script src="../js/HomeProf.js"></script>
     <script src="../js/Inst-auth.js"></script>
     <script src="../js/loading.js"></script>
+    <script src="../js/nomeuserProf.js"></script>
     <script src="../js/Criacao.js"></script>
     <script src="../js/loading.js"></script>
 </body>

@@ -12,14 +12,12 @@
 
 .divTextCad {
     background-color: #0E0F8A;
-    padding-top: 50px;
     width: 50%;
     height: 50em;
     border-radius: 30px;
-    gap: 200px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -38,7 +36,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 20px;
 }
 
 .add {
@@ -107,8 +105,7 @@
 
 
 .Cadlargura{
-    font-weight: 650 !important;
-    width: 100%;
+    font-weight: 650 !important;;
 }
 
 .DocCad{
@@ -230,3 +227,8 @@ p{
     flex-wrap: wrap;
     gap: 5px;
 }
+
+.btncad{
+    width: 30%;
+}
+

@@ -39,6 +39,10 @@ button.fab.bottom {
     top: 90px;
 }
 
+button.fab.Top {
+    bottom: 90px;
+}
+
 button.fab.right {
     right: 32px;
 }
@@ -63,6 +67,19 @@ button.fab.right {
     padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
     color: var(--bs-list-group-color);
     text-decoration: none;
+}
+
+.cardMais{
+    border-radius: 100% !important;
+    width: 100px;
+    height: 100px;
+    font-weight: 200;
+}
+
+.cardMais:hover{
+    cursor: pointer;
+    background-color: #dddddd;
+    opacity: 0.8;
 }
 
 .card .card-body:hover {
@@ -168,4 +185,10 @@ button.fab.right {
     100%{
         transform: rotate(360deg);
     }
+}
+
+.BackAddFile{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
 }

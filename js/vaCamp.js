@@ -32,7 +32,7 @@ function confereRM() {
         labelNum.innerHTML = '';
         inputNum.classList.add('erro');
         labelNum.classList.add('erro');
-        labelNum.innerHTML = 'insira o RM correto';
+        labelNum.innerHTML = 'insira o RM correto (10 a 11 digitos)';
     }
     habilitaBtn();
 }
@@ -209,7 +209,7 @@ function ConfereSenha() {
         labelSenha.innerHTML = '';
         inputSenha.classList.add('erro');
         labelSenha.classList.add('erro');
-        labelSenha.innerHTML = 'insira a Senha corretamente: Uma Maiúscula, uma minúscula, um numero e um caracter especial e com no minnimo 8 caracteres';
+        labelSenha.innerHTML = 'Minimo 8 caracteres, com no minimo: minusculo, maiusculo, numerico e especial(&@#...)';
     }
     habilitaBtn();
 }

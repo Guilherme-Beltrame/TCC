@@ -47,10 +47,10 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="CadTurma.html">Cadastrar Turma </a>
+                            <a class="nav-link active" aria-current="page" href="CadProfs.html">Cadastrar Professor </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="CadProfs.html">Cadastrar Professor </a>
+                            <a class="nav-link active" aria-current="page" href="CadTurma.html">Cadastrar Turma </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="CadAluno.html">Cadastrar Aluno </a>
@@ -59,28 +59,35 @@
                             <a class="nav-link active" aria-current="page" href="Planos.html">Planos </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contato </a>
+                            <a class="nav-link active" aria-current="page" href="Tela contate.html">Contato </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="link-underline-opacity-100-hover link-primary link-offset-2 link-underline-opacity-25"
+                                aria-current="page" target="_blank" href="../pdfs/TERMOS DE USO DA TRUSTY GATE.pdf">Termos de uso </a>
                         </li>
                         <li class="nav-item">
                             <a onclick="SairCont()"
                                 class="link-underline-opacity-100-hover link-danger link-offset-2 link-underline-opacity-25"
                                 style="cursor: pointer;"> Sair </a>
                         </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </nav>
     <main id="main" class="container-fluid d-flex flex-column align-items-center justify-content-center">
+
         <div class="d-flex mt-3 justify-content-center">
             <p class="hs-1 fw-bold" id="_Text-titulo">TURMAS</p>
         </div>
         <div id="-Turmas"
             class="classes-size d-flex flex-row flex-wrap gap-5 align-items-center justify-content-center">
-            <div class="card" id="addTur" onclick="CadTurma()">
-                <div class="card-body d-flex align-items-center justify-content-center">
-                    <p class="fw-bold fs-1 text-primary-emphasis">+</p>
+            <div class="card cardMais" id="addTur" onclick="CadTurma()">
+                <div class="cardMais d-flex align-items-center justify-content-center">
+                    <p class=" mb-2 text-center text-primary-emphasis" style="font-size: 100px; padding-bottom: 10px;">
+                        + </p>
                 </div>
-            </div>  
+            </div>
         </div>
         <div class="fundPreto" id="fundoload">
             <div class="animation is-animation"></div>
@@ -94,6 +101,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
     <script src="../js/conection.js"></script>
     <script src="../js/HomeInst.js"></script>
+    <script src="../js/nomeUserInst.js"></script>
     <script src="../js/Inst-auth.js"></script>
     <script src="../js/Criacao.js"></script>
     <script src="../js/loading.js"></script>

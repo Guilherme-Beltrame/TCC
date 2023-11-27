@@ -80,7 +80,7 @@ function ExibiProfsTela(Professores) {
         RmProf.classList.add('RmAlu', 'fw-bold');
 
         const FreqProf = document.createElement('p');
-        FreqProf.innerHTML = frequencia(professor.frequencia).value;
+        FreqProf.innerHTML = frequencia(professor.frequencia);
         FreqProf.classList.add('FreqAlu', 'fw-bold');
 
         const HoraProf = document.createElement('p');
@@ -107,7 +107,7 @@ function ExibiAluTelaProf(Alunos) {
         imgAlu.src = '../img/Perfil-Aluno.png';
 
         const NomeAlu = document.createElement('p');
-        NomeAlu.innerHTML = aluno.Nome;
+        NomeAlu.innerHTML = aluno.nome;
         NomeAlu.classList.add('NomeAlu', 'fw-bold');
         NomeAlu.addEventListener('click', () => {
             PuxaDadosprof(aluno.AluId);
@@ -117,11 +117,11 @@ function ExibiAluTelaProf(Alunos) {
         RmAlu.classList.add('RmAlu', 'fw-bold');
 
         const FreqAlu = document.createElement('p');
-        FreqAlu.innerHTML = frequencia(aluno.Frequencia).value;
+        FreqAlu.innerHTML = frequencia(aluno.cronograma);
         FreqAlu.classList.add('FreqAlu', 'fw-bold');
 
         const Estado = document.createElement('p');
-        Estado.innerHTML = aluno.Estado;
+        Estado.innerHTML = StatusAlu(aluno.cronograma);
         Estado.classList.add('HoraAlu', 'fw-bold');
 
         AreaAlunos.appendChild(ItemAluno);
@@ -332,7 +332,7 @@ function horaEntrada(cronograma) {
         } else if (cronograma.Quinta.exist == "false") {
             return "Sem Aula";
         }
-    }
+    } 
     if (dataAtual == 5) {
         if (cronograma.Sexta.exist == "true") {
             if (cronograma.Sexta.estado == "Presente") {
@@ -489,38 +489,21 @@ function HorarioAlu(cronograma) {
 }
 
 function frequencia(cronograma) {
+    const array = [...Object.values(cronograma), cronograma];
+    console.log(array)
     var DiasIdos = 0
     var DiasObrigatorios = 0
-    if (cronograma.Segunda.exist == "true") {
-        DiasObrigatorios++;
-        if (cronograma.Segunda.estado == 'Presente') {
-            DiasIdos++;
+    array.forEach(diasemana => {
+        if(diasemana.exist == "true"){
+            if(diasemana.diaSemana == 1){
+                console.log("Segunda");
+            }
+            DiasObrigatorios++;
+            if(diasemana.estado == 'Presente'){
+                DiasIdos++;
+            }
         }
-    }
-    if (cronograma.Terca.exist == "true") {
-        DiasObrigatorios++;
-        if (cronograma.Terca.estado == 'Presente') {
-            DiasIdos++;
-        }
-    }
-    if (cronograma.Quarta.exist == "true") {
-        DiasObrigatorios++;
-        if (cronograma.Quarta.estado == 'Presente') {
-            DiasIdos++;
-        }
-    }
-    if (cronograma.Quinta.exist == "true") {
-        DiasObrigatorios++;
-        if (cronograma.Quinta.estado == 'Presente') {
-            DiasIdos++;
-        }
-    }
-    if (cronograma.Sexta.exist == "true") {
-        DiasObrigatorios++;
-        if (cronograma.Sexta.estado == 'Presente') {
-            DiasIdos++;
-        }
-    }
+    });
     const freq = (DiasIdos / DiasObrigatorios) * 100;
     return freq + '%';
 }
