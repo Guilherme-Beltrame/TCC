@@ -21,8 +21,9 @@ function pegaIds() {
     }
 }
 
-function cadAlu(){
-        window.location.href = 'CadAluno.html'
+function cadAlu(idTurma){
+    console.log(idTurma);    
+    window.location.href = 'CadAluno.html?id='+idTurma;
 }
 
 function ExibiAlunosProf(idTurma) {

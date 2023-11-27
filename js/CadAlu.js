@@ -1,3 +1,34 @@
+firebase.auth().onAuthStateChanged(user => {
+    if(user){
+        if(pegaIds().uidTurma.exist){
+            preencherNomeTur(pegaIds().uidTurma.id);
+        }
+    }
+})
+
+function preencherNomeTur(idTur){
+    console.log(idTur)
+    db.collection('Turma').doc(idTur).get()
+    .then(snapshot=>{
+        if(snapshot.exists == true){
+            const nometurinput=formCadAlu.Turma();
+            nometurinput.value=snapshot.data().nome;
+        }
+    }).catch(erro=>{
+        console.log(erro)
+    })
+}
+
+function pegaIds() {
+    const parametrosUsuario = new URLSearchParams(window.location.search);
+    return {
+        uidTurma:{
+            exist:true,
+            id: parametrosUsuario.get('id'),
+        },
+    }
+}
+
 async function CadAlu() {
     await buscaIdTurma(formCadAlu.Turma().value);
     const dados = commitDados();

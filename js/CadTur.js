@@ -14,7 +14,7 @@ function commitDados() {
                         periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
                         materia: document.getElementById('Aula1Segunda').value,
                         estado: '',
-                        inicio: document.getElementById('Entra1').value,
+                        final: document.getElementById('Saida1').value,
                     },
                     [document.getElementById('Aula2Segunda').value]: {
                         periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,

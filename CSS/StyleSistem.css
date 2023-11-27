@@ -36,11 +36,11 @@ button.fab.fixed {
 }
 
 button.fab.bottom {
-    top: 90px;
+    top: 80px;
 }
 
 button.fab.Top {
-    bottom: 90px;
+    bottom: 40px;
 }
 
 button.fab.right {
