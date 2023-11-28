@@ -57,7 +57,6 @@ function PuxaDados(profID) {
 
 function AdiDadosTela(Prof) {
     CriaDivsIniciais();
-    console.log(Prof.nome);
     const docAluno = document.getElementById("DocAlu");
     //cabecalho
     const divImgNomeSai = document.createElement('div');
@@ -92,19 +91,32 @@ function AdiDadosTela(Prof) {
     item2.classList.add('dado');
     olDados.appendChild(item2);
     const Curso = document.createElement("p");
-    Curso.innerHTML = 'Hoje: ';
-    Curso.classList.add('fw-bold');
+    Curso.innerHTML = 'Materia: ';
+    Curso.classList.add('tituDadAlu');
     item2.appendChild(Curso);
     const curso = document.createElement("p");
+    curso.classList.add('fw-bold', 'dadAlu');
     curso.innerHTML = Prof.materia;
     item2.appendChild(curso);
+    
+    //Dado 2
+    const item1 = document.createElement('li');
+    item1.classList.add('dado');
+    olDados.appendChild(item1);
+    const estadotxt = document.createElement("p");
+    estadotxt.innerHTML = 'Hoje: ';
+    estadotxt.classList.add('tituDadAlu');
+    item1.appendChild(estadotxt);
+    const estado = document.createElement("p");
+    estado.innerHTML = StatusAluProf(Prof);
+    item1.appendChild(estado);
     //Dado 3
     const item3 = document.createElement('li');
     item3.classList.add('dado');
     olDados.appendChild(item3);
     const RM = document.createElement("p");
     RM.innerHTML = 'RM: ';
-    RM.classList.add('fw-bold');
+    RM.classList.add('tituDadAlu');
     item3.appendChild(RM);
     const RMAlu = document.createElement("p");
     RMAlu.innerHTML = Prof.rm;
@@ -115,10 +127,10 @@ function AdiDadosTela(Prof) {
     olDados.appendChild(item4);
     const peri = document.createElement("p");
     peri.innerHTML = 'Período de aula: ';
-    peri.classList.add('fw-bold');
+    peri.classList.add('tituDadAlu');
     item4.appendChild(peri);
     const PerAula = document.createElement("p");
-    PerAula.innerHTML = Prof.entrada + 'ás '+ Prof.saida;
+    PerAula.innerHTML = PegaPeriodo(Prof.Cronograma);
     item4.appendChild(PerAula);
     //Dado 5
     const item5 = document.createElement('li');
@@ -126,10 +138,10 @@ function AdiDadosTela(Prof) {
     olDados.appendChild(item5);
     const fre = document.createElement("p");
     fre.innerHTML = 'Frequência: ';
-    fre.classList.add('fw-bold');
+    fre.classList.add('tituDadAlu');
     item5.appendChild(fre);
     const freq = document.createElement("p");
-    freq.innerHTML = frequencia(Prof.frequencia).value;
+    freq.innerHTML = frequencia(Prof.Cronograma);
     item5.appendChild(freq);
     //Dado 6
     const item6 = document.createElement('li');
@@ -137,10 +149,10 @@ function AdiDadosTela(Prof) {
     olDados.appendChild(item6);
     const horaEntra = document.createElement("p");
     horaEntra.innerHTML = 'Horário de entrada: ';
-    horaEntra.classList.add('fw-bold');
+    horaEntra.classList.add('tituDadAlu');
     item6.appendChild(horaEntra);
     const HEntra = document.createElement("p");
-    HEntra.innerHTML = Prof.entrada;
+    HEntra.innerHTML = horaEntrada(Prof);
     item6.appendChild(HEntra);
     //Dado 7
     const item7 = document.createElement('li');
@@ -148,10 +160,10 @@ function AdiDadosTela(Prof) {
     olDados.appendChild(item7);
     const horaSai = document.createElement("p");
     horaSai.innerHTML = 'Horário de saída: ';
-    horaSai.classList.add('fw-bold');
+    horaSai.classList.add('tituDadAlu');
     item7.appendChild(horaSai);
     const HSaida = document.createElement("p");
-    HSaida.innerHTML = Prof.saida;
+    HSaida.innerHTML = horaSaida(Prof);
     item7.appendChild(HSaida);
     //Dado 8
     const item8 = document.createElement('li');
@@ -159,7 +171,7 @@ function AdiDadosTela(Prof) {
     olDados.appendChild(item8);
     const tel = document.createElement("p");
     tel.innerHTML = 'Telefone: ';
-    tel.classList.add('fw-bold');
+    tel.classList.add('tituDadAlu');
     item8.appendChild(tel);
     const Tel = document.createElement("p");
     Tel.innerHTML = Prof.telefone;

@@ -14,7 +14,7 @@ function commitDados() {
                         periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
                         materia: document.getElementById('Aula1Segunda').value,
                         estado: '',
-                        final: document.getElementById('Saida1').value,
+                        finalAula: document.getElementById('Saida1').value,
                     },
                     [document.getElementById('Aula2Segunda').value]: {
                         periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
@@ -241,38 +241,6 @@ function commitDadosAutoTime() {
             }
         }
     }
-}
-
-function pegaPeriodos() {
-
-
-    // var periodoSegunda, periodoTerca, periodoQuarta, periodoQuinta, periodoSexta = '';
-    // const diasemana = {
-    //     1: 'Segunda',
-    //     2: 'Terca',
-    //     3: 'Quarta',
-    //     4: 'Quinta',
-    //     5: 'Sexta',
-    // }
-
-    // var cont = 1;
-
-    // for (let index = 1; index < 8; index++) {
-    //     if (index == 7) {
-    //         cont++;
-    //         index = 1;
-    //     }
-    //     const element = 'Aula' + index + diasemana[cont];
-
-    //     const option = document.getElementById(element);
-    //     if(option.value==''){
-    //         console.log('vazio'+element)
-    //     }
-
-    //     if (cont == 5 && index == 6) {
-    //         index = 8;
-    //     }
-    // }
 }
 
 function CadTurma() {
@@ -525,7 +493,7 @@ function CadTurEInstHora() {
         .catch(erro => {
             alert('Erro ao cadastrar, recarregue a pág. e tente novamente.');
             console.log(erro);
-        })
+        })  
 }
 
 function cadTurBD() {

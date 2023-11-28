@@ -22,7 +22,6 @@ function pegaIds() {
 }
 
 function cadAlu(idTurma){
-    console.log(idTurma);    
     window.location.href = 'CadAluno.html?id='+idTurma;
 }
 
@@ -84,7 +83,7 @@ function PuxaDados(AluId) {
         .get()
         .then(dados => {
             if (dados.exists) {
-                AdiDadosTela(dados.data());
+                AdiDadosTela(dados.data(), dados.id);
                 saiTelaCarregando();
             } else {
                 saiTelaCarregando();
@@ -138,8 +137,8 @@ function AdiDadosTelaProf(Aluno) {
     hoje.classList.add('fw-bold', 'tituDadAlu');
     item1.appendChild(hoje);
     const estado = document.createElement("p");
-    colorEstado(Aluno.cronograma, estado);
-    estado.innerHTML = StatusAlu(Aluno.cronograma);
+    colorEstadoprof(Aluno, estado);
+    estado.innerHTML = StatusAluProf(Aluno);
     item1.appendChild(estado);
     //Dado 3
     const item3 = document.createElement('li');
@@ -165,7 +164,7 @@ function AdiDadosTelaProf(Aluno) {
     item5.appendChild(freq);
 }
 
-function AdiDadosTela(Aluno) {
+function AdiDadosTela(Aluno, AluId) {
     CriaDivsIniciais();
     const docAluno = document.getElementById("DocAlu");
     //cabecalho
@@ -206,8 +205,8 @@ function AdiDadosTela(Aluno) {
     hoje.classList.add('tituDadAlu');
     item1.appendChild(hoje);
     const estado = document.createElement("p");
-    colorEstado(Aluno.cronograma, estado);
-    estado.innerHTML = StatusAlu(Aluno.cronograma);
+    colorEstado(AluId, estado);
+    estado.innerHTML = StatusAlu(AluId);
     item1.appendChild(estado);
     //Dado 3
     const item3 = document.createElement('li');
@@ -255,7 +254,7 @@ function AdiDadosTela(Aluno) {
     item6.appendChild(horaEntra);
     const HEntra = document.createElement("p");
     HEntra.classList.add('fw-bold', 'dadAlu');
-    HEntra.innerHTML = horaEntrada(Aluno.cronograma);
+    HEntra.innerHTML = horaEntrada(Aluno);
     item6.appendChild(HEntra);
     //Dado 7
     const item7 = document.createElement('li');
@@ -267,7 +266,7 @@ function AdiDadosTela(Aluno) {
     item7.appendChild(horaSai);
     const HSaida = document.createElement("p");
     HSaida.classList.add('fw-bold', 'dadAlu');
-    HSaida.innerHTML = horaSaida(Aluno.cronograma);
+    HSaida.innerHTML = horaSaida(Aluno);
     item7.appendChild(HSaida);
 
     //area do Btn sair mais cedo
@@ -281,7 +280,7 @@ function AdiDadosTela(Aluno) {
         LiberaAlu();
     }
     SairCedo.innerHTML = 'Ausente'
-    veriBtnSair(SairCedo, Aluno.cronograma, divbtn);
+    veriBtnSair(SairCedo, Aluno, divbtn);
     divbtn.appendChild(SairCedo);
 }
 
@@ -298,141 +297,35 @@ function aparecebtn(btn) {
     btn.classList.add('btn', 'btn-success', 'fw-bold');
 }
 
-function colorEstado(cronograma, estado) {
-    let dataAtual = new Date().getDay();
-    if (dataAtual == 1) {
-        if (cronograma.Segunda.exist == "true") {
-            if (cronograma.Segunda.estado == "Presente") {
-               estado.classList.add('presente')
-            } else if (cronograma.Segunda.estado == "Ausente") {
-                estado.classList.add('ausente')
-            }
-        } else if (cronograma.Segunda.exist == "false") {
-            estado.classList.add('dadAlu', 'fw-bold')
-        }
+function colorEstado(idAlu, estado) {
+    const divhorario = document.getElementById(idAlu).innerHTML
+    if(divhorario=="Ausente"){
+        estado.classList.add('ausente');
+    } else{
+        estado.classList.add('presente');
     }
-    if (dataAtual == 2) {
-        if (cronograma.Terca.exist == "true") {
-            if (cronograma.Terca.estado == "Presente") {
-                estado.classList.add('presente')
-             } else if (cronograma.Terca.estado == "Ausente") {
-                 estado.classList.add('ausente')
-             }
-        } else if (cronograma.Terca.exist == "false") {
-            estado.classList.add('dadAlu', 'fw-bold')
+}
+function colorEstadoprof(alu, estado) {
+    if(alu.entrada!=''){
+        if(alu.saida!=''){
+            estado.classList.add('ausente')
+        }else{
+            estado.classList.add('presente')
         }
-    }
-    if (dataAtual == 3) {
-        if (cronograma.Quarta.exist == "true") {
-            if (cronograma.Quarta.estado == "Presente") {
-                estado.classList.add('presente')
-             } else if (cronograma.Quarta.estado == "Ausente") {
-                 estado.classList.add('ausente')
-             }
-        } else if (cronograma.Quarta.exist == "false") {
-            estado.classList.add('dadAlu', 'fw-bold')
-        }
-    }
-    if (dataAtual == 4) {
-        if (cronograma.Quinta.exist == "true") {
-            if (cronograma.Quinta.estado == "Presente") {
-                estado.classList.add('presente')
-             } else if (cronograma.Quinta.estado == "Ausente") {
-                 estado.classList.add('ausente')
-             }
-        } else if (cronograma.Quinta.exist == "false") {
-            estado.classList.add('dadAlu', 'fw-bold')
-        }
-    }
-    if (dataAtual == 5) {
-        if (cronograma.Sexta.exist == "true") {
-            if (cronograma.Sexta.estado == "Presente") {
-                estado.classList.add('presente')
-             } else if (cronograma.Sexta.estado == "Ausente") {
-                 estado.classList.add('ausente')
-             }
-        } else if (cronograma.Sexta.exist == "false") {
-            estado.classList.add('dadAlu', 'fw-bold')
-        }
+    }else{
+        estado.classList.add('ausente')
     }
 }
 
-function veriBtnSair(btn, cronograma, divbtn) {
-    let dataAtual = new Date().getDay();
-    if (dataAtual == 1) {
-        if (cronograma.Segunda.exist == "true") {
-            if (cronograma.Segunda.estado == "Presente") {
-                aparecebtn(btn);
-            } else if (cronograma.Segunda.estado == "Ausente") {
-                if (cronograma.Segunda.saida == "") {
-                    excloubtn(divbtn);
-                } else if (cronograma.Segunda.saida != "") {
-                    excloubtn(divbtn);
-                }
-            }
-        } else if (cronograma.Segunda.exist == "false") {
+function veriBtnSair(btn, aluno, divbtn) {
+    if(aluno.entrada!=''){
+        if(aluno.saida!=''){
             excloubtn(divbtn);
+        }else{
+            aparecebtn(btn);
         }
-    }
-    if (dataAtual == 2) {
-        if (cronograma.Terca.exist == "true") {
-            if (cronograma.Terca.estado == "Presente") {
-                aparecebtn(btn);
-            } else if (cronograma.Terca.estado == "Ausente") {
-                if (cronograma.Terca.saida == "") {
-                    excloubtn(divbtn);
-                } else if (cronograma.Terca.saida != "") {
-                    excloubtn(divbtn);
-                }
-            }
-        } else if (cronograma.Terca.exist == "false") {
-            excloubtn(divbtn);
-        }
-    }
-    if (dataAtual == 3) {
-        if (cronograma.Quarta.exist == "true") {
-            if (cronograma.Quarta.estado == "Presente") {
-                aparecebtn(btn);
-            } else if (cronograma.Quarta.estado == "Ausente") {
-                if (cronograma.Quarta.saida == "") {
-                    excloubtn(divbtn);
-                } else if (cronograma.Quarta.saida != "") {
-                    excloubtn(divbtn);
-                }
-            }
-        } else if (cronograma.Quarta.exist == "false") {
-            excloubtn(divbtn);
-        }
-    }
-    if (dataAtual == 4) {
-        if (cronograma.Quinta.exist == "true") {
-            if (cronograma.Quinta.estado == "Presente") {
-                aparecebtn(btn);
-            } else if (cronograma.Quinta.estado == "Ausente") {
-                if (cronograma.Quinta.saida == "") {
-                    excloubtn(divbtn);
-                } else if (cronograma.Quinta.saida != "") {
-                    excloubtn(divbtn);
-                }
-            }
-        } else if (cronograma.Quinta.exist == "false") {
-            excloubtn(divbtn);
-        }
-    }
-    if (dataAtual == 5) {
-        if (cronograma.Sexta.exist == "true") {
-            if (cronograma.Sexta.estado == "Presente") {
-                aparecebtn(btn);
-            } else if (cronograma.Sexta.estado == "Ausente") {
-                if (cronograma.Sexta.saida == "") {
-                    excloubtn(divbtn);
-                } else if (cronograma.Sexta.saida != "") {
-                    excloubtn(divbtn);
-                }
-            }
-        } else if (cronograma.Sexta.exist == "false") {
-            excloubtn(divbtn);
-        }
+    }else{
+        excloubtn(divbtn);
     }
 }
 

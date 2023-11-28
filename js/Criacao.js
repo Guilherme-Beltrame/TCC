@@ -80,7 +80,7 @@ function ExibiProfsTela(Professores) {
         RmProf.classList.add('RmAlu', 'fw-bold');
 
         const FreqProf = document.createElement('p');
-        FreqProf.innerHTML = frequencia(professor.frequencia);
+        FreqProf.innerHTML = frequencia(professor.Cronograma);
         FreqProf.classList.add('FreqAlu', 'fw-bold');
 
         const HoraProf = document.createElement('p');
@@ -121,7 +121,8 @@ function ExibiAluTelaProf(Alunos) {
         FreqAlu.classList.add('FreqAlu', 'fw-bold');
 
         const Estado = document.createElement('p');
-        Estado.innerHTML = StatusAlu(aluno.cronograma);
+        Estado.innerHTML = StatusAluProf(aluno);
+        Styleresul(Estado)
         Estado.classList.add('HoraAlu', 'fw-bold');
 
         AreaAlunos.appendChild(ItemAluno);
@@ -159,8 +160,9 @@ function ExibiAluTela(Alunos) {
         FreqAlu.classList.add('FreqAlu', 'fw-bold');
 
         const HoraAlu = document.createElement('p');
-        HoraAlu.innerHTML = HorarioAlu(aluno.cronograma);
-        HoraAlu.classList.add('HoraAlu', 'fw-bold');
+        HoraAlu.id = aluno.AluId;
+        HoraAlu.innerHTML = HorarioAlu(aluno);
+        corAusente(HoraAlu)
 
         AreaAlunos.appendChild(ItemAluno);
         ItemAluno.appendChild(imgAlu);
@@ -171,341 +173,110 @@ function ExibiAluTela(Alunos) {
     });
 }
 
+function corAusente(HoraAlu){
+    if(HoraAlu.innerHTML=="Ausente"){
+        HoraAlu.classList.add('HoraAlu', 'ausente', 'fw-bold');
+    }else{
+        HoraAlu.classList.add('HoraAlu', 'fw-bold');
+    }
+}
+
+function Styleresul(estado){
+    if(estado.innerHTML == "Ausente"){
+        estado.classList.add('ausente')
+    }else{
+        estado.classList.add('presente')
+    }
+}
+
 function PegaPeriodo(cronograma) {
-    let dataAtual = new Date().getDay();
-    if (dataAtual == 1) {
-        if (cronograma.Segunda.exist == "true") {
-            return cronograma.Segunda.Periodo;
-        } else if (cronograma.Segunda.exist == "false") {
-            return "Sem Aula Hoje";
+    var diaAtual = 1; // new Date().getDay();
+    var peri;
+
+    const diasAulas = [...Object.values(cronograma)]
+    diasAulas.forEach(dia => {
+        if(dia.diaSena == diaAtual){
+            peri = dia.Periodo;
         }
-    }
-    if (dataAtual == 2) {
-        if (cronograma.Terca.exist == "true") {
-            return cronograma.Terca.Periodo;
-        } else if (cronograma.Terca.exist == "false") {
-            return "Sem Aula Hoje";
-        }
-    }
-    if (dataAtual == 3) {
-        if (cronograma.Quarta.exist == "true") {
-            return cronograma.Quarta.Periodo;
-        } else if (cronograma.Quarta.exist == "false") {
-            return "Sem Aula Hoje";
-        }
-    }
-    if (dataAtual == 4) {
-        if (cronograma.Quinta.exist == "true") {
-            return cronograma.Quinta.Periodo;
-        } else if (cronograma.Quinta.exist == "false") {
-            return "Sem Aula Hoje";
-        }
-    }
-    if (dataAtual == 5) {
-        if (cronograma.Sexta.exist == "true") {
-            return cronograma.Sexta.Periodo;
-        } else if (cronograma.Sexta.exist == "false") {
-            return "Sem Aula Hoje";
-        }
+    });
+    return peri
+}
+
+function StatusAlu(idAlu) {
+    const divhorario = document.getElementById(idAlu).innerHTML;
+    if(divhorario=="Ausente"){
+        return'Ausente';
+    } else{
+        return 'Presente';
     }
 }
 
-function StatusAlu(cronograma) {
-    let dataAtual = new Date().getDay();
-    if (dataAtual == 1) {
-        if (cronograma.Segunda.exist == "true") {
-            if (cronograma.Segunda.estado == "Presente") {
-                return "Presente";
-            } else if (cronograma.Segunda.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Segunda.exist == "false") {
-            return "Sem Aula";
+function StatusAluProf(alu) {
+    if(alu.entrada!=''){
+        if(alu.saida!=''){
+            return "Ausente"
+        }else{
+            return"Presente"
         }
-    }
-    if (dataAtual == 2) {
-        if (cronograma.Terca.exist == "true") {
-            if (cronograma.Terca.estado == "Presente") {
-                return "Presente";
-            } else if (cronograma.Terca.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Terca.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 3) {
-        if (cronograma.Quarta.exist == "true") {
-            if (cronograma.Quarta.estado == "Presente") {
-                return "Presente";
-            } else if (cronograma.Quarta.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Quarta.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 4) {
-        if (cronograma.Quinta.exist == "true") {
-            if (cronograma.Quinta.estado == "Presente") {
-                return "Presente";
-            } else if (cronograma.Quinta.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Quinta.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 5) {
-        if (cronograma.Sexta.exist == "true") {
-            if (cronograma.Sexta.estado == "Presente") {
-                return "Presente";
-            } else if (cronograma.Sexta.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Sexta.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-
-
-}
-
-function horaEntrada(cronograma) {
-    let dataAtual = new Date().getDay();
-    if (dataAtual == 1) {
-        if (cronograma.Segunda.exist == "true") {
-            if (cronograma.Segunda.estado == "Presente") {
-                return cronograma.Segunda.entrada;
-            } else if (cronograma.Segunda.estado == "Ausente") {
-                if(cronograma.Segunda.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Segunda.saida != ""){
-                    return cronograma.Segunda.saida;
-                }
-            }
-        } else if (cronograma.Segunda.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 2) {
-        if (cronograma.Terca.exist == "true") {
-            if (cronograma.Terca.estado == "Presente") {
-                return cronograma.Terca.entrada;
-            } else if (cronograma.Terca.estado == "Ausente") {
-                if(cronograma.Terca.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Terca.saida != ""){
-                    return cronograma.Terca.saida;
-                }
-            }
-        } else if (cronograma.Terca.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 3) {
-        if (cronograma.Quarta.exist == "true") {
-            if (cronograma.Quarta.estado == "Presente") {
-                return cronograma.Quarta.entrada;
-            } else if (cronograma.Quarta.estado == "Ausente") {
-                if(cronograma.Quarta.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Quarta.saida != ""){
-                    return cronograma.Quarta.saida;
-                }
-            }
-        } else if (cronograma.Quarta.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 4) {
-        if (cronograma.Quinta.exist == "true") {
-            if (cronograma.Quinta.estado == "Presente") {
-                return cronograma.Quinta.entrada;
-            } else if (cronograma.Quinta.estado == "Ausente") {
-                if(cronograma.Quinta.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Quinta.saida != ""){
-                    return cronograma.Quinta.saida;
-                }
-            }
-        } else if (cronograma.Quinta.exist == "false") {
-            return "Sem Aula";
-        }
-    } 
-    if (dataAtual == 5) {
-        if (cronograma.Sexta.exist == "true") {
-            if (cronograma.Sexta.estado == "Presente") {
-                return cronograma.Sexta.entrada;
-            } else if (cronograma.Sexta.estado == "Ausente") {
-                if(cronograma.Sexta.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Sexta.saida != ""){
-                    return cronograma.Sexta.saida;
-                }
-            }
-        } else if (cronograma.Sexta.exist == "false") {
-            return "Sem Aula";
-        }
+    }else{
+        return "Ausente"
     }
 }
 
-function horaSaida(cronograma) {
-    let dataAtual = new Date().getDay();
-    if (dataAtual == 1) {
-        if (cronograma.Segunda.exist == "true") {
-            if (cronograma.Segunda.estado == "Presente") {
-                return "A sair";
-            } else if (cronograma.Segunda.estado == "Ausente") {
-                if(cronograma.Segunda.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Segunda.saida != ""){
-                    return cronograma.Segunda.saida;
-                }
-            }
-        } else if (cronograma.Segunda.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 2) {
-        if (cronograma.Terca.exist == "true") {
-            if (cronograma.Terca.estado == "Presente") {
-                return "A sair";
-            } else if (cronograma.Terca.estado == "Ausente") {
-                if(cronograma.Terca.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Terca.saida != ""){
-                    return cronograma.Terca.saida;
-                }
-            }
-        } else if (cronograma.Terca.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 3) {
-        if (cronograma.Quarta.exist == "true") {
-            if (cronograma.Quarta.estado == "Presente") {
-                return "A sair";
-            } else if (cronograma.Quarta.estado == "Ausente") {
-                if(cronograma.Quarta.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Quarta.saida != ""){
-                    return cronograma.Quarta.saida;
-                }
-            }
-        } else if (cronograma.Quarta.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 4) {
-        if (cronograma.Quinta.exist == "true") {
-            if (cronograma.Quinta.estado == "Presente") {
-                return "A sair";
-            } else if (cronograma.Quinta.estado == "Ausente") {
-                if(cronograma.Quinta.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Quinta.saida != ""){
-                    return cronograma.Quinta.saida;
-                }
-            }
-        } else if (cronograma.Quinta.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 5) {
-        if (cronograma.Sexta.exist == "true") {
-            if (cronograma.Sexta.estado == "Presente") {
-                return "A sair";
-            } else if (cronograma.Sexta.estado == "Ausente") {
-                if(cronograma.Sexta.saida == ""){
-                    return "Não compareceu";
-                }else if(cronograma.Sexta.saida != ""){
-                    return cronograma.Sexta.saida;
-                }
-            }
-        } else if (cronograma.Sexta.exist == "false") {
-            return "Sem Aula";
-        }
+function horaEntrada(aluno) {
+    if(aluno.entrada != ''){
+        return aluno.entrada
+    }else {
+        return 'Não compareceu'
     }
 }
 
-function HorarioAlu(cronograma) {
-    let dataAtual = new Date().getDay();
-    if (dataAtual == 1) {
-        if (cronograma.Segunda.exist == "true") {
-            if (cronograma.Segunda.estado == "Presente") {
-                return cronograma.Segunda.entrada;
-            } else if (cronograma.Segunda.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Segunda.exist == "false") {
-            return "Sem Aula";
+function horaSaida(aluno) {
+    if(aluno.entrada != ''){
+        if(aluno.saida != ''){
+            return aluno.saida
+        }else {
+            return "Em aula"
         }
+    }else {
+        return 'Não compareceu'
     }
-    if (dataAtual == 2) {
-        if (cronograma.Terca.exist == "true") {
-            if (cronograma.Terca.estado == "Presente") {
-                return cronograma.Terca.entrada;
-            } else if (cronograma.Terca.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Terca.exist == "false") {
-            return "Sem Aula";
+}
+
+function HorarioAlu(aluno) {
+    if(aluno.entrada != ''){
+        if(aluno.saida!=''){
+            return 'Ausente';
+        }else{
+            return aluno.entrada;
         }
-    }
-    if (dataAtual == 3) {
-        if (cronograma.Quarta.exist == "true") {
-            if (cronograma.Quarta.estado == "Presente") {
-                return cronograma.Quarta.entrada;
-            } else if (cronograma.Quarta.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Quarta.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 4) {
-        if (cronograma.Quinta.exist == "true") {
-            if (cronograma.Quinta.estado == "Presente") {
-                return cronograma.Quinta.entrada;
-            } else if (cronograma.Quinta.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Quinta.exist == "false") {
-            return "Sem Aula";
-        }
-    }
-    if (dataAtual == 5) {
-        if (cronograma.Sexta.exist == "true") {
-            if (cronograma.Sexta.estado == "Presente") {
-                return cronograma.Sexta.entrada;
-            } else if (cronograma.Sexta.estado == "Ausente") {
-                return "Ausente"
-            }
-        } else if (cronograma.Sexta.exist == "false") {
-            return "Sem Aula";
-        }
+    }else{
+        return "Ausente"
     }
 }
 
 function frequencia(cronograma) {
-    const array = [...Object.values(cronograma), cronograma];
-    console.log(array)
-    var DiasIdos = 0
-    var DiasObrigatorios = 0
-    array.forEach(diasemana => {
-        if(diasemana.exist == "true"){
-            if(diasemana.diaSemana == 1){
-                console.log("Segunda");
+    var diaSena = 1; //new Date().getDay();
+    var totalAulas = 0;
+    var aulasIdas = 0;
+    const diasAulas = [...Object.values(cronograma)]
+    console.log(diasAulas)
+    diasAulas.forEach(dia => {
+        if(dia.exist){
+            if(dia.diaSena==diaSena){
+                console.log('Segunda')
             }
-            DiasObrigatorios++;
-            if(diasemana.estado == 'Presente'){
-                DiasIdos++;
-            }
+            const aulas = [...Object.values(dia.aulas)]
+            aulas.forEach(aula => {
+                if(aula.estado=="Presente"){
+                    aulasIdas++;
+                }
+                totalAulas++
+            });
         }
     });
-    const freq = (DiasIdos / DiasObrigatorios) * 100;
-    return freq + '%';
+    const freq = (aulasIdas / totalAulas) * 100;
+    return freq.toFixed(0)+'%'
 }
 
 function ExibBtnProfs(inst) {
