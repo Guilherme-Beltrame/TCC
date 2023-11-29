@@ -8,41 +8,41 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 })
 
-function apareceBtn(){
+function apareceBtn() {
     var cep = form.cep().value;
-    if(!cep || !validaCEP(cep)){
+    if (!cep || !validaCEP(cep)) {
         return true;
     }
     var num = form.num().value;
-    if (!num){
+    if (!num) {
         console.log(num);
         return true;
     }
     var cnpj = form.cnpj().value;
-    if(!cnpj || !validaCNPJ(cnpj)){
+    if (!cnpj || !validaCNPJ(cnpj)) {
         return true;
     }
     var nome = form.nome().value;
-    if (!nome || !SemNum(nome)){
+    if (!nome || !SemNum(nome)) {
         console.log(nome);
         return true;
     }
     var email = form.email().value;
-    if (!email||!validaEmail(email)){
+    if (!email || !validaEmail(email)) {
         return true
     }
     var senha = form.senha().value;
-    if (!senha||!validaSenha(senha)){
+    if (!senha || !validaSenha(senha)) {
         return true;
     }
     var plano = form.plano('-selecionado').value;
-    if(!plano){
+    if (!plano) {
         return true;
-    }   
+    }
     var termos = form.plano('-aceitaTermos').value;
-    if(termos == ''){
+    if (termos == '') {
         return true;
-    }   
+    }
     return false;
 }
 
@@ -62,6 +62,20 @@ function salvardados() {
         });
 }
 
+function alteraOlho(isso) {
+    if (isso.children[0].src == 'file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/visible.png') {
+        formLogin.senha().type = '';
+        formLogin.senha().type = 'text'
+        isso.children[0].src = '';
+        isso.children[0].src = "file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/hide.png";
+    } else if (isso.children[0].src == 'file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/hide.png') {
+        isso.children[0].src = '';
+        formLogin.senha().type = '';
+        formLogin.senha().type = 'password'
+        isso.children[0].src = "file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/visible.png";
+    }
+}
+
 function commitDados() {
     return {
         cep: form.cep().value,
@@ -73,6 +87,7 @@ function commitDados() {
         plano: form.plano('-selecionado').value,
         uid: firebase.auth().currentUser.uid,
         type: 'instituicao',
+        autoHora: false,
     }
 }
 
@@ -80,12 +95,16 @@ function Cadastrar() {
     firebase.auth().createUserWithEmailAndPassword(form.email().value, form.senha().value).then(() => {
         salvardados();
     }).catch(error => {
-        alert("não foi", error,'tente Novamente');
+        if (error.code == 'auth/email-already-in-use') {
+            criaFundos('_LC-F');
+            criaElementos();
+            msgContaCad();
+        }
     })
 }
 
-function habilitaBtn(){ 
-    form.btn().disabled  = apareceBtn();
+function habilitaBtn() {
+    form.btn().disabled = apareceBtn();
 }
 
 function selectPlano() {
@@ -137,9 +156,9 @@ function selectPlano() {
         }
     });
 
-    if(selecionou == 1 ){
+    if (selecionou == 1) {
         const foi = form.plano('-selecionado').value;
-        console.log (foi);
+        console.log(foi);
     }
 
     habilitaBtn();

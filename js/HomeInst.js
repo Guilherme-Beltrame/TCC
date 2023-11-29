@@ -54,12 +54,9 @@ function CadTurma() {
 }
 
 function ApaLixeira(idTurma, idDivNome, idDivGeral) {
-    console.log('entraAbre')
     const lixeira = document.getElementById(idTurma);
     const divGeral = document.getElementById(idDivGeral);
     const divnome = document.getElementById(idDivNome);
-
-    console.log(idDivNome, idDivGeral, idTurma)
 
     divGeral.classList.remove('justify-content-center');
     divGeral.classList.add('justify-content-start');
@@ -71,7 +68,6 @@ function ApaLixeira(idTurma, idDivNome, idDivGeral) {
 }
 
 function SaiLixeira(idTurma, idDivNome, idDivGeral) {
-    console.log('entraAentrabre')
     const lixeira = document.getElementById(idTurma);
     const divGeral = document.getElementById(idDivGeral);
     const divnome = document.getElementById(idDivNome);

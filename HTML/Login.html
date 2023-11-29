@@ -23,14 +23,19 @@
                         class="link-offset-2 link-underline link-underline-opacity-0 text-white fw-bold">Cadastro</a>
                 </p>
             </div>
-            <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column justify-content-center align-items-center" ">
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="-email" placeholder="name@example.com" onchange="ConfereEmail()">
                     <label id="_TxtForEmail" for="-email">E-mail:</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="-Senha" placeholder="Password" onchange="ConfereSenha()">
-                    <label id="_TxtForSenha" for="-Senha">Senha:</label>
+                <div class="d-flex mb-3 justify-content-between align-items-center" style="width: 70%; border-radius: 13px; background-color: #fff;">
+                    <div  class="form-floating" style="width: 90%;">
+                        <input type="password" class="form-control" id="-Senha" placeholder="Password" onchange="ConfereSenha()">
+                        <label  class="d-flex justify-content-between" style="width: 100%;" for="-Senha">
+                            <p id="_TxtForSenha">Senha:</p>
+                        </label>
+                    </div> 
+                    <div style="width: 10%; cursor: pointer;" onclick="alteraOlho(this)" class="d-flex align-items-center justify-content-center"><img style="position: absolute;" width="30px" height="30px" src="../img/visible.png" alt=""></div>
                 </div>
                 <p class="text-white">Caso esqueça sua senha, digite o e-mail no campo email e <a
                         class="link-offset-2 link-underline link-underline-opacity-0 text-success fw-medium"

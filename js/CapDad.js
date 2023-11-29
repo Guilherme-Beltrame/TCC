@@ -23,6 +23,7 @@ const formCadTur = {
     horaentra: aulaselec => document.getElementById(aulaselec),
     horasai: aulaselec => document.getElementById(aulaselec),
     autoTime: () => document.getElementById('habilitaAll'),
+    autohora: () => document.getElementById('autoHora'),
 }
 
 const formCadAlu = {

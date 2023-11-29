@@ -1,3 +1,54 @@
+firebase.auth().onAuthStateChanged(user => {
+    seHora(user.uid);
+})
+
+function seHora(id) {
+    db.collection('instituicoes')
+        .where('user.uid', '==', id)
+        .get()
+        .then(promisse => {
+            const Type = promisse.docs.map(doc => doc = doc.data());
+            if (Type[0].type == 'instituicao') {
+                if (Type[0].autoHora == false) {
+                    console.log('entrou')
+                    formCadTur.btncad().addEventListener('click', () => {
+                        cadTurBD();
+                    })
+                } else {
+                    preenchePeriodos(Type[0].user.uid);
+                    formCadTur.autohora().setAttribute('style', 'display:none !important');
+                }
+            }
+            saiTelaCarregando();
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+
+async function preenchePeriodos(uidInst) {
+    await db.collection('instituicoes')
+        .where('user.uid', '==', uidInst)
+        .get()
+        .then(inst => {
+            const instituicao = inst.docs.map(doc => doc = doc.data());
+            const diasSena = [...Object.values(instituicao[0].aulas)]
+            console.log(diasSena)
+            diasSena.forEach(dia => {
+                let horaEntra = 'Entra'+dia.aula
+                let inputentraHora = document.getElementById(horaEntra);
+                inputentraHora.value = dia.inicio;
+                let horaSaida = 'Sai'+dia.aula
+                let inputSaidaHora = document.getElementById(horaSaida);
+                inputSaidaHora.value = dia.final;
+            });
+        })
+        .catch(erro => {
+            alert('Erro ao cadastrar, recarregue a pág. e tente novamente.');
+            console.log(erro);
+        })
+}
+
 function commitDados() {
     return {
         nome: formCadTur.nomeTur().value,
@@ -10,41 +61,41 @@ function commitDados() {
                 diaSena: 1,
                 periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
                 aulas: {
-                    [document.getElementById('Aula1Segunda').value]: {
+                    1: {
                         periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
                         materia: document.getElementById('Aula1Segunda').value,
                         estado: '',
-                        finalAula: document.getElementById('Saida1').value,
+                        finalAula: document.getElementById('Sai1').value,
                     },
-                    [document.getElementById('Aula2Segunda').value]: {
+                    2: {
                         periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
                         materia: document.getElementById('Aula2Segunda').value,
                         estado: '',
-                        inicio: document.getElementById('Entra2').value,
+                        finalAula: document.getElementById('Sai2').value,
                     },
-                    [document.getElementById('Aula3Segunda').value]: {
+                    3: {
                         periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
                         materia: document.getElementById('Aula3Segunda').value,
                         estado: '',
-                        inicio: document.getElementById('Entra3').value,
+                        finalAula: document.getElementById('Sai3').value,
                     },
-                    [document.getElementById('Aula4Segunda').value]: {
+                    4: {
                         periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
                         materia: document.getElementById('Aula4Segunda').value,
                         estado: '',
-                        inicio: document.getElementById('Entra4').value,
+                        finalAula: document.getElementById('Sai4').value,
                     },
-                    [document.getElementById('Aula5Segunda').value]: {
+                    5: {
                         periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
                         materia: document.getElementById('Aula5Segunda').value,
                         estado: '',
-                        inicio: document.getElementById('Entra5').value,
+                        finalAula: document.getElementById('Sai5').value,
                     },
-                    [document.getElementById('Aula6Segunda').value]: {
+                    6: {
                         periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
                         materia: document.getElementById('Aula6Segunda').value,
                         estado: '',
-                        inicio: document.getElementById('Entra6').value,
+                        finalAula: document.getElementById('Sai6').value,
                     }
                 }
             },
@@ -53,41 +104,41 @@ function commitDados() {
                 diaSena: 2,
                 periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
                 aulas: {
-                    [document.getElementById('Aula1Terca').value]: {
+                    1: {
                         periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
                         materia: document.getElementById('Aula1Terca').value,
                         estado: '',
-                        inicio: document.getElementById('Entra1').value,
+                        finalAula: document.getElementById('Sai1').value,
                     },
-                    [document.getElementById('Aula2Terca').value]: {
+                    2: {
                         periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
                         materia: document.getElementById('Aula2Terca').value,
                         estado: '',
-                        inicio: document.getElementById('Entra2').value,
+                        finalAula: document.getElementById('Sai2').value,
                     },
-                    [document.getElementById('Aula3Terca').value]: {
+                    3: {
                         periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
                         materia: document.getElementById('Aula3Terca').value,
                         estado: '',
-                        inicio: document.getElementById('Entra3').value,
+                        finalAula: document.getElementById('Sai3').value,
                     },
-                    [document.getElementById('Aula4Terca').value]: {
+                    4: {
                         periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
                         materia: document.getElementById('Aula4Terca').value,
                         estado: '',
-                        inicio: document.getElementById('Entra4').value,
+                        finalAula: document.getElementById('Sai4').value,
                     },
-                    [document.getElementById('Aula5Terca').value]: {
+                    5: {
                         periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
                         materia: document.getElementById('Aula5Terca').value,
                         estado: '',
-                        inicio: document.getElementById('Entra5').value,
+                        finalAula: document.getElementById('Sai5').value,
                     },
-                    [document.getElementById('Aula6Terca').value]: {
+                    6: {
                         periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
                         materia: document.getElementById('Aula6Terca').value,
                         estado: '',
-                        inicio: document.getElementById('Entra6').value,
+                        finalAula: document.getElementById('Sai6').value,
                     }
                 }
             },
@@ -96,41 +147,41 @@ function commitDados() {
                 diaSena: 3,
                 periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
                 aulas: {
-                    [document.getElementById('Aula1Quarta').value]: {
+                    1: {
                         periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
                         materia: document.getElementById('Aula1Quarta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra1').value,
+                        finalAula: document.getElementById('Sai1').value,
                     },
-                    [document.getElementById('Aula2Quarta').value]: {
+                    2: {
                         periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
                         materia: document.getElementById('Aula2Quarta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra2').value,
+                        finalAula: document.getElementById('Sai2').value,
                     },
-                    [document.getElementById('Aula3Quarta').value]: {
+                    3: {
                         periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
                         materia: document.getElementById('Aula3Quarta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra3').value,
+                        finalAula: document.getElementById('Sai3').value,
                     },
-                    [document.getElementById('Aula4Quarta').value]: {
+                    4: {
                         periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
                         materia: document.getElementById('Aula4Quarta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra4').value,
+                        finalAula: document.getElementById('Sai4').value,
                     },
-                    [document.getElementById('Aula5Quarta').value]: {
+                    5: {
                         periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
                         materia: document.getElementById('Aula5Quarta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra5').value,
+                        finalAula: document.getElementById('Sai5').value,
                     },
-                    [document.getElementById('Aula6Quarta').value]: {
+                    6: {
                         periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
                         materia: document.getElementById('Aula6Quarta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra6').value,
+                        finalAula: document.getElementById('Sai6').value,
                     }
                 }
             },
@@ -139,41 +190,41 @@ function commitDados() {
                 diaSena: 4,
                 periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
                 aulas: {
-                    [document.getElementById('Aula1Quinta').value]: {
+                    1: {
                         periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
                         materia: document.getElementById('Aula1Quinta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra1').value,
+                        finalAula: document.getElementById('Sai1').value,
                     },
-                    [document.getElementById('Aula2Quinta').value]: {
+                    2: {
                         periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
                         materia: document.getElementById('Aula2Quinta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra2').value,
+                        finalAula: document.getElementById('Sai2').value,
                     },
-                    [document.getElementById('Aula3Quinta').value]: {
+                    3: {
                         periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
                         materia: document.getElementById('Aula3Quinta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra3').value,
+                        finalAula: document.getElementById('Sai3').value,
                     },
-                    [document.getElementById('Aula4Quinta').value]: {
+                    4: {
                         periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
                         materia: document.getElementById('Aula4Quinta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra4').value,
+                        finalAula: document.getElementById('Sai4').value,
                     },
-                    [document.getElementById('Aula5Quinta').value]: {
+                    5: {
                         periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
                         materia: document.getElementById('Aula5Quinta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra5').value,
+                        finalAula: document.getElementById('Sai5').value,
                     },
-                    [document.getElementById('Aula6Quinta').value]: {
+                    6: {
                         periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
                         materia: document.getElementById('Aula6Quinta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra6').value,
+                        finalAula: document.getElementById('Sai6').value,
                     }
                 }
             },
@@ -182,41 +233,41 @@ function commitDados() {
                 diaSena: 5,
                 periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
                 aulas: {
-                    [document.getElementById('Aula1Sexta').value]: {
+                    1: {
                         periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
                         materia: document.getElementById('Aula1Sexta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra1').value,
+                        finalAula: document.getElementById('Sai1').value,
                     },
-                    [document.getElementById('Aula2Sexta').value]: {
+                    2: {
                         periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
                         materia: document.getElementById('Aula2Sexta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra2').value,
+                        finalAula: document.getElementById('Sai2').value,
                     },
-                    [document.getElementById('Aula3Sexta').value]: {
+                    3: {
                         periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
                         materia: document.getElementById('Aula3Sexta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra3').value,
+                        finalAula: document.getElementById('Sai3').value,
                     },
-                    [document.getElementById('Aula4Sexta').value]: {
+                    4: {
                         periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
                         materia: document.getElementById('Aula4Sexta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra4').value,
+                        finalAula: document.getElementById('Sai4').value,
                     },
-                    [document.getElementById('Aula5Sexta').value]: {
+                    5: {
                         periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
                         materia: document.getElementById('Aula5Sexta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra5').value,
+                        finalAula: document.getElementById('Sai5').value,
                     },
-                    [document.getElementById('Aula6Sexta').value]: {
+                    6: {
                         periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
                         materia: document.getElementById('Aula6Sexta').value,
                         estado: '',
-                        inicio: document.getElementById('Entra6').value,
+                        finalAula: document.getElementById('Sai6').value,
                     }
                 }
             }
@@ -224,26 +275,7 @@ function commitDados() {
     }
 }
 
-function commitDadosAutoTime() {
-    return {
-        nome: formCadTur.nomeTur().value,
-        users: {
-            inst: firebase.auth().currentUser.uid,
-        },
-        cronograma: {
-            Segunda: {
-                exist: true,
-                diaSena: 1,
-                periodo: periodoSegunda,
-                aulas: {
-
-                }
-            }
-        }
-    }
-}
-
-function CadTurma() {
+function CadTurmaBD() {
     const dados = commitDados();
     console.log(dados)
     db.collection('Turma')
@@ -259,259 +291,93 @@ function CadTurma() {
 
 function commitHorario() {
     return {
-        cronograma: {
-            exist: true,
-            Segunda: {
-                exist: true,
-                diaSena: 1,
-                periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
-                aulas: {
-                    [document.getElementById('Aula1Segunda').value]: {
-                        periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
-                        materia: document.getElementById('Aula1Segunda').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra1').value,
-                    },
-                    [document.getElementById('Aula2Segunda').value]: {
-                        periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
-                        materia: document.getElementById('Aula2Segunda').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra2').value,
-                    },
-                    [document.getElementById('Aula3Segunda').value]: {
-                        periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
-                        materia: document.getElementById('Aula3Segunda').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra3').value,
-                    },
-                    [document.getElementById('Aula4Segunda').value]: {
-                        periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
-                        materia: document.getElementById('Aula4Segunda').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra4').value,
-                    },
-                    [document.getElementById('Aula5Segunda').value]: {
-                        periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
-                        materia: document.getElementById('Aula5Segunda').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra5').value,
-                    },
-                    [document.getElementById('Aula6Segunda').value]: {
-                        periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
-                        materia: document.getElementById('Aula6Segunda').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra6').value,
-                    }
-                }
+        aulas: {
+            1: {
+                aula: 1,
+                final: document.getElementById('Sai1').value,
+                inicio: document.getElementById('Entra1').value,
             },
-            Terca: {
-                exist: true,
-                diaSena: 2,
-                periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
-                aulas: {
-                    [document.getElementById('Aula1Terca').value]: {
-                        periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
-                        materia: document.getElementById('Aula1Terca').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra1').value,
-                    },
-                    [document.getElementById('Aula2Terca').value]: {
-                        periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
-                        materia: document.getElementById('Aula2Terca').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra2').value,
-                    },
-                    [document.getElementById('Aula3Terca').value]: {
-                        periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
-                        materia: document.getElementById('Aula3Terca').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra3').value,
-                    },
-                    [document.getElementById('Aula4Terca').value]: {
-                        periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
-                        materia: document.getElementById('Aula4Terca').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra4').value,
-                    },
-                    [document.getElementById('Aula5Terca').value]: {
-                        periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
-                        materia: document.getElementById('Aula5Terca').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra5').value,
-                    },
-                    [document.getElementById('Aula6Terca').value]: {
-                        periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
-                        materia: document.getElementById('Aula6Terca').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra6').value,
-                    }
-                }
+            2: {
+                aula: 2,
+                final: document.getElementById('Sai2').value,
+                inicio: document.getElementById('Entra2').value,
             },
-            Quarta: {
-                exist: true,
-                diaSena: 3,
-                periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
-                aulas: {
-                    [document.getElementById('Aula1Quarta').value]: {
-                        periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
-                        materia: document.getElementById('Aula1Quarta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra1').value,
-                    },
-                    [document.getElementById('Aula2Quarta').value]: {
-                        periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
-                        materia: document.getElementById('Aula2Quarta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra2').value,
-                    },
-                    [document.getElementById('Aula3Quarta').value]: {
-                        periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
-                        materia: document.getElementById('Aula3Quarta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra3').value,
-                    },
-                    [document.getElementById('Aula4Quarta').value]: {
-                        periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
-                        materia: document.getElementById('Aula4Quarta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra4').value,
-                    },
-                    [document.getElementById('Aula5Quarta').value]: {
-                        periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
-                        materia: document.getElementById('Aula5Quarta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra5').value,
-                    },
-                    [document.getElementById('Aula6Quarta').value]: {
-                        periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
-                        materia: document.getElementById('Aula6Quarta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra6').value,
-                    }
-                }
+            3: {
+                aula: 3,
+                final: document.getElementById('Sai3').value,
+                inicio: document.getElementById('Entra3').value,
             },
-            Quinta: {
-                exist: true,
-                diaSena: 4,
-                periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
-                aulas: {
-                    [document.getElementById('Aula1Quinta').value]: {
-                        periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
-                        materia: document.getElementById('Aula1Quinta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra1').value,
-                    },
-                    [document.getElementById('Aula2Quinta').value]: {
-                        periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
-                        materia: document.getElementById('Aula2Quinta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra2').value,
-                    },
-                    [document.getElementById('Aula3Quinta').value]: {
-                        periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
-                        materia: document.getElementById('Aula3Quinta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra3').value,
-                    },
-                    [document.getElementById('Aula4Quinta').value]: {
-                        periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
-                        materia: document.getElementById('Aula4Quinta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra4').value,
-                    },
-                    [document.getElementById('Aula5Quinta').value]: {
-                        periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
-                        materia: document.getElementById('Aula5Quinta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra5').value,
-                    },
-                    [document.getElementById('Aula6Quinta').value]: {
-                        periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
-                        materia: document.getElementById('Aula6Quinta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra6').value,
-                    }
-                }
+            4: {
+                aula: 4,
+                final: document.getElementById('Sai4').value,
+                inicio: document.getElementById('Entra4').value,
             },
-            Sexta: {
-                exist: true,
-                diaSena: 5,
-                periodo: document.getElementById('Entra1').value + ' as ' + document.getElementById('Entra6').value,
-                aulas: {
-                    [document.getElementById('Aula1Sexta').value]: {
-                        periAula: document.getElementById('Entra1').value + ' as ' + document.getElementById('Sai1').value,
-                        materia: document.getElementById('Aula1Sexta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra1').value,
-                    },
-                    [document.getElementById('Aula2Sexta').value]: {
-                        periAula: document.getElementById('Entra2').value + ' as ' + document.getElementById('Sai2').value,
-                        materia: document.getElementById('Aula2Sexta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra2').value,
-                    },
-                    [document.getElementById('Aula3Sexta').value]: {
-                        periAula: document.getElementById('Entra3').value + ' as ' + document.getElementById('Sai3').value,
-                        materia: document.getElementById('Aula3Sexta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra3').value,
-                    },
-                    [document.getElementById('Aula4Sexta').value]: {
-                        periAula: document.getElementById('Entra4').value + ' as ' + document.getElementById('Sai4').value,
-                        materia: document.getElementById('Aula4Sexta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra4').value,
-                    },
-                    [document.getElementById('Aula5Sexta').value]: {
-                        periAula: document.getElementById('Entra5').value + ' as ' + document.getElementById('Sai5').value,
-                        materia: document.getElementById('Aula5Sexta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra5').value,
-                    },
-                    [document.getElementById('Aula6Sexta').value]: {
-                        periAula: document.getElementById('Entra6').value + ' as ' + document.getElementById('Sai6').value,
-                        materia: document.getElementById('Aula6Sexta').value,
-                        estado: '',
-                        inicio: document.getElementById('Entra6').value,
-                    }
-                }
+            5: {
+                aula: 5,
+                final: document.getElementById('Sai5').value,
+                inicio: document.getElementById('Entra5').value,
+            },
+            6: {
+                aula: 6,
+                final: document.getElementById('Sai6').value,
+                inicio: document.getElementById('Entra6').value,
             }
         }
     }
 }
 
-function CadTurEInstHora() {
-    CadTurma();
-    const dadohorario = commitHorario();
-    var userUid = firebase.auth().currentUser.uid;
+function CarHoraTur(uid) {
+    const dadosHora = commitHorario();
     db.collection('instituicoes')
-        .where('user.uid', '==', userUid)
-        .add(dadohorario)
+        .doc(uid)
+        .update(dadosHora)
         .then(() => {
-            window.location.href = 'HomeInst.html';
+            CadTurmaBD();
         })
         .catch(erro => {
             alert('Erro ao cadastrar, recarregue a pág. e tente novamente.');
             console.log(erro);
-        })  
+        })
+}
+
+async function alteraAutoHora(uid, instdad) {
+    await db.collection('instituicoes')
+        .doc(uid)
+        .update(instdad)
+        .then(() => {
+            CarHoraTur(uid);
+        })
+        .catch(erro => {
+            alert('Erro ao cadastrar, recarregue a pág. e tente novamente.');
+            console.log(erro);
+        })
+}
+
+async function habilitaAutoHora() {
+    const dadohorario = '';
+    const userUid = await firebase.auth().currentUser.uid;
+    await db.collection('instituicoes')
+        .where('user.uid', '==', userUid)
+        .get()
+        .then(inst => {
+            const instituicao = inst.docs.map(doc => ({ ...doc.data(), iddoc: doc.id }));
+            instituicao[0].autoHora = true;
+            console.log(instituicao[0].iddoc)
+            alteraAutoHora(instituicao[0].iddoc, instituicao[0])
+        })
+        .catch(erro => {
+            alert('Erro ao cadastrar, recarregue a pág. e tente novamente.');
+            console.log(erro);
+        })
 }
 
 function cadTurBD() {
     const autoTime = formCadTur.autoTime();
-    const dadosCad = '';
     if (autoTime.checked) {
-        CadTurEInstHora();
-        // dadosCad = await commitDadosAutoTime();
+        habilitaAutoHora();
     } else {
-        CadTurma();
+        CadTurmaBD();
     }
-
-
-}
-
-function alteravaloropition(id) {
-    const option = document.getElementById(id);
-    console.log(option.value)
 }
 
 function apareceBtn() {

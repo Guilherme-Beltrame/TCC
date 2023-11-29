@@ -7,6 +7,20 @@ firebase.auth().onAuthStateChanged(function (user) {
     }, 1000);
 });
 
+function alteraOlho(isso){
+    if(isso.children[0].src == 'file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/visible.png'){  
+        formLogin.senha().type = '';
+        formLogin.senha().type = 'text' 
+        isso.children[0].src='';
+        isso.children[0].src="file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/hide.png";
+    }else if(isso.children[0].src=='file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/hide.png'){
+        isso.children[0].src='';
+        formLogin.senha().type='';
+        formLogin.senha().type='password'
+        isso.children[0].src="file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/visible.png";
+    }
+}
+
 function seInst(id) {
     db.collection('instituicoes')
         .where('user.uid', '==', id)

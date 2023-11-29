@@ -50,7 +50,7 @@ function msgSucesso() {
     resulValida.innerHTML = 'Seu cadastro foi concluído com sucesso!';
     btnConseq.innerHTML = 'Entrar';
     btnConseq.onclick = function () {
-        window.location.href = 'Tela-Principal.html';
+        window.location.href = 'HomeInst.html';
     }
 }
 
@@ -431,5 +431,17 @@ function msgSucessoExclu(turNome) {
     btnConseq.innerHTML = 'Fechar';
     btnConseq.onclick = function () {
         window.location.href = 'HomeInst.html'
+    }
+}
+
+function msgContaCad(){
+    const consequencia = document.getElementById('consequencia');
+    const btnConseq = document.getElementById('btnConseq');
+    const resulValida = document.getElementById('resulValida');
+    consequencia.innerHTML = 'Erro!';
+    resulValida.innerHTML = 'Esta consta já está cadastrada!';
+    btnConseq.innerHTML = 'Tentar com outra conta';
+    btnConseq.onclick = function () {
+        window.location.href = 'Cad.html';
     }
 }
