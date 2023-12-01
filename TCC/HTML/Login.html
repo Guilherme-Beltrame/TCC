@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trusty Gate - Login</title>
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/fontes.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/cads.css">
+</head>
+
+<body id="_fundLC" class="d-flex align-items-center justify-content-center">
+    <div class="container-fluid d-flex flex-row justify-content-center align-items-center" id="_LC-F">
+        <div class="container-md text-center d-flex flex-column justify-content-center flex-wrap grid gap-2 p-5"
+            id="_Campo-LC">
+            <div class="d-flex flex-row justify-content-around flex-wrap grid gap-2 ">
+                <p class="text-success fw-bold fs-6" style="cursor: pointer;">Login</p>
+                <p class="fw-bold fs-6"><a href="Cad.html" id="_TxtLoCa"
+                        class="link-offset-2 link-underline link-underline-opacity-0 text-white fw-bold">Cadastro</a>
+                </p>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center" ">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="-email" placeholder="name@example.com" onchange="ConfereEmail()">
+                    <label id="_TxtForEmail" for="-email">E-mail:</label>
+                </div>
+                <div class="d-flex mb-3 justify-content-between align-items-center" style="width: 70%; border-radius: 13px; background-color: #fff;">
+                    <div  class="form-floating" style="width: 90%;">
+                        <input type="password" class="form-control" id="-Senha" placeholder="Password" onchange="ConfereSenha()">
+                        <label  class="d-flex justify-content-between" style="width: 100%;" for="-Senha">
+                            <p id="_TxtForSenha">Senha:</p>
+                        </label>
+                    </div> 
+                    <div style="width: 10%; cursor: pointer;" onclick="alteraOlho(this)" class="d-flex align-items-center justify-content-center"><img style="position: absolute;" width="30px" height="30px" src="../img/visible.png" alt=""></div>
+                </div>
+                <p class="text-white">Caso esqueça sua senha, digite o e-mail no campo email e <a
+                        class="link-offset-2 link-underline link-underline-opacity-0 text-success fw-medium"
+                        style="cursor: pointer;" id="_TxtLoCa" onclick="RecuSenha()">clique aqui.</a></p>
+            </div>
+            <div>
+                <button type="button" id="_Btn" class="btn btn-success" disabled onclick="Entrar()">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
+    <script src="../js/conection.js"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/Criacao.js"></script>
+    <script src="../js/vaCamp.js"></script>
+    <script src="../js/CapDad.js"></script>
+</body>
+
+</html>

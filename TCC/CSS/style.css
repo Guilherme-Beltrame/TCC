@@ -1,0 +1,228 @@
+
+body, html{
+    height: 100% !important;
+  }
+  
+
+/*Estilizando barra de navegação*/
+#_Nav {
+    --bs-navbar-padding-y: 0;
+    background-color: #000147;
+    height: 70px;
+    flex-wrap: nowrap;
+}
+
+/*Estilizando fonte da barra de navegação*/
+#_NavTxt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+/*Estilizando a primeira imagem de fundo da tela principal*/
+#_Fund01 {
+    background-image: url("../img/Fundo.png");
+    height: 500px;
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+}
+
+/*Estilizando o titulo na tela principal*/
+#_Name {
+    font-family: 'Alegreya', serif;
+    font-weight: 900;
+}
+
+/*Estilizando o texto com o slogan*/
+#_TxtDesc {
+    font-family: 'Alice', serif;
+    text-align: center;
+    font-size: larger;
+    font-weight: 800;
+}
+
+/*Estilizando botão tela principal*/
+#_Btn {
+    width: 300px;
+    border-radius: 30px;
+}
+
+
+/*Estilizando o interior da segunda parte*/
+._Sobnos {
+    display: flex;
+    background-color: #ffffff;
+    width: 2000px;
+    height: 600px;
+}
+
+/*Estilizando titulo do Bootstrap*/
+.fs-1 {
+    font-size: calc(1.375rem + 1.7vw) !important;
+}
+
+/*Estilizando o texto na área de sobre nós*/
+#_TextSobre {
+    color: #0E0F8A;
+    font-family: 'Alegreya', serif;
+}
+
+/*Estilizando texto que fala sobre a empreza*/
+#_Sobre {
+    font-family: 'Alice', serif;
+    width: 60%;
+}
+
+/*Estilizando o titulo da parte planos*/
+#_TextPlan {
+    font-family: 'Racing Sans One', cursive;
+    color: #CCCEF8;
+}
+
+.card {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: #898ACF;
+    --bs-card-subtitle-color: #898ACF;
+    --bs-card-border-width: ;
+    --bs-card-border-color: transparent;
+    --bs-card-border-radius: ;
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: transparent;
+    --bs-card-cap-color: ;
+    --bs-card-height: 20rem;
+    --bs-card-color: #fff;
+    --bs-card-bg: transparent;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    color: var(--bs-body-color);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+}
+
+/*Estilizando titulo dos planos*/
+.card-title {
+    margin-bottom: var(--bs-card-title-spacer-y);
+    color: var(--bs-card-title-color);
+    font-family: 'Racing Sans One', cursive;
+}
+
+/*Estilizando o texto do body do card*/
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    color: var(--bs-card-color);
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*Estilizando o botão do card*/
+.btn {
+    --bs-btn-font-family: font-family:'Nunito', sans-serif;
+}
+
+/*Estilizando a descrição no rodapé*/
+#_DescRoda {
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+/*Estilizando as imagens da parte de contatos no rodape*/
+._ImgRoda {
+    width: 30px;
+}
+
+/*Estilizando os textos de cada contato*/
+#_Contato {
+    font-family: 'Cardo', serif;
+}
+
+/*Estilizando a tela de login*/
+#_fundLC {
+    background-image: url("../img/Fundo-LC.png");
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+}
+
+/*Estilizando tamanho do fundo*/
+#_LC-F {
+    width: 100vw;
+    height: 100vh;
+}
+
+/*Estilizando o campo DOM*/
+#_Campo-LC {
+    background-color: rgb(0, 1, 71, 0.5);
+    width: 90%;
+}
+
+/*Estilizando o famanho do form*/
+.form-floating {
+    width: 70%;
+}
+
+/*Estilizando textos de login*/
+.TxtLoCa, .btn {
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+}
+
+#_preplano, #Lite, #Business, #Premium, #Custom {
+    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#_TxtForCNPJ, #_TxtForEmail,#_TxtForSenha, #_TxtForN, #_TxtForCEP {
+    font-family: 'Nunito', sans-serif;
+}
+
+.fundPreto {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.DocAlu, .DocCad {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    background-color: #ffffff;
+    position: fixed;
+    top: 150px;
+}
+
+.headerAlu, .headerCad {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+    gap: 10px;
+    border-bottom: 1px solid #8a8a8a99;
+}
+
+.termosUso{
+    font-family: 'Cardo', serif;
+    color: #00FFFC;
+}
