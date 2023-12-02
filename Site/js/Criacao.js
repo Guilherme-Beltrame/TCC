@@ -58,6 +58,7 @@ function ExibiProfsTela(Professores) {
     const AreaProfs = document.getElementById('Profs');
 
     Professores.forEach(professor => {
+        console.log(professor)
         const ItemProf = document.createElement('li');
         ItemProf.classList.add('Aluno');
         const imgProf = document.createElement('img');
@@ -68,7 +69,7 @@ function ExibiProfsTela(Professores) {
         NomeProf.innerHTML = professor.nome;
         NomeProf.classList.add('NomeAlu', 'fw-bold');
         NomeProf.addEventListener('click', () => {
-            PuxaDados(professor.idProf);
+            PuxaDadosProf(professor.idProf);
         })
 
         const CurProf = document.createElement('p');
@@ -80,11 +81,11 @@ function ExibiProfsTela(Professores) {
         RmProf.classList.add('RmAlu', 'fw-bold');
 
         const FreqProf = document.createElement('p');
-        FreqProf.innerHTML = frequencia(professor.Cronograma);
+        FreqProf.innerHTML = frequencia(professor.cronograma);
         FreqProf.classList.add('FreqAlu', 'fw-bold');
 
         const HoraProf = document.createElement('p');
-        HoraProf.innerHTML = professor.entrada;
+        HoraProf.innerHTML = HorarioAlu(professor);
         HoraProf.classList.add('HoraAlu', 'fw-bold');
 
         AreaProfs.appendChild(ItemProf);
@@ -194,6 +195,7 @@ function PegaPeriodo(cronograma) {
     var peri;
 
     const diasAulas = [...Object.values(cronograma)]
+    console.log(diasAulas)
     diasAulas.forEach(dia => {
         if(dia.diaSena == diaAtual){
             peri = dia.periodo;
@@ -211,9 +213,9 @@ function StatusAlu(idAlu) {
     }
 }
 
-function StatusAluProf(alu) { 
-    if(alu.entrada!=''){
-        if(alu.saida!=''){
+function StatusAluProf(Prof) { 
+    if(Prof.entrada!=''){
+        if(Prof.saida!=''){
             return "Ausente"
         }else{
             return"Presente"

@@ -22,7 +22,7 @@ function ExibiProfsInsti(IdInst) {
                 ...Professor.data(),
                 idProf: Professor.id
             }));
-            console.log(Professores);
+            console.log(Professores);   
             ExibiProfsTela(Professores);
         })
 }
@@ -34,7 +34,7 @@ function pegaIds() {
     }
 }
 
-function PuxaDados(profID) {
+function PuxaDadosProf(profID) {
     entratelaCarregando();
     db.collection('professores')
         .doc(profID)
@@ -42,20 +42,21 @@ function PuxaDados(profID) {
         .then(dadosprof => {
             if (dadosprof.exists) {
                 console.log(dadosprof.data());
-                AdiDadosTela(dadosprof.data());
+                AdiDadosTelaProfinfo(dadosprof.data(), profID);
             } else {
                 saiTelaCarregando();
                 alert("Erro ao carregar dados");
             }
             saiTelaCarregando();
         })
-        .catch(() => {
+        .catch(erro => {
             saiTelaCarregando();
+            confirm(erro)
             alert("Erro ao carregaaaaaaaaar dados");
         })
 }
 
-function AdiDadosTela(Prof) {
+function AdiDadosTelaProfinfo(Prof, profID) {
     CriaDivsIniciais();
     const docAluno = document.getElementById("DocAlu");
     //cabecalho
@@ -130,7 +131,7 @@ function AdiDadosTela(Prof) {
     peri.classList.add('tituDadAlu');
     item4.appendChild(peri);
     const PerAula = document.createElement("p");
-    PerAula.innerHTML = PegaPeriodo(Prof.Cronograma);
+    PerAula.innerHTML = PegaPeriodo(Prof.cronograma);
     item4.appendChild(PerAula);
     //Dado 5
     const item5 = document.createElement('li');
@@ -141,7 +142,7 @@ function AdiDadosTela(Prof) {
     fre.classList.add('tituDadAlu');
     item5.appendChild(fre);
     const freq = document.createElement("p");
-    freq.innerHTML = frequencia(Prof.Cronograma);
+    freq.innerHTML = frequencia(Prof.cronograma);
     item5.appendChild(freq);
     //Dado 6
     const item6 = document.createElement('li');
@@ -176,7 +177,6 @@ function AdiDadosTela(Prof) {
     const Tel = document.createElement("p");
     Tel.innerHTML = Prof.telefone;
     item8.appendChild(Tel);
-
     //area do Btn sair mais cedo
     const divbtn = document.createElement('div');
     divbtn.classList.add("saidaAlu", "d-flex", "align-items-end", "justify-content-end", "mb-3");
@@ -184,10 +184,54 @@ function AdiDadosTela(Prof) {
     //Btn sair mais cedo
     const SairCedo = document.createElement("button");
     SairCedo.type = 'button';
-    SairCedo.innerHTML = "Ausente";
+    SairCedo.onclick = function () {
+        LiberaProf(Prof, profID);
+    }
     SairCedo.classList.add("btn", "btn-success", "fw-bold");
+    SairCedo.innerHTML = "Ausente";
+    veriBtnSairProf(SairCedo, Prof, divbtn);
     divbtn.appendChild(SairCedo);
 }
+
+function veriBtnSairProf(btn, prof, divbtn) {
+    if(prof.entrada!=''){
+        if(prof.saida!=''){
+            excloubtn(divbtn);
+        }else{
+            aparecebtn(btn);
+        }
+    }else{
+        excloubtn(divbtn);
+    }
+}
+
+function estiBtnAusent(btn) {
+    btn.disabled = true;
+    btn.classList.add('btn', 'btn-danger', 'fw-bold');
+}
+
+function excloubtn(divbtn) {
+    divbtn.remove();
+}
+
+function aparecebtn(btn) {
+    btn.classList.add('btn', 'btn-success', 'fw-bold');
+}
+
+function LiberaProf(prof, profID){
+    prof.saida = (new Date().getHours())+':'+(new Date().getMinutes());
+    const dados = (prof);
+    db.collection('professores')
+        .doc(profID)
+        .update(dados)
+        .then(()=>{
+            window.location.reload();
+        })
+        .catch(erro=>{
+            console.log(erro)
+        })
+}
+
 function saiDadProf() {
     const divFund = document.getElementById("fundopreto");
     divFund.remove();
