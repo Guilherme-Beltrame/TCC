@@ -104,7 +104,7 @@ function ExibiAluTelaProf(Alunos) {
         ItemAluno.classList.add('Aluno');
         const imgAlu = document.createElement('img');
         imgAlu.classList.add('imgAluno');
-        imgAlu.src = '../img/Perfil-Aluno.png';
+        imgAlu.src = aluno.image;
 
         const NomeAlu = document.createElement('p');
         NomeAlu.innerHTML = aluno.nome;
@@ -190,7 +190,7 @@ function Styleresul(estado){
 }
 
 function PegaPeriodo(cronograma) {
-    var diaAtual = 1; // new Date().getDay();
+    var diaAtual = 5; // new Date().getDay();
     var peri;
 
     const diasAulas = [...Object.values(cronograma)]
@@ -256,7 +256,7 @@ function HorarioAlu(aluno) {
 }
 
 function frequencia(cronograma) {
-    var diaSena = 1; //new Date().getDay();
+    var diaSena = 5; //new Date().getDay();
     var totalAulas = 0;
     var aulasIdas = 0;
     const diasAulas = [...Object.values(cronograma)]

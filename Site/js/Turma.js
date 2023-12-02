@@ -277,11 +277,25 @@ function AdiDadosTela(Aluno, AluId) {
     const SairCedo = document.createElement("button");
     SairCedo.type = 'button'
     SairCedo.onclick = function () {
-        LiberaAlu();
+        LiberaAlu(Aluno, AluId);
     }
     SairCedo.innerHTML = 'Ausente'
     veriBtnSair(SairCedo, Aluno, divbtn);
     divbtn.appendChild(SairCedo);
+}
+
+function LiberaAlu(aluno, AluId){
+    aluno.saida = (new Date().getHours())+':'+(new Date().getMinutes());
+    const dados = (aluno);
+    db.collection('Alunos')
+        .doc(AluId)
+        .update(dados)
+        .then(()=>{
+            window.location.reload();
+        })
+        .catch(erro=>{
+            console.log(erro)
+        })
 }
 
 function estiBtnAusent(btn) {

@@ -9,7 +9,12 @@ const Stack = new createStackNavigator();
 
 export function Routes() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen
+        name="QR"
+        component={Qrcode}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Login"
         component={Login}
@@ -18,11 +23,6 @@ export function Routes() {
       <Stack.Screen
         name="Aluno"
         component={Aluno}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="QR"
-        component={Qrcode}
         options={{ headerShown: false }}
       />
       <Stack.Screen

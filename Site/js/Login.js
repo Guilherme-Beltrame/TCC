@@ -9,6 +9,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 function alteraOlho(isso){
     if(isso.children[0].src == 'file:///C:/Users/user/OneDrive/%C3%81rea%20de%20Trabalho/TrustGate/TCC/img/visible.png'){  
+        console.log('entrou')
         formLogin.senha().type = '';
         formLogin.senha().type = 'text' 
         isso.children[0].src='';
@@ -23,7 +24,7 @@ function alteraOlho(isso){
 
 function seInst(id) {
     db.collection('instituicoes')
-        .where('user.uid', '==', id)
+        .where('uid', '==', id)
         .get()
         .then(promisse => {
             const Type = promisse.docs.map(doc => doc = doc.data().type);

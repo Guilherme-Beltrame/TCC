@@ -118,8 +118,15 @@ function AdiDadosTela(Alunos) {
         const SairCedo = document.createElement("button");
         SairCedo.type = 'button';
         SairCedo.innerHTML = "Ausente";
+        SairCedo.onclick = function () {
+            RegistraSidaAlu(Aluno);
+        }
         SairCedo.classList.add("btn", "btn-success", "fw-bold");
         divbtn.appendChild(SairCedo);
     });
+}
 
+function RegistraSidaAlu(aluno){
+    aluno.saida = new Date().getTime
+    console.log(aluno.saida);
 }

@@ -19,6 +19,11 @@ function seProf(id) {
         })
         .catch(error => {
             console.log(error)
+            entratelaCarregando();
+            saiTelaCarregando();
+            msgSucessoExclu(NomeTur);
+            saiTelaCarregando();
+            console.error("Error removing document: ", error);
         })
 }
 
@@ -31,10 +36,10 @@ function pegaDadosdoBD(id) {
                 ...doc.data(),
                 TurID: doc.id
             }));
-            
+
             ExibiTurTela(Turmas);
             ExibBtnProfs(id);
-            
+
         })
         .catch(erro => {
             console.log(erro)
@@ -81,7 +86,7 @@ function SaiLixeira(idTurma, idDivNome, idDivGeral) {
     divnome.classList.remove('mt-4');
 }
 
-function ExcluiTurmaDB(idTur, NomeTur){
+function ExcluiTurmaDB(idTur, NomeTur) {
     entratelaCarregando();
     db.collection("Turma").doc(idTur).delete().then(() => {
         saiTelaCarregando();

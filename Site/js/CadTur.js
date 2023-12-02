@@ -4,7 +4,7 @@ firebase.auth().onAuthStateChanged(user => {
 
 function seHora(id) {
     db.collection('instituicoes')
-        .where('user.uid', '==', id)
+        .where('uid', '==', id)
         .get()
         .then(promisse => {
             const Type = promisse.docs.map(doc => doc = doc.data());
@@ -15,7 +15,10 @@ function seHora(id) {
                         cadTurBD();
                     })
                 } else {
-                    preenchePeriodos(Type[0].user.uid);
+                    formCadTur.btncad().addEventListener('click', () => {
+                        CadTurmaBD();
+                    })
+                    preenchePeriodos(Type[0].uid);
                     formCadTur.autohora().setAttribute('style', 'display:none !important');
                 }
             }
@@ -28,17 +31,17 @@ function seHora(id) {
 
 async function preenchePeriodos(uidInst) {
     await db.collection('instituicoes')
-        .where('user.uid', '==', uidInst)
+        .where('uid', '==', uidInst)
         .get()
         .then(inst => {
             const instituicao = inst.docs.map(doc => doc = doc.data());
             const diasSena = [...Object.values(instituicao[0].aulas)]
             console.log(diasSena)
             diasSena.forEach(dia => {
-                let horaEntra = 'Entra'+dia.aula
+                let horaEntra = 'Entra' + dia.aula
                 let inputentraHora = document.getElementById(horaEntra);
                 inputentraHora.value = dia.inicio;
-                let horaSaida = 'Sai'+dia.aula
+                let horaSaida = 'Sai' + dia.aula
                 let inputSaidaHora = document.getElementById(horaSaida);
                 inputSaidaHora.value = dia.final;
             });
@@ -277,7 +280,6 @@ function commitDados() {
 
 function CadTurmaBD() {
     const dados = commitDados();
-    console.log(dados)
     db.collection('Turma')
         .add(dados)
         .then(() => {
@@ -357,7 +359,7 @@ async function habilitaAutoHora() {
     const dadohorario = '';
     const userUid = await firebase.auth().currentUser.uid;
     await db.collection('instituicoes')
-        .where('user.uid', '==', userUid)
+        .where('uid', '==', userUid)
         .get()
         .then(inst => {
             const instituicao = inst.docs.map(doc => ({ ...doc.data(), iddoc: doc.id }));
@@ -379,7 +381,7 @@ function cadTurBD() {
         CadTurmaBD();
     }
 }
-
+seHora
 function apareceBtn() {
     const nometur = formCadTur.nomeTur().value;
     const camptimesai = document.getElementsByName('horaSai');
